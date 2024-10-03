@@ -12,12 +12,11 @@ code {
     monospace;
 }
 @font-face {
-  font-family: "Pretendard-Medium.otf";
+  font-family: "Pretendard-Regular.otf";
   font-weight: normal;
-  src: url("./fonts/Pretendard-Medium.otf") format("truetype");
-  src: url("./fonts/Pretendard-SemiBold.otf") format("truetype");
+  src: url("./fonts/Paperlogy-4Regular.ttf") format("truetype");
 }
 
 body {
-  font-family: "Pretendard-Medium.otf";
+  font-family: "Pretendard-Regular.otf";
 }
