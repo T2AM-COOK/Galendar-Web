@@ -5,35 +5,36 @@ import RegisterSecondContent from "./registerDetail";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const registerData ={
-  username : "",
-  password : "",
-};
 
 const RegisterFirstContent = () => {
   const navigate = useNavigate();
-    const [RIdValue, setRId] = useState<registerData>({username:''});
-    const [RPwValue, setRPw] = useState<registerData>({password:''});
-    const [RNameValue, setRName] = useState("");
+  const [RIdValue, setRId] = useState("");
+  const [RNameValue, setRName] = useState("");
+  const [RPwValue, setRPw] = useState("");
     const [RPwReValue, setRRePw] = useState("");
     const [Next, setNext] = useState(true);
+    const registerData = {
+      username: RIdValue,
+      password: RPwValue,
+
+    };
     const goNext = async() =>{
         if (isButtonRegister === true){
           try{
-            const res = await axios.post("http://3.37.189.59:8080/swagger-ui/index.html/join", registerData)
+            const res = await axios.post("http://3.37.189.59:8080/auth/signup", registerData);
             if(res){
+              alert("성공, 다음으로 넘어갑니다");
               setNext(false);
-              alert("성공, 다음으로 넘어갑니다")
             }
           }catch{
-            alert("오류 발생")
+            alert("오류 발생");
           }
         }
       }
 
       const goLogin = () =>{
         navigate("/login");
-      }
+      } 
 
     const handleRIDChange = (event) =>{
       setRId(event.target.value);
@@ -63,12 +64,14 @@ const RegisterFirstContent = () => {
             placeholder="이름을 입력하세요" 
             onChange={handleRNameChange}
           />
-              <div style={{ fontWeight: "bold", marginBottom: "1vh", fontSize: "16px", fontWeight:"bolder", fontFamily:"paperlogy" }}>아이디</div>
-          <S.LoginInput 
-            type="text" 
-            placeholder="아이디를 입력하세요" 
-            onChange={handleRIDChange}
+        <div style={{ fontWeight: "bold", marginBottom: "1vh", fontSize: "16px" , fontWeight:"bolder", fontFamily:"paperlogy"}}>이메일</div>
+        <div style={{display:"flex"}}>
+          <S.EmailInput 
+            type="email"
+            placeholder="이메일을 입력하세요" 
           />
+          <S.SendNum style={{cursor:"pointer"}} onClick={()=>alert("인증번호가 전송되었습니다.")}>전송하기</S.SendNum>
+          </div>
               <div style={{ fontWeight: "bold", marginBottom: "1vh", fontSize: "16px", fontWeight:"bolder", fontFamily:"paperlogy" }}>비밀번호</div>
           <S.LoginInput
             style={{
