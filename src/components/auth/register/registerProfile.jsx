@@ -3,18 +3,31 @@ import { useState } from "react";
 import * as S from "./indexStyle";
 import RegisterSecondContent from "./registerDetail";
 import { Link, Navigate, useNavigate } from "react-router-dom";
+import axios from "axios";
 
+const registerData ={
+  username : "",
+  password : "",
+};
 
 const RegisterFirstContent = () => {
   const navigate = useNavigate();
-    const [RIdValue, setRId] = useState("");
+    const [RIdValue, setRId] = useState<registerData>({username:''});
+    const [RPwValue, setRPw] = useState<registerData>({password:''});
     const [RNameValue, setRName] = useState("");
-    const [RPwValue, setRPw] = useState("");
     const [RPwReValue, setRRePw] = useState("");
     const [Next, setNext] = useState(true);
-    const goNext = () =>{
+    const goNext = async() =>{
         if (isButtonRegister === true){
-          setNext(false);
+          try{
+            const res = await axios.post("http://3.37.189.59:8080/swagger-ui/index.html/join", registerData)
+            if(res){
+              setNext(false);
+              alert("성공, 다음으로 넘어갑니다")
+            }
+          }catch{
+            alert("오류 발생")
+          }
         }
       }
 

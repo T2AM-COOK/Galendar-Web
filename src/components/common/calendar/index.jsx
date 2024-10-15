@@ -8,7 +8,11 @@ const MainCalendar = () => {
 
   const prevLast = new Date(viewYear, viewMonth, 0);
   const prevThis = new Date(viewYear, viewMonth + 1, 0);
+<<<<<<< HEAD
   const prevNext = new Date(viewYear, viewMonth + 1, 0);
+=======
+  const prevNext = new Date(viewYear, viewMonth + 2, 0);
+>>>>>>> 53467f7 (캘린더 뷰 완성)
 
   const PLDate = prevLast.getDate();
   const PTDate = prevThis.getDate();

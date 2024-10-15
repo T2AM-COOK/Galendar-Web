@@ -3,8 +3,6 @@ import * as S from "./indexStyle";
 import { Fee, Join, Region } from './selections/index';
 import { TimeSet, JoinSet } from './dates/index';
 
-
-
 const Form = () => {
   return (
     <S.Div>
