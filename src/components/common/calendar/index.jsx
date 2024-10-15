@@ -8,14 +8,13 @@ const MainCalendar = () => {
 
   const prevLast = new Date(viewYear, viewMonth, 0);
   const prevThis = new Date(viewYear, viewMonth + 1, 0);
-  const prevNext = new Date(viewYear, viewMonth + 2, 0);
 
   const PLDate = prevLast.getDate();
   const PTDate = prevThis.getDate();
 
   const prevDates = [];
   const thisDates = [];
-
+  alert(PLDate);
   // 날짜 이동 함수
   const Decrease = () => {
     setViewMonth(viewMonth > 1 ? viewMonth - 1 : 12);
