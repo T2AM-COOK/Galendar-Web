@@ -13,9 +13,6 @@ const ProfileContent = () => {
         <div style={{fontSize:"20px"}}>imground11@gmail.com</div>
       </S.ProfileText>
       </div>
-      <div>
-        <S.ProfileButton>프로필 수정</S.ProfileButton>
-      </div>
       </S.Profile>
       <BookMarkContent/>
     </div>  

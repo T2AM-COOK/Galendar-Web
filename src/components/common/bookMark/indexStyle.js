@@ -5,7 +5,6 @@ export const Div = styled.div`
     justify-content:space-between;
     margin-left: 90px;
     margin-right: 90px;
-    margin-top:43px;
     box-sizing: border-box;
 `
 

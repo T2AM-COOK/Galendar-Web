@@ -2,16 +2,15 @@ import React from 'react'
 import Sidebar from '../../components/common/bars/sideBar'
 import * as S from "./indexStyle"
 import BookMarkContent from '../../components/common/bookMark'
-import SmallContestBox from '../../components/common/contentsBox/small'
 
 const BookMark = () => {
   return (
-        <S.Div>
+      <S.Div>
         <Sidebar/>
         <S.Content>
         <BookMarkContent/>
         </S.Content>
-        </S.Div>
+      </S.Div>
   )
 }
 

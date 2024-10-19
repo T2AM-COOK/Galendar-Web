@@ -14,7 +14,6 @@ export const ContestImg = styled.img`
     width:284px;
     height:224px;
     border-radius:10px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
 `
 
 export const ImageBox = styled.div`
@@ -50,7 +49,6 @@ export const ContentTextBox = styled.div`
     border-radius:15px;
     margin-left:50px;
     background-color:white;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
     width:800px;
     height:224px;
     display:flex;

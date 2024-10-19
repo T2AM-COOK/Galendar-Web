@@ -1,28 +1,23 @@
 import styled from "styled-components";
 
 export const MainBox = styled.div`
-    width:1125px;
-    height:615px;
+    width:1057px;
+    height:550px;
     background:white;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
 `
 export const DecreaseButton = styled.div`
     cursor: pointer;
     width:32px;
     height:32px;
-    background-color:white;
     border-radius:5px;
     border:0px;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
 `
 export const IncreaseButton = styled.div`
     cursor: pointer;
     width:32px;
     height:32px;
-    background-color:white;
     border-radius:5px;
     border:0px;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
 
 `
 
@@ -45,7 +40,7 @@ export const IncreaseArrow = styled.img`
 `
 
 export const DateBox = styled.table`
-    width:1125px;
+    width:1000px;
     height:48px;
     border-top:0.5px solid #B5B5B5;
     margin-top:23px;

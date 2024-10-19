@@ -12,8 +12,7 @@ export const ContentBox = styled.div`
     background-color:white;
     height:472px;
     align-items:center;
-    width:1223px;
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.4);
+    width:100%;
     border-radius:10px;
 `
 export const ContentDiv = styled.div`

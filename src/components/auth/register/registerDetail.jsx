@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 
 const RegisterSecondContent = () =>{
 
-
   return(
     <S.RegisterContainer>
     <S.Logo src="/images/logo.svg"/>

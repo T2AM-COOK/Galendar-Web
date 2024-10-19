@@ -8,15 +8,15 @@ import axios from "axios";
 
 const RegisterFirstContent = () => {
   const navigate = useNavigate();
-  const [RIdValue, setRId] = useState("");
+  const [REmailValue, setREmail] = useState("");
   const [RNameValue, setRName] = useState("");
   const [RPwValue, setRPw] = useState("");
-    const [RPwReValue, setRRePw] = useState("");
-    const [Next, setNext] = useState(true);
-    const registerData = {
-      username: RIdValue,
+  const [RPwReValue, setRRePw] = useState("");
+  const [Next, setNext] = useState(true);
+   const registerData = {
+      email: REmailValue,
       password: RPwValue,
-
+      name: RNameValue,
     };
     const goNext = async() =>{
         if (isButtonRegister === true){
@@ -36,8 +36,8 @@ const RegisterFirstContent = () => {
         navigate("/login");
       } 
 
-    const handleRIDChange = (event) =>{
-      setRId(event.target.value);
+    const handleREmailChange = (event) =>{
+      setREmail(event.target.value);
     }
     const handleRNameChange = (event) =>{
       setRName(event.target.value);
@@ -50,7 +50,7 @@ const RegisterFirstContent = () => {
     }
   
     const isPwSame = RPwValue === RPwReValue && RPwValue.length>0 && RPwReValue.length>0;
-    const isButtonRegister = RIdValue.length > 0 && RNameValue.length && isPwSame;
+    const isButtonRegister = REmailValue.length > 0 && RNameValue.length && isPwSame;
   
     return (
     <div>
@@ -69,6 +69,7 @@ const RegisterFirstContent = () => {
           <S.EmailInput 
             type="email"
             placeholder="이메일을 입력하세요" 
+            onChange={handleREmailChange}
           />
           <S.SendNum style={{cursor:"pointer"}} onClick={()=>alert("인증번호가 전송되었습니다.")}>전송하기</S.SendNum>
           </div>

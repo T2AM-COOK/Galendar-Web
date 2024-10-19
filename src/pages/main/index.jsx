@@ -1,21 +1,22 @@
 import React from 'react' 
 import * as S from "./indexStyle"
 import Topbar from '../../components/common/bars/topBar'
-import RecommendBox from '../../components/common/recommend'
 import MainCalendar from '../../components/common/calendar'
+import RecommendBoxLength from '../../components/common/recommend/length'
 
 const Main = () =>{
     return(
-    <div style={{background:"#F9F9F9", minHeight:"100vh"}}>
+    <div style={{height:"110vh"}}>
     <Topbar/>
+    <S.Content>
     <S.Contents>
-        <div style={{paddingTop:"82px"}}>
         <MainCalendar/>
-        </div>
-        <div style={{paddingTop:"82px"}}>
-        <RecommendBox/>
-        </div>
+        <RecommendBoxLength/>
     </S.Contents>
+    <S.Banner>
+        <img src='/images/whitelogo.svg'></img>
+    </S.Banner>
+    </S.Content>
     </div>
     )
 }

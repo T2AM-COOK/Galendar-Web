@@ -6,15 +6,18 @@ const MainCalendar = () => {
   const [viewYear, setViewYear] = useState(date.getFullYear());
   const [viewMonth, setViewMonth] = useState(date.getMonth() + 1);
 
-  const prevLast = new Date(viewYear, viewMonth, 0);
-  const prevThis = new Date(viewYear, viewMonth + 1, 0);
+  // 저번 달 마지막 날짜와 이번 달 마지막 날짜
+  const prevLast = new Date(viewYear, viewMonth - 1, 0); // 저번 달 마지막 날
+  const prevThis = new Date(viewYear, viewMonth, 0); // 이번 달 마지막 날
 
-  const PLDate = prevLast.getDate();
-  const PTDate = prevThis.getDate();
+  const PLDate = prevLast.getDate(); // 저번 달 마지막 날
+  const PLDay = prevLast.getDay(); // 저번 달 마지막 날의 요일
+  const PTDate = prevThis.getDate(); // 이번 달 마지막 날
+  const PTDay = prevThis.getDay(); // 이번 달 마지막 날의 요일
 
-  const prevDates = [];
-  const thisDates = [];
-  alert(PLDate);
+  let prevDates = [];
+  let thisDates = [];
+
   // 날짜 이동 함수
   const Decrease = () => {
     setViewMonth(viewMonth > 1 ? viewMonth - 1 : 12);
@@ -28,15 +31,18 @@ const MainCalendar = () => {
 
   // 날짜 생성
   useEffect(() => {
+    console.log(`저번 달 : ${viewMonth - 1}월 ${PLDate}`);
+    console.log(`이번 달 : ${viewMonth}월 ${PTDate}`);
+    let prevDates = [];
+    let thisDates = [];
     for (let i = 1; i <= PLDate; i++) {
       prevDates.unshift(i);
     }
-    prevDates.reverse();
 
     for (let i = 1; i <= PTDate; i++) {
       thisDates.unshift(i);
     }
-    thisDates.reverse();
+    console.log(prevDates, thisDates);
   }, [viewMonth]);
 
   return (
@@ -53,7 +59,7 @@ const MainCalendar = () => {
             </S.IncreaseButton>
           </S.Date>
         </div>
-        <S.DateBox cellSpacing={0} cellPadding={10} bgcolor="#F9F9F9">
+        <S.DateBox cellSpacing={0} cellPadding={5} bgcolor="#F9F9F9">
           <thead>
             <tr style={{ display: 'flex', justifyContent: 'space-around' }}>
               <S.Td style={{ color: '#FF0000' }}>SUN</S.Td>
