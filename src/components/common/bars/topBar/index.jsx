@@ -12,17 +12,21 @@ const Topbar = () => {
   const profile = () =>{
     navigate(`/profile`);
   }
+  const main = () =>{
+    navigate(`/main`);
+  }
+  const bookmark = () =>{
+    navigate(`/bookmark`);
+  }
 
   return (
     <S.Container>
       <S.Contents>
         <S.Nav>
-        <Link to="/main">
           <S.LogoImage src='/images/logo.svg' alt="Logo" />
-        </Link>
-          <div style={{textDecoration:"none"}}><Link to="/main">홈</Link></div>
-          <div style={{textDecoration:"none"}}><Link to="/info">내 정보</Link></div>
-          <div>ABOUT 갈랜더</div>
+          <div onClick={main} style={{textDecoration:"none", textDecorationLine:"none", cursor:"pointer"}}>홈</div>
+          <div onClick={bookmark} style={{textDecoration:"none", textDecorationLine:"none", cursor:"pointer"}}>북마크</div>
+          <div onClick={{}} style={{textDecoration:"none", textDecorationLine:"none", cursor:"pointer"}}>ABOUT 갈랜더</div>
         </S.Nav>
         <div style={{position:"relative", display:"inline-block", width:"364px"}}>
           <S.Search placeholder="대회를 검색해주세요." style={{fontSize:"12px"}}/>
