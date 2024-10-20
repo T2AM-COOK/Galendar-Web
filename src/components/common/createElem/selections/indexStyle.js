@@ -5,11 +5,9 @@ export const Val = styled.span`
 `
 export const ValText = styled.span`
     margin-left:4px;
-    font-size:1vw;
+    font-size:16px;
 `
 export const Label = styled.div`
-    margin-top:20px;
-    margin-left:80px;
     display:inline-block;
-    max-width:60%;
+    max-width:700px;
 `

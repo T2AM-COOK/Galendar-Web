@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const LoginContainer = styled.div`
-display:flex;
-justify-content:center;
-align-items:center;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 `;
 
 export const Logo = styled.img`
@@ -17,9 +17,10 @@ export const Logo = styled.img`
   -khtml-user-drag: none;
   -moz-user-drag: none;
   -o-user-drag: none;
+  cursor: pointer;
     `
 export const Span = styled.span`
-    display:none;
+  font-size: 12px;
 `
 
 export const LoginInput = styled.input`
@@ -28,21 +29,25 @@ export const LoginInput = styled.input`
     border-radius:5px;
     width:365px;
     height:50px;
-    padding-left:1vw;
+    padding-left:20px;
     color:black;
     border:1px solid #CCCCCC;
-    margin-bottom:2vh;
 `
 
 export const IdContainer = styled.div`
+    display:flex;
     flex-direction:column;
     align-items:center;
+    height:153px;
+    justify-content:space-between;
 `
 export const LoginOption = styled.div`
     display:flex;
     align-items:center;
     justify-content:space-between;
     font-size:12px;
+    width:350px;
+    display:none;
     `
 
 export const CheckBox = styled.input`
@@ -71,11 +76,13 @@ export const CheckBox = styled.input`
 export const Label = styled.label`
     display:flex;
     align-items:center;
-    
+    justify-content:space-between;
+    width:385px;
+    cursor: pointer;
 `
 
 export const Button = styled.button`
-    margin-top:4vh;
+    margin-top:20px;
     width:100%;
     height:50px;
     border:0px;
@@ -84,5 +91,5 @@ export const Button = styled.button`
     justify-content:center;
     align-items:center;
     color:white;
-    font-weight:bolder;
+    font-weight:bold;
 `

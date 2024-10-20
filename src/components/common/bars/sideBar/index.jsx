@@ -33,7 +33,7 @@ const Sidebar = ()=>{
                     <div style={{color:"#B01E1E", textDecoration:"none"}} onClick={goLogin}>로그아웃</div>
                     </S.Profile>
                 </S.ProfileMenu>
-                <S.ProfileImage onClick={useVisible} src='/images/profile.svg' alt="프로필" style={{paddingTop:visible ? "108px" : "0px"}}/>
+                <S.ProfileImage onClick={useVisible} src='/images/profile.svg' alt="프로필"/>
             </S.ProfileContainer>
         </S.Container>
     );

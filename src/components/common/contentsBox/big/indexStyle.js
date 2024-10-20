@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ContentBox = styled.div`
     box-sizing:border-box;
-    width:85%;
+    width:971px;
     border-radius:10px;
     height:224px;
     display:flex;

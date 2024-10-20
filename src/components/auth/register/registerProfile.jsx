@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import * as S from "./indexStyle";
-import RegisterSecondContent from "./registerDetail";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -12,7 +11,6 @@ const RegisterFirstContent = () => {
   const [RNameValue, setRName] = useState("");
   const [RPwValue, setRPw] = useState("");
   const [RPwReValue, setRRePw] = useState("");
-  const [Next, setNext] = useState(true);
    const registerData = {
       email: REmailValue,
       password: RPwValue,
@@ -24,7 +22,6 @@ const RegisterFirstContent = () => {
             const res = await axios.post("http://3.37.189.59:8080/auth/signup", registerData);
             if(res){
               alert("성공, 다음으로 넘어갑니다");
-              setNext(false);
             }
           }catch{
             alert("오류 발생");
@@ -55,7 +52,6 @@ const RegisterFirstContent = () => {
     return (
     <div>
           {
-    Next===true ? 
         <S.RegisterContainer>
         <S.Logo src="/images/logo.svg"/>
         <S.InputContainer>
@@ -73,6 +69,12 @@ const RegisterFirstContent = () => {
           />
           <S.SendNum style={{cursor:"pointer"}} onClick={()=>alert("인증번호가 전송되었습니다.")}>전송하기</S.SendNum>
           </div>
+          <div style={{ fontWeight: "bold", marginBottom: "1vh", fontSize: "16px", fontWeight:"bolder", fontFamily:"paperlogy" }}>인증번호</div>
+      <S.LoginInput 
+        type="text" 
+        placeholder="인증번호를 입력하세요"
+        maxLength="6" 
+      />
               <div style={{ fontWeight: "bold", marginBottom: "1vh", fontSize: "16px", fontWeight:"bolder", fontFamily:"paperlogy" }}>비밀번호</div>
           <S.LoginInput
             style={{
@@ -104,15 +106,13 @@ const RegisterFirstContent = () => {
           <div style={{display:"flex", justifyContent:"flex-end"}}>
         </div>
         <S.Button style={{ backgroundColor: isButtonRegister ? "#242B9C": "#CDCDCD", cursor : isButtonRegister ? "pointer" : "", fontWeight:"bolder", fontFamily:"paperlogy"}} onClick={goNext}>
-          다음
+          회원가입
         </S.Button>
         <div style={{ fontSize: "12px", float: "right", marginTop: "2vh" }}>
         이미 계정이 있으신가요? <span onClick={goLogin} style={{color:"#242B9C", cursor:"pointer"}}>로그인하기</span>
       </div>
         </S.InputContainer>
         </S.RegisterContainer>
-              : //여기서 끝
-          <RegisterSecondContent/>
         }
         </div>
     )

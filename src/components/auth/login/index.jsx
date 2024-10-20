@@ -4,12 +4,12 @@ import { useNavigate } from "react-router-dom";
 
 const LoginContent = () => {
   const navigate = useNavigate();
-  const [idValue, setId] = useState("");
+  const [emailValue, setEmail] = useState("");
   const [pwValue, setPw] = useState("");  
  
 
-  const handleIdChange = (event) => {
-    setId(event.target.value);
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
   };
 
   const handlePwChange = (event) => {
@@ -19,30 +19,37 @@ const LoginContent = () => {
   const goRegister = () =>{
     navigate("/register")
   } 
+  const goMain = () =>{
+    navigate("/main")
+  }
   
-  const isButtonActive = idValue.length > 0 && pwValue.length > 0;
+  const isButtonActive = emailValue.length > 0 && pwValue.length > 0;
   return (
     <div>  
-      <S.Logo src="/images/logo.svg"/>
+      <S.Logo src="/images/logo.svg" onClick={goMain}/>
       <S.IdContainer>
         <S.LoginInput 
           type="text" 
-          placeholder="아이디를 입력하세요" 
-          onChange={handleIdChange}
+          placeholder="이메일을 입력하세요" 
+          onChange={handleEmailChange}
         />
         <S.LoginInput 
           type="password" 
           placeholder="비밀번호를 입력하세요" 
           onChange={handlePwChange}
         />
-      </S.IdContainer>
-      <S.LoginOption>
+        <div style={{display:"flex", justifyContent:"space-between", width:"385px"}}>
         <S.Label>
-          <S.CheckBox type="checkbox" />
-          <span style={{ fontSize: "12px", marginLeft: "0.5vw", cursor:"pointer"}}>자동 로그인</span>
+          <span style={{display:"flex", alignItems:"center", justifyContent:"space-between", width:"80px"}}>
+            <S.CheckBox type="checkbox" />
+            <S.Span style={{cursor:"pointer"}}>자동 로그인</S.Span>
+          </span>
         </S.Label>
-        <S.Span style={{ color: "#B01E1E" }}>아이디나 비밀번호가 잘못되었습니다.</S.Span>
-      </S.LoginOption>
+          <S.LoginOption>
+            <S.Span style={{ color: "#B01E1E" }}>아이디나 비밀번호가 잘못되었습니다.</S.Span>
+          </S.LoginOption>
+        </div>
+      </S.IdContainer>
       <S.Button style={{ backgroundColor: isButtonActive ? "#242B9C": "#CDCDCD", cursor:isButtonActive ? "pointer" : "", fontWeight:"bolder", fontFamily:"paperlogy"}}>
         로그인
       </S.Button>

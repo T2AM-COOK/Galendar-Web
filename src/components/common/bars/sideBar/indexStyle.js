@@ -4,24 +4,22 @@ export const ProfileContainer = styled.div`
   display:flex;
   flex-direction:column;
   align-items:center;
-  height:15vw;
+  height:300px;
   justify-content:space-around;
 `
 
 export const Container = styled.div`
-  float:left;
   min-height:100vh;
   display: flex;
   flex-direction: column;
-  width:258px;
+  width:256px;
   justify-content: space-between;
   align-items:center;
   background:white;
+  border-right:1px solid #D9D9D9;
 `;
 
 export const ProfileImage = styled.img`
-  width:40px;
-  height:40px;
   cursor: pointer;
 `;
 
@@ -38,7 +36,7 @@ export const LogoImage = styled.img`
 
 export const ProfileMenu = styled.div`
 position:absolute;
-margin-bottom:200px;
+margin-bottom:300px;
 display:none;
 `
 export const Profile = styled.div`

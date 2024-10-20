@@ -90,4 +90,4 @@ const Fee = () => {
     );
 };
 
-export { Join, Region, Fee };
+export {Join, Region, Fee}

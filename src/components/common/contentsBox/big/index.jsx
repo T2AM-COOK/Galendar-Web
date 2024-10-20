@@ -57,4 +57,4 @@ const BigContentBox = () => {
   )
 }
 
-export default BigContentBox
+export default BigContentBox;
