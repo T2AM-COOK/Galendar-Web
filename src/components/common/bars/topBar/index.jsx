@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import * as S from "./indexStyle";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-
 const Topbar = () => {
 
   const navigate = useNavigate();
+  const [searchvalue, setSearchValue] = useState("");
 
+  const changeSearch = (e) =>{
+    setSearchValue(e.target.value)
+  }
   const createContest = () =>{
     navigate(`/createcontest`);
   }
@@ -18,6 +21,14 @@ const Topbar = () => {
   const bookmark = () =>{
     navigate(`/bookmark`);
   }
+  const activeEnter = (e) =>{
+    if (e.key === "Enter"){
+      navigate(`/search/${searchvalue}`)
+    }
+  }
+  const activeEnter2 = (e) =>{
+    navigate(`/search/${searchvalue}`)
+  }
 
   return (
     <S.Container>
@@ -29,10 +40,10 @@ const Topbar = () => {
           <div onClick={{}} style={{textDecoration:"none", textDecorationLine:"none", cursor:"pointer"}}>ABOUT 갈랜더</div>
         </S.Nav>
         <div style={{position:"relative", display:"inline-block", width:"364px"}}>
-          <S.Search placeholder="대회를 검색해주세요." style={{fontSize:"12px"}}/>
+          <S.Search placeholder="대회를 검색해주세요." style={{fontSize:"12px"}} onChange={changeSearch} onKeyDown={(e) => activeEnter(e)}/>
           <div style={{display:"flex", flexDirection:"column", alignItems:"flex-end"}}>
-            <S.SearchDiv >
-              <S.SearchImg src="/images/search.svg"/>
+            <S.SearchDiv>
+              <S.SearchImg src="/images/search.svg" onClick={activeEnter2}/>
             </S.SearchDiv>
           </div>
         </div>

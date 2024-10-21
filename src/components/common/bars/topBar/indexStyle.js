@@ -96,3 +96,4 @@ export const SearchImg = styled.img`
   -moz-user-drag: none;
   -o-user-drag: none;
 `;
+

@@ -8,6 +8,7 @@ import Profile from "../pages/profile/index"
 import BookMark from '../pages/bookMark'
 import ContestInfo from '../pages/contestMain'
 import StartPage from '../pages/startPage'
+import Search from '../pages/searchResult'
 
 const Router = () => {
   return (
@@ -21,6 +22,7 @@ const Router = () => {
             <Route path='/profile' element={<Profile/>}></Route>
             <Route path='/bookmark' element={<BookMark/>}></Route>
             <Route path='/contestinfo' element={<ContestInfo/>}></Route>
+            <Route path='/search/' element={<Search/>}></Route>
         </Routes>
     </BrowserRouter>
   )

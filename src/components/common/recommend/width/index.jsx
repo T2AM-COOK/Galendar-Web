@@ -13,11 +13,6 @@ const RecommendBoxWidth = () => {
         <SmallContestBox/>
         <SmallContestBox/>
         <SmallContestBox/>
-        <SmallContestBox/>
-        <SmallContestBox/>
-        <SmallContestBox/>
-        <SmallContestBox/>
-        <SmallContestBox/>
         </S.Contents>
       </S.ScrollBox>
     </S.Container>

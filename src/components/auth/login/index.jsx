@@ -53,7 +53,7 @@ const LoginContent = () => {
       <S.Button style={{ backgroundColor: isButtonActive ? "#242B9C": "#CDCDCD", cursor:isButtonActive ? "pointer" : "", fontWeight:"bolder", fontFamily:"paperlogy"}}>
         로그인
       </S.Button>
-      <div style={{ fontSize: "12px", float: "right", marginTop: "2vh" }}>
+      <div style={{ fontSize: "12px", float: "right", marginTop: "10px" }}>
         계정이 없으신가요? <span style={{color:"#242B9C", cursor:"pointer"}} onClick={goRegister}>회원가입하기</span>
       </div>
     </div>

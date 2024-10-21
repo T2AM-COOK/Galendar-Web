@@ -14,4 +14,5 @@ export const Title = styled.div`
     }
     font-family: "Paperlogy";
     letter-spacing:-0.5px;
+    font-weight:bold;
 `
