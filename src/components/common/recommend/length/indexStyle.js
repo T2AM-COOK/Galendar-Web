@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     width:350px;
-    height:677px;
+    height:787px;
     display:flex;
     align-items:center;
     flex-direction:column;
@@ -13,7 +13,7 @@ export const Container = styled.div`
 
 export const ScrollBox = styled.div`
     width:350px;
-    height:520px;
+    height:670px;
     white-space:nowrap; 
     overflow:auto;
     display:flex;

@@ -7,14 +7,17 @@ const MainCalendar = () => {
   const [viewMonth, setViewMonth] = useState(date.getMonth() + 1);
   const [prevDates, setPrevDates] = useState([]); 
   const [thisDates, setThisDates] = useState([]); 
-  const [day, setDay] = useState();
+  const [nextDates, setNextDates] = useState([]); 
 
   // 저번 달 마지막 날짜와 이번 달 마지막 날짜
   const prevLast = new Date(viewYear, viewMonth - 1, 0); // 저번 달 마지막 날
   const prevThis = new Date(viewYear, viewMonth, 0); // 이번 달 마지막 날
+  const prevNext = new Date(viewYear, viewMonth + 1, 0); // 이번 달 마지막 날
+  
 
   const PLDate = prevLast.getDate(); // 저번 달 마지막 날
   const PTDate = prevThis.getDate(); // 이번 달 마지막 날
+  const PNDate = prevNext.getDate(); // 이번 달 마지막 날
   const PLDay = prevLast.getDay(); // 저번 달 마지막 요일
   const PTDay = prevThis.getDay(); // 이번 달 마지막 요일
 
@@ -33,6 +36,7 @@ const MainCalendar = () => {
   useEffect(() => {
     let newPrevDates = [];
     let newThisDates = [];
+    let newNextDates = [];
 
     for (let i = 1; i <= PLDate; i++) {
       newPrevDates.unshift(i);
@@ -40,9 +44,13 @@ const MainCalendar = () => {
     for (let i = 1; i <= PTDate; i++) {
       newThisDates.unshift(i);
     }
+    for (let i = 1; i <= PNDate; i++) {
+      newNextDates.unshift(i);
+    }
 
     setPrevDates(newPrevDates.reverse());
     setThisDates(newThisDates.reverse());
+    setNextDates(newNextDates.reverse());
   }, [viewMonth, viewYear]);
 
   return (
@@ -59,7 +67,7 @@ const MainCalendar = () => {
             </S.IncreaseButton>
           </S.Date>
         </div>
-        <S.DateBox cellSpacing={0} cellPadding={5} bgcolor="#F9F9F9">
+        <S.DateBox cellSpacing={0} cellPadding={5} bgcolor="">
           <thead>
             <tr style={{ display: 'flex', justifyContent: 'space-around' }}>
               <S.Td style={{ color: '#FF0000' }}>SUN</S.Td>
@@ -72,7 +80,7 @@ const MainCalendar = () => {
             </tr>
           </thead>
           <tbody>
-            <tr style={{ display: 'flex', justifyContent: 'space-around' }}>
+            <S.Tr>
               {prevDates.map((date) => (
                 PLDate - date <= PLDay ?  
                 <S.LastDayBox>
@@ -88,8 +96,8 @@ const MainCalendar = () => {
                 :
                 null
               ))}
-            </tr>
-            <tr style={{ display: 'flex', justifyContent: 'space-around' }}>
+            </S.Tr>
+            <S.Tr>
             {thisDates.map((date) => (
                 6-PLDay < date && date < 14-PLDay ?  
                 <S.DayBox>
@@ -98,8 +106,8 @@ const MainCalendar = () => {
                 :
                 null
               ))}
-            </tr>
-            <tr style={{ display: 'flex', justifyContent: 'space-around' }}>
+            </S.Tr>
+            <S.Tr>
             {thisDates.map((date) => (
                 13-PLDay < date && date < 21-PLDay ?  
                 <S.DayBox>
@@ -108,8 +116,8 @@ const MainCalendar = () => {
                 :
                 null
               ))}
-            </tr>
-            <tr style={{ display: 'flex', justifyContent: 'space-around' }}>
+            </S.Tr>
+            <S.Tr>
             {thisDates.map((date) => (
                 20-PLDay < date && date < 28-PLDay ?  
                 <S.DayBox>
@@ -118,25 +126,27 @@ const MainCalendar = () => {
                 :
                 null
               ))}
-            </tr>
-            <tr style={{ display: 'flex', justifyContent: 'space-around' }}>
+            </S.Tr>
+            <S.Tr>
             {thisDates.map((date) => (
-                date > 28-PLDay ?
+                27-PLDay < date && date < 35-PLDay ?  
                 <S.DayBox>
                   <div>{date}</div>
                 </S.DayBox>
                 :
                 null
               ))}
+            </S.Tr>
+            <S.Tr>
             {thisDates.map((date) => (
-                7-PTDay >= date ?  
-                <S.LastDayBox>
+                34-PLDay < date && date < 42-PLDay ?  
+                <S.DayBox>
                   <div>{date}</div>
-                </S.LastDayBox>
+                </S.DayBox>
                 :
                 null
               ))}
-            </tr>
+              </S.Tr>
           </tbody>
         </S.DateBox>
       </S.MainBox>
