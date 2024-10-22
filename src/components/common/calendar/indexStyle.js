@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const MainBox = styled.div`
     width:1057px;
-    height:550px;
+    height:677px;
     background:white;
 `
 export const DecreaseButton = styled.div`

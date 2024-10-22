@@ -5,18 +5,18 @@ const MainCalendar = () => {
   const date = new Date();
   const [viewYear, setViewYear] = useState(date.getFullYear());
   const [viewMonth, setViewMonth] = useState(date.getMonth() + 1);
+  const [prevDates, setPrevDates] = useState([]); 
+  const [thisDates, setThisDates] = useState([]); 
+  const [day, setDay] = useState();
 
   // 저번 달 마지막 날짜와 이번 달 마지막 날짜
   const prevLast = new Date(viewYear, viewMonth - 1, 0); // 저번 달 마지막 날
   const prevThis = new Date(viewYear, viewMonth, 0); // 이번 달 마지막 날
 
   const PLDate = prevLast.getDate(); // 저번 달 마지막 날
-  const PLDay = prevLast.getDay(); // 저번 달 마지막 날의 요일
   const PTDate = prevThis.getDate(); // 이번 달 마지막 날
-  const PTDay = prevThis.getDay(); // 이번 달 마지막 날의 요일
-
-  let prevDates = [];
-  let thisDates = [];
+  const PLDay = prevLast.getDay(); // 저번 달 마지막 요일
+  const PTDay = prevThis.getDay(); // 이번 달 마지막 요일
 
   // 날짜 이동 함수
   const Decrease = () => {
@@ -31,19 +31,19 @@ const MainCalendar = () => {
 
   // 날짜 생성
   useEffect(() => {
-    console.log(`저번 달 : ${viewMonth - 1}월 ${PLDate}`);
-    console.log(`이번 달 : ${viewMonth}월 ${PTDate}`);
-    let prevDates = [];
-    let thisDates = [];
+    let newPrevDates = [];
+    let newThisDates = [];
+
     for (let i = 1; i <= PLDate; i++) {
-      prevDates.unshift(i);
+      newPrevDates.unshift(i);
+    }
+    for (let i = 1; i <= PTDate; i++) {
+      newThisDates.unshift(i);
     }
 
-    for (let i = 1; i <= PTDate; i++) {
-      thisDates.unshift(i);
-    }
-    console.log(prevDates, thisDates);
-  }, [viewMonth]);
+    setPrevDates(newPrevDates.reverse());
+    setThisDates(newThisDates.reverse());
+  }, [viewMonth, viewYear]);
 
   return (
     <div>
@@ -73,40 +73,69 @@ const MainCalendar = () => {
           </thead>
           <tbody>
             <tr style={{ display: 'flex', justifyContent: 'space-around' }}>
-              <S.LastDayBox><div>29</div></S.LastDayBox>
-              <S.LastDayBox><div>30</div></S.LastDayBox>
-              <S.DayBox>니얼굴</S.DayBox>
-              <S.DayBox>니얼굴</S.DayBox>
-              <S.DayBox>니얼굴</S.DayBox>
-              <S.DayBox>니얼굴</S.DayBox>
-              <S.DayBox>니얼굴</S.DayBox>
+              {prevDates.map((date) => (
+                PLDate - date <= PLDay ?  
+                <S.LastDayBox>
+                  <div>{date}</div>
+                </S.LastDayBox>
+                : null
+              ))}
+              {thisDates.map((date) => (
+                7-PLDay > date ?  
+                <S.DayBox>
+                  <div>{date}</div>
+                </S.DayBox> 
+                :
+                null
+              ))}
             </tr>
             <tr style={{ display: 'flex', justifyContent: 'space-around' }}>
-              <S.DayBox>니얼굴</S.DayBox>
-              <S.DayBox>니얼굴</S.DayBox>
-              <S.DayBox>니얼굴</S.DayBox>
-              <S.DayBox>니얼굴</S.DayBox>
-              <S.DayBox>니얼굴</S.DayBox>
-              <S.DayBox>니얼굴</S.DayBox>
-              <S.DayBox>니얼굴</S.DayBox>
+            {thisDates.map((date) => (
+                6-PLDay < date && date < 14-PLDay ?  
+                <S.DayBox>
+                  <div>{date}</div>
+                </S.DayBox>
+                :
+                null
+              ))}
             </tr>
             <tr style={{ display: 'flex', justifyContent: 'space-around' }}>
-              <S.DayBox>니얼굴</S.DayBox>
-              <S.DayBox>니얼굴</S.DayBox>
-              <S.DayBox>니얼굴</S.DayBox>
-              <S.DayBox>니얼굴</S.DayBox>
-              <S.DayBox>니얼굴</S.DayBox>
-              <S.DayBox>니얼굴</S.DayBox>
-              <S.DayBox>니얼굴</S.DayBox>
+            {thisDates.map((date) => (
+                13-PLDay < date && date < 21-PLDay ?  
+                <S.DayBox>
+                  <div>{date}</div>
+                </S.DayBox>
+                :
+                null
+              ))}
             </tr>
             <tr style={{ display: 'flex', justifyContent: 'space-around' }}>
-              <S.DayBox>니얼굴</S.DayBox>
-              <S.DayBox>니얼굴</S.DayBox>
-              <S.DayBox>니얼굴</S.DayBox>
-              <S.DayBox>니얼굴</S.DayBox>
-              <S.DayBox>니얼굴</S.DayBox>
-              <S.DayBox>니얼굴</S.DayBox>
-              <S.DayBox>니얼굴</S.DayBox>
+            {thisDates.map((date) => (
+                20-PLDay < date && date < 28-PLDay ?  
+                <S.DayBox>
+                  <div>{date}</div>
+                </S.DayBox>
+                :
+                null
+              ))}
+            </tr>
+            <tr style={{ display: 'flex', justifyContent: 'space-around' }}>
+            {thisDates.map((date) => (
+                date > 28-PLDay ?
+                <S.DayBox>
+                  <div>{date}</div>
+                </S.DayBox>
+                :
+                null
+              ))}
+            {thisDates.map((date) => (
+                7-PTDay >= date ?  
+                <S.LastDayBox>
+                  <div>{date}</div>
+                </S.LastDayBox>
+                :
+                null
+              ))}
             </tr>
           </tbody>
         </S.DateBox>
