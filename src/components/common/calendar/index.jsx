@@ -7,19 +7,15 @@ const MainCalendar = () => {
   const [viewMonth, setViewMonth] = useState(date.getMonth() + 1);
   const [prevDates, setPrevDates] = useState([]); 
   const [thisDates, setThisDates] = useState([]); 
-  const [nextDates, setNextDates] = useState([]); 
 
   // 저번 달 마지막 날짜와 이번 달 마지막 날짜
   const prevLast = new Date(viewYear, viewMonth - 1, 0); // 저번 달 마지막 날
   const prevThis = new Date(viewYear, viewMonth, 0); // 이번 달 마지막 날
-  const prevNext = new Date(viewYear, viewMonth + 1, 0); // 이번 달 마지막 날
   
 
   const PLDate = prevLast.getDate(); // 저번 달 마지막 날
   const PTDate = prevThis.getDate(); // 이번 달 마지막 날
-  const PNDate = prevNext.getDate(); // 이번 달 마지막 날
   const PLDay = prevLast.getDay(); // 저번 달 마지막 요일
-  const PTDay = prevThis.getDay(); // 이번 달 마지막 요일
 
   // 날짜 이동 함수
   const Decrease = () => {
@@ -36,7 +32,6 @@ const MainCalendar = () => {
   useEffect(() => {
     let newPrevDates = [];
     let newThisDates = [];
-    let newNextDates = [];
 
     for (let i = 1; i <= PLDate; i++) {
       newPrevDates.unshift(i);
@@ -44,13 +39,9 @@ const MainCalendar = () => {
     for (let i = 1; i <= PTDate; i++) {
       newThisDates.unshift(i);
     }
-    for (let i = 1; i <= PNDate; i++) {
-      newNextDates.unshift(i);
-    }
 
     setPrevDates(newPrevDates.reverse());
     setThisDates(newThisDates.reverse());
-    setNextDates(newNextDates.reverse());
   }, [viewMonth, viewYear]);
 
   return (
@@ -83,9 +74,7 @@ const MainCalendar = () => {
             <S.Tr>
               {prevDates.map((date) => (
                 PLDate - date <= PLDay ?  
-                <S.LastDayBox>
-                  <div>{date}</div>
-                </S.LastDayBox>
+                <S.LastDayBox/>
                 : null
               ))}
               {thisDates.map((date) => (

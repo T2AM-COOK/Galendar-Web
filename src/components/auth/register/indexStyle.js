@@ -17,7 +17,6 @@ export const SendMail = styled.div`
 `
 
 export const RegisterText = styled.div`
-    margin-top:2vw;
     font-size:12px;
     width:80%;
     text-align:center;
@@ -30,12 +29,11 @@ export const EmailInput = styled.input`
     border-radius:5px;
     width:282px;
     height:50px;
-    padding-left:1vw;
+    padding-left:15px;
     color:black;
     border:1px solid #CCCCCC;
-    margin-bottom:2vh;
     box-sizing: border-box;
-`;
+`
 
 export const SendNum = styled.button`
     @font-face {
@@ -58,15 +56,10 @@ export const SendNum = styled.button`
 export const Text = styled.div`
     text-align:center;
     font-weight:bold;
-    font-size:2vw;
+    font-size:16px;
 `
 export const Span = styled.span`
     display:none;
-`
-
-export const Hr = styled.hr`
-    margin-bottom:1vh;
-    width:4vw;
 `
 
 export const LoginInput = styled.input`
@@ -75,9 +68,8 @@ export const LoginInput = styled.input`
     border-radius:5px;
     width:365px;
     height:50px;
-    padding-left:1vw;
+    padding-left:15px;
     color:black;
-    margin-bottom:2vh;
     box-sizing: border-box; 
 `
 
@@ -87,7 +79,6 @@ export const Label = styled.label`
 `
 
 export const Button = styled.button`
-    margin-top:4vh;
     width:365px;
     height:50px;
     border:0px;
@@ -96,11 +87,11 @@ export const Button = styled.button`
     justify-content:center;
     align-items:center;
     color:white;
-    font-weight:bolder;
+    font-weight:bold;
     box-sizing: border-box; 
 `
 export const RegisterContainer = styled.div`
-height:100vh;
+    min-height:100vh;
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -108,9 +99,8 @@ height:100vh;
 `;
 
 export const InputContainer = styled.div`
-
-`
-
-export const RegisterFinalContainer = styled.div`
-  
+    height:500px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
 `

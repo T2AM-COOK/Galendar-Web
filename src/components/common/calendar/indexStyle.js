@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const MainBox = styled.div`
     width:1057px;
-    height:787px;
+    height:500px;
     background:white;
 `
 export const DecreaseButton = styled.div`
@@ -18,7 +18,6 @@ export const IncreaseButton = styled.div`
     height:32px;
     border-radius:5px;
     border:0px;
-
 `
 
 export const Tr = styled.tr`

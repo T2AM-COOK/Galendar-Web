@@ -7,11 +7,11 @@ const Sidebar = ()=>{
     const navigate = useNavigate();
 
     const [visible, setVisible] = useState(false);
-
+    
     const useVisible = () =>{
         setVisible(!visible);
     }
-
+        
     const goProfile = () =>{
         navigate("/profile");
     }

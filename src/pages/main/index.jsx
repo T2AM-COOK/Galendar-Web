@@ -6,7 +6,7 @@ import RecommendBoxLength from '../../components/common/recommend/length'
 
 const Main = () =>{
     return(
-    <div style={{minHeight:"110vh"}}>
+    <div style={{height:"130vh"}}>
     <Topbar/>
     <S.Content>
     <S.Contents>

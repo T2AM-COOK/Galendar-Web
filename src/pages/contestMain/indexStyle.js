@@ -59,6 +59,9 @@ export const Title = styled.div`
 export const Detail = styled.div`
     width:403px;
     height:358px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
 `
 
 export const Info = styled.div`

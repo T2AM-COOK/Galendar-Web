@@ -29,7 +29,7 @@ export const LoginInput = styled.input`
     border-radius:5px;
     width:365px;
     height:50px;
-    padding-left:20px;
+    padding-left:15px;
     color:black;
     border:1px solid #CCCCCC;
 `
@@ -77,7 +77,7 @@ export const Label = styled.label`
     display:flex;
     align-items:center;
     justify-content:space-between;
-    width:385px;
+    width:80px;
     cursor: pointer;
 `
 

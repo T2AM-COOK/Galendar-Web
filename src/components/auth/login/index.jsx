@@ -1,12 +1,33 @@
 import React, { useState } from "react";
 import * as S from './indexStyle'
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const LoginContent = () => {
   const navigate = useNavigate();
   const [emailValue, setEmail] = useState("");
   const [pwValue, setPw] = useState("");  
  
+  const loginData = {
+    email: emailValue,
+    password: pwValue,
+  };
+
+  const login = async() =>{
+    if (isButtonActive){
+      try{
+        const res = await axios.post("http://3.37.189.59:8080/auth", loginData);
+        if(res){
+          navigate("/main");
+          alert("로그인 완료");
+          localStorage.setItem("ACCESS_TOKEN", res.data.accessToken)
+          localStorage.setItem("REFRESH_TOKEN", res.data.refreshToken)
+        }
+      }catch (e){
+        alert(`${e}`);
+      }
+    }
+  }
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -30,7 +51,7 @@ const LoginContent = () => {
       <S.IdContainer>
         <S.LoginInput 
           type="text" 
-          placeholder="이메일을 입력하세요" 
+          placeholder="이메일을 입력하세요"
           onChange={handleEmailChange}
         />
         <S.LoginInput 
@@ -50,7 +71,7 @@ const LoginContent = () => {
           </S.LoginOption>
         </div>
       </S.IdContainer>
-      <S.Button style={{ backgroundColor: isButtonActive ? "#242B9C": "#CDCDCD", cursor:isButtonActive ? "pointer" : "", fontWeight:"bolder", fontFamily:"paperlogy"}}>
+      <S.Button style={{ backgroundColor: isButtonActive ? "#242B9C": "#CDCDCD", cursor:isButtonActive ? "pointer" : "", fontWeight:"bolder", fontFamily:"paperlogy"}} onClick={login}>
         로그인
       </S.Button>
       <div style={{ fontSize: "12px", float: "right", marginTop: "10px" }}>

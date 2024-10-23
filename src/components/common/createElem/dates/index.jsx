@@ -14,7 +14,9 @@ const DateStyle = forwardRef(({ value, onClick }, ref) => (
 ));
 
 const JoinSet = () => {
-  const [startDate, setStartDate] = useState(new Date());
+  const now = new Date();
+  const [recieptStartDate, setRecieptStartDate] = useState(new Date());
+  const [recieptFinishDate, setRecieptFinishDate] = useState(new Date());
 
   return (
     <S.Div>
@@ -22,8 +24,8 @@ const JoinSet = () => {
       <S.DatePicker>
         <DatePicker
             locale={ko}
-            selected={startDate}
-            onChange={(date)=>setStartDate(date)}
+            selected={recieptStartDate}
+            onChange={(date)=>date >= now ? setRecieptStartDate(date) : alert("미래의 시간으로 정해주세요.")}
             dateFormat="yyyy.MM.dd"
             customInput={<DateStyle />}
             />
@@ -34,8 +36,8 @@ const JoinSet = () => {
       <S.DatePicker>
         <DatePicker
             locale={ko}
-            selected={startDate}
-            onChange={(date)=>setStartDate(date)}
+            selected={recieptFinishDate}
+            onChange={(date)=>date >= now ? setRecieptFinishDate(date) : alert("미래의 시간으로 정해주세요.")}
             dateFormat="yyyy.MM.dd"
             customInput={<DateStyle />}
             />
@@ -46,15 +48,17 @@ const JoinSet = () => {
 }
 
 const TimeSet = () =>{
-  const [startDate, setStartDate] = useState(new Date());
+  const now = new Date();
+  const [contestStartDate, setContestStartDate] = useState(new Date());
+  const [contestFinishDate, setContestFinishDate] = useState(new Date());
     return(
       <S.Div>
         <S.Space>
           <S.DatePicker>
             <DatePicker
                 locale={ko}
-                selected={startDate}
-                onChange={(date)=>setStartDate(date)}
+                selected={contestStartDate}
+                onChange={(date)=>date >= now? setContestStartDate(date) : alert("미래의 시간으로 정해주세요.")}
                 dateFormat="yyyy.MM.dd"
                 customInput={<DateStyle />}
                 />
@@ -65,8 +69,8 @@ const TimeSet = () =>{
           <S.DatePicker>
             <DatePicker
                 locale={ko}
-                selected={startDate}
-                onChange={(date)=>setStartDate(date)}
+                selected={contestFinishDate}
+                onChange={(date)=>date >= now? setContestFinishDate(date) : alert("미래의 시간으로 정해주세요.")}
                 dateFormat="yyyy.MM.dd"
                 customInput={<DateStyle />}
                 />
