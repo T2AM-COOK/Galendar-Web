@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import * as S from "./indexStyle";
 
 const MainCalendar = () => {
   const date = new Date();
   const [viewYear, setViewYear] = useState(date.getFullYear());
   const [viewMonth, setViewMonth] = useState(date.getMonth() + 1);
-  const [prevDates, setPrevDates] = useState([]); 
-  const [thisDates, setThisDates] = useState([]); 
+  const [prevDates, setPrevDates] = useState([]);
+  const [thisDates, setThisDates] = useState([]);
 
   // 저번 달 마지막 날짜와 이번 달 마지막 날짜
   const prevLast = new Date(viewYear, viewMonth - 1, 0); // 저번 달 마지막 날
   const prevThis = new Date(viewYear, viewMonth, 0); // 이번 달 마지막 날
-  
 
   const PLDate = prevLast.getDate(); // 저번 달 마지막 날
   const PTDate = prevThis.getDate(); // 이번 달 마지막 날
@@ -47,7 +46,7 @@ const MainCalendar = () => {
   return (
     <div>
       <S.MainBox>
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <div style={{ display: "flex", justifyContent: "center" }}>
           <S.Date>
             <S.DecreaseButton onClick={Decrease}>
               <S.DecreaseArrow src="/images/decreasearrow.svg" />
@@ -60,82 +59,74 @@ const MainCalendar = () => {
         </div>
         <S.DateBox cellSpacing={0} cellPadding={5} bgcolor="">
           <thead>
-            <tr style={{ display: 'flex', justifyContent: 'space-around' }}>
-              <S.Td style={{ color: '#FF0000' }}>SUN</S.Td>
+            <tr style={{ display: "flex", justifyContent: "space-around" }}>
+              <S.Td style={{ color: "#FF0000" }}>SUN</S.Td>
               <S.Td>MON</S.Td>
               <S.Td>TUE</S.Td>
               <S.Td>WED</S.Td>
               <S.Td>THU</S.Td>
               <S.Td>FRI</S.Td>
-              <S.Td style={{ color: '#2B32B2' }}>SAT</S.Td>
+              <S.Td style={{ color: "#2B32B2" }}>SAT</S.Td>
             </tr>
           </thead>
           <tbody>
             <S.Tr>
-              {prevDates.map((date) => (
-                PLDate - date <= PLDay ?  
-                <S.LastDayBox/>
-                : null
-              ))}
-              {thisDates.map((date) => (
-                7-PLDay > date ?  
-                <S.DayBox>
-                  <div>{date}</div>
-                </S.DayBox> 
-                :
-                null
-              ))}
+              {prevDates.map((date) =>
+                PLDate - date <= PLDay ? <S.LastDayBox /> : null
+              )}
+              {thisDates.map((date) =>
+                7 - PLDay > date ? (
+                  <S.DayBox>
+                    <div>{date}</div>
+                  </S.DayBox>
+                ) : null
+              )}
             </S.Tr>
             <S.Tr>
-            {thisDates.map((date) => (
-                6-PLDay < date && date < 14-PLDay ?  
-                <S.DayBox>
-                  <div>{date}</div>
-                </S.DayBox>
-                :
-                null
-              ))}
+              {thisDates.map((date) =>
+                6 - PLDay < date && date < 14 - PLDay ? (
+                  <S.DayBox>
+                    <div>{date}</div>
+                  </S.DayBox>
+                ) : null
+              )}
             </S.Tr>
             <S.Tr>
-            {thisDates.map((date) => (
-                13-PLDay < date && date < 21-PLDay ?  
-                <S.DayBox>
-                  <div>{date}</div>
-                </S.DayBox>
-                :
-                null
-              ))}
+              {thisDates.map((date) =>
+                13 - PLDay < date && date < 21 - PLDay ? (
+                  <S.DayBox>
+                    <div>{date}</div>
+                  </S.DayBox>
+                ) : null
+              )}
             </S.Tr>
             <S.Tr>
-            {thisDates.map((date) => (
-                20-PLDay < date && date < 28-PLDay ?  
-                <S.DayBox>
-                  <div>{date}</div>
-                </S.DayBox>
-                :
-                null
-              ))}
+              {thisDates.map((date) =>
+                20 - PLDay < date && date < 28 - PLDay ? (
+                  <S.DayBox>
+                    <div>{date}</div>
+                  </S.DayBox>
+                ) : null
+              )}
             </S.Tr>
             <S.Tr>
-            {thisDates.map((date) => (
-                27-PLDay < date && date < 35-PLDay ?  
-                <S.DayBox>
-                  <div>{date}</div>
-                </S.DayBox>
-                :
-                null
-              ))}
+              {thisDates.map((date) =>
+                27 - PLDay < date && date < 35 - PLDay ? (
+                  <S.DayBox>
+                    <div>{date}</div>
+                  </S.DayBox>
+                ) : null
+              )}
             </S.Tr>
             <S.Tr>
-            {thisDates.map((date) => (
-                34-PLDay < date && date < 42-PLDay ?  
-                <S.DayBox>
-                  <div>{date}</div>
-                </S.DayBox>
-                :
-                null
-              ))}
-              </S.Tr>
+              {thisDates.map((date) =>
+                34 - PLDay < date && date < 42 - PLDay ? (
+                  <S.DayBox>
+                    <div>{date}</div>
+                  </S.DayBox>
+                ) : null
+              )}
+            </S.Tr>
           </tbody>
         </S.DateBox>
       </S.MainBox>

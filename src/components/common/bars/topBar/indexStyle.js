@@ -2,24 +2,24 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
-  background:white;
-  border-bottom:1px solid #D9D9D9;
-  width:100%;
-  justify-content:center;
-  align-items:center;
+  background: white;
+  border-bottom: 1px solid #d9d9d9;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
   height: 82px;
-  position:fixed;
-  top:0px;
-  box-sizing:border-box;
+  position: fixed;
+  top: 0px;
+  box-sizing: border-box;
 `;
 
 export const Contents = styled.div`
-  width:1214px;
-  height:50px;
-  display:flex;
-  justify-content:space-between;
-  align-content:center;
-`
+  width: 1214px;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+`;
 
 export const ProfileImage = styled.img`
   cursor: pointer;
@@ -30,70 +30,69 @@ export const ProfileImage = styled.img`
 `;
 
 export const LogoImage = styled.img`
-  width:145.14px;
-  height:50px;
-`
+  width: 145.14px;
+  height: 50px;
+`;
 
 export const Button = styled.button`
-    @font-face {
-        font-family: 'Paperlogy';
-        src: url('./fonts/Paperlogy-5Medium.ttf') format('truetype');
-    }
+  @font-face {
+    font-family: "Paperlogy";
+    src: url("./fonts/Paperlogy-5Medium.ttf") format("truetype");
+  }
   font-family: "Paperlogy";
   width: 120px;
   height: 40px;
-  border:0px;
-  border-radius:10px;
-  background: #2B32B2;
-  color:white;
+  border: 0px;
+  border-radius: 10px;
+  background: #2b32b2;
+  color: white;
   cursor: pointer;
-`
+`;
 
 export const Text = styled.span`
-  padding-right:16px;
-  text-decoration:none;
-`
+  padding-right: 16px;
+  text-decoration: none;
+`;
 export const LoginRegister = styled.div`
-  display:none;
-`
+  display: none;
+`;
 
 export const Member = styled.div`
-  align-items:center;
-  display:flex;
-  justify-content:space-between;
-  width:178px;
-  height:40px;
-`
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 178px;
+  height: 40px;
+`;
 
 export const Nav = styled.div`
-  display:flex;
-  width:517px;
-  font-size:16px;
-  justify-content:space-between;
-  align-items:center;
-`
+  display: flex;
+  width: 517px;
+  font-size: 16px;
+  justify-content: space-between;
+  align-items: center;
+`;
 export const Search = styled.input`
   padding-left: 20px;
-  width:364px;
-  height:40px;
-  border:0px;
+  width: 364px;
+  height: 40px;
+  border: 0px;
   border-radius: 30px;
-  background-color: #F9F9F9;
+  background-color: #f9f9f9;
 `;
 
 export const SearchDiv = styled.div`
   position: absolute;
-  top:1.4vh;
+  top: 1.4vh;
 `;
 
 export const SearchImg = styled.img`
   width: 19px;
-  height:19px;
-  cursor:pointer;
+  height: 19px;
+  cursor: pointer;
   user-select: none;
   -webkit-user-drag: none;
   -khtml-user-drag: none;
   -moz-user-drag: none;
   -o-user-drag: none;
 `;
-

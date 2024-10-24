@@ -6,13 +6,12 @@ export const Calendar = styled.img`
   -khtml-user-drag: none;
   -moz-user-drag: none;
   -o-user-drag: none;
-`
+`;
 export const Container = styled.div`
-    position:absolute;
-`
+  position: absolute;
+`;
 export const Div = styled.body`
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    
-`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
