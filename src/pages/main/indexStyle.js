@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Contents = styled.div`
-  padding-top: 90px;
+  padding-top: 100px;
   display: flex;
   justify-content: space-evenly;
 `;

@@ -49,12 +49,12 @@ export const Button = styled.button`
   cursor: pointer;
 `;
 
-export const Text = styled.span`
-  padding-right: 16px;
+export const Text = styled.div`
   text-decoration: none;
 `;
 export const LoginRegister = styled.div`
-  display: none;
+  width: 120px;
+  justify-content: space-between;
 `;
 
 export const Member = styled.div`

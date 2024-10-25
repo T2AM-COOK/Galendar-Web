@@ -2,8 +2,11 @@ import React from "react";
 import Sidebar from "../../components/common/bars/sideBar";
 import * as S from "./indexStyle";
 import BigContentBox from "../../components/common/contentsBox/big";
+import { useRecoilState } from "recoil";
+import { userState } from "../../recoil";
 
 const Profile = () => {
+  const [user] = useRecoilState(userState);
   return (
     <div>
       <S.Div>
@@ -13,10 +16,8 @@ const Profile = () => {
             <S.Profile>
               <S.ProfileImage src="/images/profile.svg" />
               <S.ProfileText>
-                <div style={{ fontSize: "52px", fontWeight: "bold" }}>
-                  김엉한
-                </div>
-                <div style={{ fontSize: "20px" }}>imground11@gmail.com</div>
+                <div style={{ fontSize: "52px", fontWeight: "bold" }}>이름</div>
+                <div style={{ fontSize: "20px" }}>{user.email}</div>
               </S.ProfileText>
             </S.Profile>
           </S.Content>
