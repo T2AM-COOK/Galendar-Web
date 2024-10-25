@@ -16,3 +16,9 @@ export const Title = styled.div`
   letter-spacing: -0.5px;
   font-weight: bold;
 `;
+
+export const Text = styled.div`
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+`;

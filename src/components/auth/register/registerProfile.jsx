@@ -6,11 +6,11 @@ import axios from "axios";
 
 const RegisterContent = () => {
   const navigate = useNavigate();
-  const [nameValue, setNameValue] = useState();
-  const [emailValue, setEmailValue] = useState();
-  const [emailCode, setEmailCode] = useState();
-  const [pwValue, setPwValue] = useState();
-  const [pwReValue, setPwReValue] = useState();
+  const [nameValue, setNameValue] = useState(0);
+  const [emailValue, setEmailValue] = useState("");
+  const [emailCode, setEmailCode] = useState(0);
+  const [pwValue, setPwValue] = useState("");
+  const [pwReValue, setPwReValue] = useState("");
   const registerData = {
     email: emailValue,
     password: pwValue,
@@ -43,20 +43,20 @@ const RegisterContent = () => {
     navigate("/login");
   };
 
-  const handleEmailChange = (event) => {
-    setEmailValue(event.target.value);
+  const handleNameChange = (e) => {
+    setNameValue(e.target.value);
   };
-  const handleNameChange = (event) => {
-    setNameValue(event.target.value);
-  };
-  const handlePwChange = (event) => {
-    setPwValue(event.target.value);
-  };
-  const handleRePwChange = (event) => {
-    setPwReValue(event.target.value);
+  const handleEmailChange = (e) => {
+    setEmailValue(e.target.value);
   };
   const handleCodeChange = (e) => {
     setEmailCode(e.target.value);
+  };
+  const handlePwChange = (e) => {
+    setPwValue(e.target.value);
+  };
+  const handleRePwChange = (e) => {
+    setPwReValue(e.target.value);
   };
 
   const isPwSame =
@@ -190,7 +190,7 @@ const RegisterContent = () => {
               style={{
                 backgroundColor: isButtonRegister ? "#242B9C" : "#CDCDCD",
                 cursor: isButtonRegister ? "pointer" : "",
-                fontWeight: "bolder",
+                fontWeight: "bold",
                 fontFamily: "paperlogy",
               }}
               onClick={goNext}

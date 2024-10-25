@@ -51,14 +51,26 @@ export const TextField = styled.textarea`
   font-size: 16px;
   font-family: "Paperlogy";
 `;
-export const Button = styled.button`
+
+export const Button = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: "Paperlogy";
   height: 44px;
-  width: 200px;
+  width: 300px;
   border-radius: 10px;
   justify-content: center;
+  background-color: white;
   cursor: pointer;
   font-size: 12px;
+  transition: transform 1s, background-color 1s, border 1s;
+  &:hover {
+    transform: scale(1.1);
+    background-color: #2b32b2;
+    border: 0px;
+    color: white;
+  }
 `;
 export const Poster = styled.label`
   font-size: 16px;
@@ -66,19 +78,10 @@ export const Poster = styled.label`
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  width: 144px;
-  height: 38px;
   background-color: white;
+  width: 284px;
+  height: 224px;
   cursor: pointer;
-`;
-
-export const PosterContainer = styled.div`
-  display: flex;
-  width: 273px;
-  height: 38px;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 12px;
 `;
 
 export const ButtonContainer = styled.div`

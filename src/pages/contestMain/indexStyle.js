@@ -24,11 +24,6 @@ export const ContentImg = styled.img`
   margin-right: 30px;
 `;
 
-export const TitleInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
 export const Text = styled.div`
   display: flex;
   height: 272px;
@@ -39,16 +34,11 @@ export const Text = styled.div`
 export const ContestImg = styled.img`
   width: 400px;
   height: 286px;
+  border-radius: 10px;
 `;
 
 export const ImageBox = styled.div`
-  border-radius: 10px;
   justify-content: left;
-`;
-
-export const Category = styled.div`
-  font-size: 16px;
-  color: #2b32b2;
 `;
 
 export const Title = styled.div`

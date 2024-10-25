@@ -43,6 +43,11 @@ const MainCalendar = () => {
     setThisDates(newThisDates.reverse());
   }, [viewMonth, viewYear]);
 
+  const setDate = () => {
+    setViewMonth(date.getMonth() + 1);
+    setViewYear(date.getFullYear());
+  };
+
   return (
     <div>
       <S.MainBox>
@@ -51,7 +56,9 @@ const MainCalendar = () => {
             <S.DecreaseButton onClick={Decrease}>
               <S.DecreaseArrow src="/images/decreasearrow.svg" />
             </S.DecreaseButton>
-            {viewYear}.{viewMonth <= 9 ? `0${viewMonth}` : `${viewMonth}`}
+            <div onClick={setDate} style={{ cursor: "pointer" }}>
+              {viewYear}.{viewMonth <= 9 ? `0${viewMonth}` : `${viewMonth}`}
+            </div>
             <S.IncreaseButton onClick={Increase}>
               <S.IncreaseArrow src="/images/increasearrow.svg" />
             </S.IncreaseButton>

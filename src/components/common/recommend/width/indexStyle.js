@@ -5,7 +5,7 @@ export const Container = styled.div`
   height: 400px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
 `;
 
 export const ScrollBox = styled.div`

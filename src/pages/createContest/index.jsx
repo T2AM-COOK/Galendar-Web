@@ -1,19 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import * as S from "./indexStyle";
 import Sidebar from "../../components/common/bars/sideBar";
-import { JoinSet, TimeSet } from "../../components/common/createElem/dates";
 import {
   Fee,
   Join,
   Region,
 } from "../../components/common/createElem/selections";
 import axios from "axios";
+import { JoinSet, TimeSet } from "../../components/common/createElem/dates";
 
 const CreateContest = () => {
   const [changeImg, setChangeImg] = useState();
   const [title, setTitle] = useState();
   const [detail, setDetail] = useState();
   const [link, setLink] = useState();
+  const now = new Date();
+  const [recieptStartDate, setRecieptStartDate] = useState(new Date());
+  const [recieptFinishDate, setRecieptFinishDate] = useState(new Date());
+  const [contestStartDate, setContestStartDate] = useState(new Date());
+  const [contestFinishDate, setContestFinishDate] = useState(new Date());
 
   const contestData = {
     title: title,
@@ -37,6 +42,12 @@ const CreateContest = () => {
           alert("대회 생성완료");
           localStorage.setItem("ACCESS_TOKEN", res.data.accessToken);
           localStorage.setItem("REFRESH_TOKEN", res.data.refreshToken);
+          setChangeImg();
+          setTitle();
+          setDetail();
+          setLink();
+          setRecieptStartDate();
+          setRecieptFinishDate();
         }
       } catch {
         alert("에러가 발생했습니다.");
@@ -69,9 +80,21 @@ const CreateContest = () => {
             onChange={(e) => setDetail(e.target.value)}
           />
           <S.FormName>접수 기간</S.FormName>
-          <JoinSet />
+          <JoinSet
+            now={now}
+            recieptStartDate={recieptStartDate}
+            recieptFinishDate={recieptFinishDate}
+            setRecieptStartDate={setRecieptStartDate}
+            setRecieptFinishDate={setRecieptFinishDate}
+          />
           <S.FormName>대회 기간</S.FormName>
-          <TimeSet />
+          <TimeSet
+            now={now}
+            contestStartDate={contestStartDate}
+            contestFinishDate={contestFinishDate}
+            setContestStartDate={setContestStartDate}
+            setContestFinishDate={setContestFinishDate}
+          />
           <S.FormName>참가 대상</S.FormName>
           <Join />
           <S.FormName>지역</S.FormName>
@@ -84,10 +107,6 @@ const CreateContest = () => {
             onChange={(e) => setLink(e.target.value)}
           />
           <S.FormName>포스터 사진</S.FormName>
-          <S.PosterContainer>
-            <S.Poster htmlFor="file">업로드</S.Poster>
-            최대 용량은 1MB입니다.
-          </S.PosterContainer>
           <p
             style={{
               width: "284px",
@@ -95,6 +114,12 @@ const CreateContest = () => {
               border: "3px dotted #2B32B2",
             }}
           >
+            <S.Poster
+              htmlFor="file"
+              style={changeImg ? { display: "none" } : { display: "flex" }}
+            >
+              <div style={{}}>업로드</div>
+            </S.Poster>
             <input
               type="file"
               name="file"
@@ -106,7 +131,7 @@ const CreateContest = () => {
               <img
                 src={changeImg}
                 alt="이미지가 아닙니다."
-                style={{ width: "284px", height: "224px", marginTop: "10px" }}
+                style={{ width: "284px", height: "224px" }}
               />
             )}
           </p>
@@ -125,7 +150,7 @@ const CreateContest = () => {
                       border: "1px solid #2B32B2",
                     }
               }
-              onClick={createContest}
+              onClick={isCreateReady() ? createContest : null}
             >
               대회 생성
             </S.Button>

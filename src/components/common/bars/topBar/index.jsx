@@ -8,23 +8,29 @@ const Topbar = () => {
   const changeSearch = (e) => {
     setSearchValue(e.target.value);
   };
+
   const createContest = () => {
     navigate(`/createcontest`);
   };
+
   const profile = () => {
     navigate(`/profile`);
   };
+
   const main = () => {
     navigate(`/main`);
   };
+
   const bookmark = () => {
     navigate(`/bookmark`);
   };
+
   const activeEnter = (e) => {
     if (e.key === "Enter") {
       navigate(`/search/${searchvalue}`);
     }
   };
+
   const activeEnter2 = (e) => {
     navigate(`/search/${searchvalue}`);
   };
@@ -33,7 +39,12 @@ const Topbar = () => {
     <S.Container>
       <S.Contents>
         <S.Nav>
-          <S.LogoImage src="/images/logo.svg" alt="Logo" />
+          <S.LogoImage
+            src="/images/logo.svg"
+            style={{ cursor: "pointer" }}
+            alt="Logo"
+            onClick={main}
+          />
           <div
             onClick={main}
             style={{
@@ -55,7 +66,6 @@ const Topbar = () => {
             북마크
           </div>
           <div
-            onClick={{}}
             style={{
               textDecoration: "none",
               textDecorationLine: "none",

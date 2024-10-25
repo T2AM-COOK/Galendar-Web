@@ -25,12 +25,6 @@ export const Detail = styled.div`
   flex-direction: column;
 `;
 
-export const Category = styled.div`
-  color: #2b32b2;
-  font-size: 12px;
-  display: flex;
-`;
-
 export const Info = styled.div`
   font-size: 12px;
 `;
@@ -51,4 +45,6 @@ export const Img = styled.img`
   margin-right: 5px;
 `;
 
-export const Text = styled.div``;
+export const Text = styled.div`
+  font-size: 12px;
+`;

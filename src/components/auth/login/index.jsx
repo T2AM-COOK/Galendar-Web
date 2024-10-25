@@ -40,8 +40,15 @@ const LoginContent = () => {
   const goRegister = () => {
     navigate("/register");
   };
+
   const goMain = () => {
     navigate("/main");
+  };
+
+  const activeEnter = (e) => {
+    if (e.key === "Enter") {
+      login();
+    }
   };
 
   const isButtonActive = emailValue.length > 0 && pwValue.length > 0;
@@ -54,8 +61,14 @@ const LoginContent = () => {
           type="text"
           placeholder="이메일을 입력하세요"
           onChange={handleEmailChange}
+          onKeyDown={(e) => activeEnter(e)}
         />
-        <S.LoginInput type="password" placeholder="비밀번호를 입력하세요" />
+        <S.LoginInput
+          type="password"
+          placeholder="비밀번호를 입력하세요"
+          onChange={handlePwChange}
+          onKeyDown={(e) => activeEnter(e)}
+        />
         <div
           style={{
             display: "flex",
@@ -87,7 +100,7 @@ const LoginContent = () => {
         style={{
           backgroundColor: isButtonActive ? "#242B9C" : "#CDCDCD",
           cursor: isButtonActive ? "pointer" : "",
-          fontWeight: "bolder",
+          fontWeight: "bold",
           fontFamily: "paperlogy",
         }}
         onClick={login}

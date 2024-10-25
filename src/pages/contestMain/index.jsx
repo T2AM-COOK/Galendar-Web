@@ -28,10 +28,7 @@ const ContestInfo = () => {
       <S.Content>
         <S.ContentBox>
           <S.Text>
-            <S.TitleInfo>
-              <S.Category>해커톤</S.Category>
-              <S.Title>해커그라운드 해커톤 2024 in 의성</S.Title>
-            </S.TitleInfo>
+            <S.Title>해커그라운드 해커톤 2024 in 의성</S.Title>
             <S.ContentDiv>
               <S.ContentImg src="/images/money.svg" />총 상금 : 500만원
             </S.ContentDiv>
