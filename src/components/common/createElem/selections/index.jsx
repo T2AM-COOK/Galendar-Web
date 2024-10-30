@@ -1,35 +1,51 @@
 import React from "react";
 import * as S from "./indexStyle";
 
-const Join = () => {
+const Join = ({ targets, setTargets }) => {
   const ageOptions = [
-    { id: "everyone", label: "누구나" },
-    { id: "elementary", label: "초등학생" },
-    { id: "middle", label: "중학생" },
-    { id: "high", label: "고등학생" },
-    { id: "academic", label: "대학생" },
-    { id: "postgraduate", label: "대학원생" },
-    { id: "normal", label: "일반인" },
-    { id: "foreign", label: "외국인" },
+    { id: "EVERYONE", label: "누구나" },
+    { id: "ELEMENTARY", label: "초등학생" },
+    { id: "MIDDLE", label: "중학생" },
+    { id: "HIGH", label: "고등학생" },
+    { id: "UNIVERSITY", label: "대학생" },
+    { id: "POSTGRADUATE", label: "대학원생" },
+    { id: "FOREIGNER", label: "외국인" },
+    { id: "OTHER", label: "그 외" },
   ];
+
+  const handleChangeCheck = (checked, item) => {
+    if (checked) {
+      setTargets((prev) => [...prev, item]);
+    } else {
+      setTargets((prev) => prev.filter((el) => el !== item));
+    }
+  };
 
   return (
     <div>
-      <S.Label>
+      <S.Form>
         {ageOptions.map((option) => (
           <S.Val key={option.id}>
-            <input type="checkbox" name="age" id={option.id} />
+            <input
+              type="checkbox"
+              name="age"
+              id={option.id}
+              value={option.id}
+              onChange={(e) =>
+                handleChangeCheck(e.target.checked, e.target.value)
+              }
+            />
             <label htmlFor={option.id} style={{ cursor: "pointer" }}>
               <S.ValText>{option.label}</S.ValText>
             </label>
           </S.Val>
         ))}
-      </S.Label>
+      </S.Form>
     </div>
   );
 };
 
-const Region = () => {
+const Region = ({ regions, setRegions }) => {
   const regionOptions = [
     { id: "all", label: "전체" },
     { id: "online", label: "온라인" },
@@ -52,41 +68,60 @@ const Region = () => {
     { id: "abroad", label: "해외" },
   ];
 
+  const handleChangeCheck = (checked, item) => {
+    if (checked) {
+      setRegions((prev) => [...prev, item]);
+    } else {
+      setRegions((prev) => prev.filter((el) => el !== item));
+    }
+  };
+
   return (
     <div>
-      <S.Label>
+      <S.Form>
         {regionOptions.map((option) => (
           <S.Val key={option.id}>
-            <input type="checkbox" name="land" id={option.id} />
+            <input
+              type="checkbox"
+              name="land"
+              id={option.id}
+              value={option.id}
+              onChange={(e) =>
+                handleChangeCheck(e.target.checked, e.target.value)
+              }
+            />
             <label htmlFor={option.id} style={{ cursor: "pointer" }}>
               <S.ValText>{option.label}</S.ValText>
             </label>
           </S.Val>
         ))}
-      </S.Label>
+      </S.Form>
     </div>
   );
 };
 
-const Fee = () => {
+const Fee = ({ setCost }) => {
   const feeOptions = [
-    { id: "paid", label: "유료" },
-    { id: "free", label: "무료" },
+    { id: "PAID", label: "유료" },
+    { id: "FREE", label: "무료" },
   ];
 
   return (
-    <div>
-      <S.Label>
-        {feeOptions.map((option) => (
-          <S.Val key={option.id}>
-            <input type="radio" id={option.id} name="howFee" />
-            <label htmlFor={option.id} style={{ cursor: "pointer" }}>
-              <S.ValText>{option.label}</S.ValText>
-            </label>
-          </S.Val>
-        ))}
-      </S.Label>
-    </div>
+    <S.Form>
+      {feeOptions.map((option) => (
+        <S.Val key={option.id}>
+          <input
+            type="radio"
+            id={option.id}
+            name="howFee"
+            onChange={() => setCost(option.id)}
+          />
+          <label htmlFor={option.id} style={{ cursor: "pointer" }}>
+            <S.ValText>{option.label}</S.ValText>
+          </label>
+        </S.Val>
+      ))}
+    </S.Form>
   );
 };
 

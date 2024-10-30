@@ -7,7 +7,7 @@ import { userState } from "../../../../recoil";
 const Topbar = () => {
   const navigate = useNavigate();
   const [searchvalue, setSearchValue] = useState("");
-  const [user, setUser] = useRecoilState(userState);
+  const [user] = useRecoilState(userState);
 
   const changeSearch = (e) => {
     setSearchValue(e.target.value);
@@ -35,7 +35,7 @@ const Topbar = () => {
     }
   };
 
-  const activeEnter2 = (e) => {
+  const activeEnter2 = () => {
     navigate(`/search/${searchvalue}`);
   };
 
@@ -112,9 +112,15 @@ const Topbar = () => {
           }}
         >
           <S.LoginRegister
-            style={user ? { display: "none" } : { display: "flex" }}
+            style={
+              user && user.email ? { display: "none" } : { display: "flex" }
+            }
           >
-            <S.Text>
+            <S.Text
+              style={
+                user && user.email ? { display: "none" } : { display: "flex" }
+              }
+            >
               <Link
                 to="/login"
                 style={{ textDecoration: "none", color: "black" }}
@@ -132,11 +138,21 @@ const Topbar = () => {
             </S.Text>
           </S.LoginRegister>
         </div>
-        <S.Member style={user ? { display: "flex" } : { display: "none" }}>
-          <S.Button onClick={createContest}>
+        <S.Member>
+          <S.Button
+            onClick={createContest}
+            style={
+              user.email === "admin@galendar.com"
+                ? { display: "block" }
+                : { display: "none" }
+            }
+          >
             <div style={{ fontSize: "12px" }}>대회 생성</div>
           </S.Button>
           <S.ProfileImage
+            style={
+              user && user.email ? { display: "block" } : { display: "none" }
+            }
             onClick={profile}
             src="/images/profile.svg"
             alt="프로필"

@@ -48,24 +48,24 @@ const DateStyle = forwardRef(({ value, onClick }, ref) => (
 
 const JoinSet = ({
   now,
-  recieptStartDate,
-  recieptFinishDate,
-  setRecieptStartDate,
-  setRecieptFinishDate,
+  submitStartDate,
+  submitEndDate,
+  setSubmitStartDate,
+  setSubmitEndDate,
 }) => {
   return (
     <S.Div>
       <SetType
         DatePickerSelector={DatePickerSelector}
-        changeDate={recieptStartDate}
-        setChangeDate={setRecieptStartDate}
+        changeDate={submitStartDate}
+        setChangeDate={setSubmitStartDate}
         now={now}
       />
       <S.Slash>~</S.Slash>
       <SetType
         DatePickerSelector={DatePickerSelector}
-        changeDate={recieptFinishDate}
-        setChangeDate={setRecieptFinishDate}
+        changeDate={submitEndDate}
+        setChangeDate={setSubmitEndDate}
         now={now}
       />
     </S.Div>
@@ -75,9 +75,9 @@ const JoinSet = ({
 const TimeSet = ({
   now,
   contestStartDate,
-  contestFinishDate,
+  contestEndDate,
   setContestStartDate,
-  setContestFinishDate,
+  setContestEndDate,
 }) => {
   return (
     <S.Div>
@@ -90,8 +90,8 @@ const TimeSet = ({
       <S.Slash>~</S.Slash>
       <SetType
         DatePickerSelector={DatePickerSelector}
-        changeDate={contestFinishDate}
-        setChangeDate={setContestFinishDate}
+        changeDate={contestEndDate}
+        setChangeDate={setContestEndDate}
         now={now}
       />
     </S.Div>

@@ -41,6 +41,7 @@ export const NameField = styled.input`
   font-size: 16px;
   font-family: "Paperlogy";
 `;
+
 export const TextField = styled.textarea`
   border-radius: 15px;
   border: 0px;

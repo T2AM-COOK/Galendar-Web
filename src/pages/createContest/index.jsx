@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as S from "./indexStyle";
 import Sidebar from "../../components/common/bars/sideBar";
 import {
@@ -10,44 +10,71 @@ import axios from "axios";
 import { JoinSet, TimeSet } from "../../components/common/createElem/dates";
 
 const CreateContest = () => {
-  const [changeImg, setChangeImg] = useState();
+  const [imglink, setImgLink] = useState();
   const [title, setTitle] = useState();
-  const [detail, setDetail] = useState();
+  const [content, setContent] = useState();
   const [link, setLink] = useState();
   const now = new Date();
-  const [recieptStartDate, setRecieptStartDate] = useState(new Date());
-  const [recieptFinishDate, setRecieptFinishDate] = useState(new Date());
+  now.setDate(now.getDate() - 1);
+  const [submitStartDate, setSubmitStartDate] = useState(new Date());
+  const [submitEndDate, setSubmitEndDate] = useState(new Date());
   const [contestStartDate, setContestStartDate] = useState(new Date());
-  const [contestFinishDate, setContestFinishDate] = useState(new Date());
+  const [contestEndDate, setContestEndDate] = useState(new Date());
+  const [cost, setCost] = useState("");
+  const [targets, setTargets] = useState([]);
+  const [regions, setRegions] = useState([]);
 
   const contestData = {
     title: title,
-    detail: detail,
+    content: content,
+    cost: cost,
     link: link,
-    image: changeImg,
+    imglink: imglink,
+    submitStartDate: submitStartDate,
+    submitEndDate: submitEndDate,
+    contestStartDate: contestStartDate,
+    contestEndDate: contestEndDate,
+    targets: targets,
+    regions: regions,
   };
 
   const isCreateReady = () => {
-    return changeImg && title && detail && link;
+    return (
+      title &&
+      content &&
+      cost &&
+      link &&
+      imglink &&
+      submitStartDate &&
+      submitEndDate &&
+      contestStartDate &&
+      contestEndDate &&
+      targets &&
+      regions
+    );
   };
 
   const createContest = async () => {
     if (isCreateReady()) {
       try {
         const res = await axios.post(
-          "https://3.37.189.59:8080/이름",
+          "https://3.37.189.59:8080/contest",
           contestData
         );
         if (res) {
           alert("대회 생성완료");
           localStorage.setItem("ACCESS_TOKEN", res.data.accessToken);
           localStorage.setItem("REFRESH_TOKEN", res.data.refreshToken);
-          setChangeImg();
-          setTitle();
-          setDetail();
-          setLink();
-          setRecieptStartDate();
-          setRecieptFinishDate();
+          setImgLink("");
+          setTitle("");
+          setContent("");
+          setLink("");
+          setSubmitStartDate("");
+          setSubmitEndDate("");
+          setContestStartDate("");
+          setContestEndDate("");
+          setTargets([]);
+          setRegions([]);
         }
       } catch {
         alert("에러가 발생했습니다.");
@@ -55,10 +82,14 @@ const CreateContest = () => {
     }
   };
 
+  useEffect(() => {
+    console.log(targets);
+  }, [targets]);
+
   const change = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setChangeImg(URL.createObjectURL(file));
+      setImgLink(URL.createObjectURL(file));
     }
   };
 
@@ -77,32 +108,33 @@ const CreateContest = () => {
           <S.FormName>대회 내용</S.FormName>
           <S.TextField
             placeholder="대회 내용을 입력해주세요"
-            onChange={(e) => setDetail(e.target.value)}
+            onChange={(e) => setContent(e.target.value)}
           />
           <S.FormName>접수 기간</S.FormName>
           <JoinSet
             now={now}
-            recieptStartDate={recieptStartDate}
-            recieptFinishDate={recieptFinishDate}
-            setRecieptStartDate={setRecieptStartDate}
-            setRecieptFinishDate={setRecieptFinishDate}
+            submitStartDate={submitStartDate}
+            submitEndDate={submitEndDate}
+            setSubmitStartDate={setSubmitStartDate}
+            setSubmitEndDate={setSubmitEndDate}
           />
           <S.FormName>대회 기간</S.FormName>
           <TimeSet
             now={now}
             contestStartDate={contestStartDate}
-            contestFinishDate={contestFinishDate}
+            contestEndDate={contestEndDate}
             setContestStartDate={setContestStartDate}
-            setContestFinishDate={setContestFinishDate}
+            setContestEndDate={setContestEndDate}
           />
           <S.FormName>참가 대상</S.FormName>
-          <Join />
+          <Join targets={targets} setTargets={setTargets} />
           <S.FormName>지역</S.FormName>
-          <Region />
+          <Region regions={regions} setRegions={setRegions} />
           <S.FormName>참가 비용</S.FormName>
-          <Fee />
+          <Fee setCost={setCost} />
           <S.FormName>링크</S.FormName>
           <S.NameField
+            type="text"
             placeholder="링크를 입력해주세요."
             onChange={(e) => setLink(e.target.value)}
           />
@@ -116,7 +148,7 @@ const CreateContest = () => {
           >
             <S.Poster
               htmlFor="file"
-              style={changeImg ? { display: "none" } : { display: "flex" }}
+              style={imglink ? { display: "none" } : { display: "flex" }}
             >
               <div style={{}}>업로드</div>
             </S.Poster>
@@ -127,13 +159,15 @@ const CreateContest = () => {
               style={{ display: "none" }}
               onChange={change}
             />
-            {changeImg && (
-              <img
-                src={changeImg}
-                alt="이미지가 아닙니다."
-                style={{ width: "284px", height: "224px" }}
-              />
-            )}
+            {imglink &&
+              (console.log(imglink),
+              (
+                <img
+                  src={imglink}
+                  alt="이미지가 아닙니다."
+                  style={{ width: "284px", height: "224px" }}
+                />
+              ))}
           </p>
           <S.ButtonContainer>
             <S.Button

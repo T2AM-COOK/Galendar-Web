@@ -52,6 +52,7 @@ export const Button = styled.button`
 export const Text = styled.div`
   text-decoration: none;
 `;
+
 export const LoginRegister = styled.div`
   width: 120px;
   justify-content: space-between;
@@ -75,7 +76,7 @@ export const Nav = styled.div`
 export const Search = styled.input`
   padding-left: 20px;
   width: 364px;
-  height: 40px;
+  height: 45px;
   border: 0px;
   border-radius: 30px;
   background-color: #f9f9f9;
@@ -83,7 +84,7 @@ export const Search = styled.input`
 
 export const SearchDiv = styled.div`
   position: absolute;
-  top: 1.4vh;
+  top: 1.6vh;
 `;
 
 export const SearchImg = styled.img`
