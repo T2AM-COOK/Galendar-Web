@@ -12,7 +12,7 @@ export const Main = styled.div`
 export const NavWrap = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 1300px;
+  width: 85%;
   align-items: center;
   letter-spacing: -0.5px;
   padding-top: 50px;
@@ -109,7 +109,7 @@ export const Body = styled.div`
 export const BodyText = styled.div`
   padding-left: 9vw;
   padding-top: 11vh;
-  height: 372px;
+  height: 25vw;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

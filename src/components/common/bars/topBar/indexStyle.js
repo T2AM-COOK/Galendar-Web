@@ -70,14 +70,14 @@ export const Member = styled.div`
 
 export const Nav = styled.div`
   display: flex;
-  width: 517px;
+  width: 30vw;
   font-size: 16px;
   justify-content: space-between;
   align-items: center;
 `;
 export const Search = styled.input`
   padding-left: 20px;
-  width: 364px;
+  width: 30vw;
   height: 45px;
   border: 0px;
   border-radius: 30px;
@@ -86,6 +86,7 @@ export const Search = styled.input`
 
 export const SearchDiv = styled.div`
   position: absolute;
+  right: 2vw;
   top: 1.6vh;
 `;
 

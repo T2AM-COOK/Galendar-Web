@@ -10,12 +10,14 @@ const RegisterContent = () => {
   const [emailValue, setEmailValue] = useState("");
   const [emailCode, setEmailCode] = useState(0);
   const [pwValue, setPwValue] = useState("");
+  const [isEmailVertify, setIsEmailVerify] = useState(false);
   const [pwReValue, setPwReValue] = useState("");
   const registerData = {
     email: emailValue,
     password: pwValue,
     name: nameValue,
   };
+
   const regEmail =
     /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
   const regPassword = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/;
@@ -35,6 +37,26 @@ const RegisterContent = () => {
         }
       } catch {
         alert("오류 발생");
+      }
+    }
+  };
+  const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
+  const sendEmail = async () => {
+    if (emailValue.trim().length > 0 && regEmail.test(emailValue)) {
+      try {
+        const res = await axios.post(
+          "http://3.37.189.59/email/send",
+          { email: emailValue },
+          {
+            headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
+          }
+        );
+        if (res) {
+          alert("전송 완료");
+        }
+      } catch (e) {
+        alert("오류가 발생했습니다.");
+        console.error(e);
       }
     }
   };
@@ -65,6 +87,7 @@ const RegisterContent = () => {
     emailValue.length > 0 &&
     nameValue.length &&
     isPwSame &&
+    isEmailVertify &&
     pwValue.trim().length > 0 &&
     regPassword.test(pwValue);
 
@@ -103,10 +126,7 @@ const RegisterContent = () => {
                 placeholder="이메일을 입력하세요"
                 onChange={handleEmailChange}
               />
-              <S.SendNum
-                style={{ cursor: "pointer" }}
-                onClick={() => alert("인증번호가 전송되었습니다.")}
-              >
+              <S.SendNum style={{ cursor: "pointer" }} onClick={sendEmail}>
                 전송하기
               </S.SendNum>
             </div>

@@ -13,14 +13,6 @@ const Topbar = () => {
     setSearchValue(e.target.value);
   };
 
-  const createContest = () => {
-    navigate(`/createcontest`);
-  };
-
-  const profile = () => {
-    navigate(`/profile`);
-  };
-
   const main = () => {
     navigate(`/main`);
   };
@@ -46,24 +38,12 @@ const Topbar = () => {
           <S.LogoImage
             src="/images/logo.svg"
             style={{ cursor: "pointer" }}
-            alt="Logo"
             onClick={main}
           />
-          <div
-            onClick={main}
-            style={{
-              textDecoration: "none",
-              textDecorationLine: "none",
-              cursor: "pointer",
-            }}
-          >
-            홈
-          </div>
+          <div onClick={main}>홈</div>
           <div
             onClick={bookmark}
             style={{
-              textDecoration: "none",
-              textDecorationLine: "none",
               cursor: "pointer",
             }}
           >
@@ -71,8 +51,6 @@ const Topbar = () => {
           </div>
           <div
             style={{
-              textDecoration: "none",
-              textDecorationLine: "none",
               cursor: "pointer",
             }}
           >
@@ -87,12 +65,11 @@ const Topbar = () => {
           style={{
             position: "relative",
             display: "inline-block",
-            width: "364px",
           }}
         >
           <S.Search
             placeholder="대회를 검색해주세요."
-            style={{ fontSize: "12px" }}
+            style={{ fontSize: "14px" }}
             onChange={changeSearch}
             onKeyDown={(e) => activeEnter(e)}
           />

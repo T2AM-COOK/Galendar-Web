@@ -38,7 +38,7 @@ export const IdContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 153px;
+  height: 130px;
   justify-content: space-between;
 `;
 export const LoginOption = styled.div`

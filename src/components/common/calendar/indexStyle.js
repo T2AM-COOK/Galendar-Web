@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const MainBox = styled.div`
-  width: 1057px;
+  width: 100%;
   height: 677px;
   background: white;
 `;
