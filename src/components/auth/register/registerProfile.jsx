@@ -24,7 +24,7 @@ const RegisterContent = () => {
     if (isButtonRegister === true) {
       try {
         const res = await axios.post(
-          "http://3.37.189.59:8080/auth/signup",
+          "http://3.37.189.59/auth/signup",
           registerData
         );
         if (res) {

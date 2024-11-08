@@ -1,10 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Topbar from "../../components/common/bars/topBar";
 import * as S from "./indexStyle";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 const ContestInfo = () => {
+  const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
+
+  const [contests, setContests] = useState();
   const [isSelect, setIsSelect] = useState(false);
   const [count, setCount] = useState(0);
+
+  const getContest = async () => {
+    try {
+      const res = await axios.get("http://3.37.189.59/contest/list", {
+        headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
+      });
+      if (res) {
+        setContests(res.data.data);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  useEffect(() => {
+    getContest();
+  }, []);
 
   const Count = () => {
     if (!isSelect) {
@@ -28,7 +49,7 @@ const ContestInfo = () => {
       <S.Content>
         <S.ContentBox>
           <S.Text>
-            <S.Title>해커그라운드 해커톤 2024 in 의성</S.Title>
+            <S.Title>{contests.title}</S.Title>
             <S.ContentDiv>
               <S.ContentImg src="/images/money.svg" />총 상금 : 500만원
             </S.ContentDiv>

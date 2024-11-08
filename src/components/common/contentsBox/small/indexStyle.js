@@ -7,7 +7,7 @@ export const ContestImg = styled.img`
 `;
 
 export const Title = styled.div`
-  font-size: 16px;
+  font-size: 12px;
   @font-face {
     font-family: "Paperlogy";
     src: url("./fonts/Paperlogy-5Regular.ttf") format("truetype");

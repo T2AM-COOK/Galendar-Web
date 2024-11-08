@@ -3,6 +3,7 @@ import * as S from "./indexStyle";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { ko } from "date-fns/locale";
+import { format } from "date-fns";
 
 const SetType = ({ changeDate, setChangeDate, now }) => {
   return (
@@ -23,10 +24,15 @@ const DatePickerSelector = ({ changeDate, setChangeDate, now }) => {
     <DatePicker
       locale={ko}
       selected={changeDate}
-      onChange={(date) =>
-        date >= now ? setChangeDate(date) : alert("미래의 시간으로 정해주세요.")
-      }
-      dateFormat="yyyy.MM.dd"
+      onChange={(date) => {
+        if (date > now) {
+          const formattedDate = format(date, "yyyy-MM-dd");
+          setChangeDate(formattedDate);
+        } else {
+          alert("미래의 시간으로 정해주세요.");
+        }
+      }}
+      dateFormat="yyyy-MM-dd"
       customInput={<DateStyle />}
     />
   );

@@ -10,12 +10,10 @@ export const Container = styled.div`
   height: 82px;
   position: fixed;
   top: 0px;
-  box-sizing: border-box;
 `;
 
 export const Contents = styled.div`
-  width: 1214px;
-  height: 50px;
+  width: 90%;
   display: flex;
   justify-content: space-between;
   align-content: center;
@@ -51,11 +49,15 @@ export const Button = styled.button`
 
 export const Text = styled.div`
   text-decoration: none;
+  cursor: pointer;
 `;
 
-export const LoginRegister = styled.div`
-  width: 120px;
+export const ProfileBar = styled.div`
+  align-items: center;
+  display: flex;
+  width: 128px;
   justify-content: space-between;
+  flex-direction: row-reverse;
 `;
 
 export const Member = styled.div`

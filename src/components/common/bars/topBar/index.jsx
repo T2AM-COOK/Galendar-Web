@@ -76,7 +76,11 @@ const Topbar = () => {
               cursor: "pointer",
             }}
           >
-            ABOUT 갈랜더
+            {user.email === "admin@galendar.com" ? (
+              <span onClick={() => navigate("/createcontest")}>대회 생성</span>
+            ) : (
+              <span>ABOUT 갈랜더</span>
+            )}
           </div>
         </S.Nav>
         <div
@@ -104,60 +108,26 @@ const Topbar = () => {
             </S.SearchDiv>
           </div>
         </div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <S.LoginRegister
-            style={
-              user && user.email ? { display: "none" } : { display: "flex" }
-            }
-          >
-            <S.Text
-              style={
-                user && user.email ? { display: "none" } : { display: "flex" }
-              }
-            >
-              <Link
-                to="/login"
-                style={{ textDecoration: "none", color: "black" }}
-              >
-                로그인
-              </Link>
-            </S.Text>
-            <S.Text>
-              <Link
-                to="/register"
-                style={{ color: "#2B32B2", textDecoration: "none" }}
+        <S.ProfileBar>
+          {user.email ? (
+            <>
+              <S.ProfileImage
+                src="/images/profile.svg"
+                onClick={() => navigate("/profile")}
+              />
+            </>
+          ) : (
+            <>
+              <S.Text
+                onClick={() => navigate("/register")}
+                style={{ color: "#2B32B2" }}
               >
                 회원가입
-              </Link>
-            </S.Text>
-          </S.LoginRegister>
-        </div>
-        <S.Member>
-          <S.Button
-            onClick={createContest}
-            style={
-              user.email === "admin@galendar.com"
-                ? { display: "block" }
-                : { display: "none" }
-            }
-          >
-            <div style={{ fontSize: "12px" }}>대회 생성</div>
-          </S.Button>
-          <S.ProfileImage
-            style={
-              user && user.email ? { display: "block" } : { display: "none" }
-            }
-            onClick={profile}
-            src="/images/profile.svg"
-            alt="프로필"
-          />
-        </S.Member>
+              </S.Text>
+              <S.Text onClick={() => navigate("/login")}>로그인</S.Text>
+            </>
+          )}
+        </S.ProfileBar>
       </S.Contents>
     </S.Container>
   );

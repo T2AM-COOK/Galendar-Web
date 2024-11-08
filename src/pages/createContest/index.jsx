@@ -15,7 +15,6 @@ const CreateContest = () => {
   const [content, setContent] = useState();
   const [link, setLink] = useState();
   const now = new Date();
-  now.setDate(now.getDate() - 1);
   const [submitStartDate, setSubmitStartDate] = useState(new Date());
   const [submitEndDate, setSubmitEndDate] = useState(new Date());
   const [contestStartDate, setContestStartDate] = useState(new Date());
@@ -23,7 +22,7 @@ const CreateContest = () => {
   const [cost, setCost] = useState("");
   const [targets, setTargets] = useState([]);
   const [regions, setRegions] = useState([]);
-
+  const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
   const contestData = {
     title: title,
     content: content,
@@ -58,13 +57,13 @@ const CreateContest = () => {
     if (isCreateReady()) {
       try {
         const res = await axios.post(
-          "https://3.37.189.59:8080/contest",
-          contestData
+          "http://3.37.189.59/contest",
+          contestData,
+          {
+            headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
+          }
         );
         if (res) {
-          alert("대회 생성완료");
-          localStorage.setItem("ACCESS_TOKEN", res.data.accessToken);
-          localStorage.setItem("REFRESH_TOKEN", res.data.refreshToken);
           setImgLink("");
           setTitle("");
           setContent("");
@@ -74,18 +73,14 @@ const CreateContest = () => {
           setContestStartDate("");
           setContestEndDate("");
           setTargets([]);
-          setRegions([]);
+          setRegions([]); 
+          alert("대회 생성완료");
         }
       } catch {
         alert("에러가 발생했습니다.");
       }
     }
   };
-
-  useEffect(() => {
-    console.log(targets);
-  }, [targets]);
-
   const change = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -150,7 +145,7 @@ const CreateContest = () => {
               htmlFor="file"
               style={imglink ? { display: "none" } : { display: "flex" }}
             >
-              <div style={{}}>업로드</div>
+              <div>업로드</div>
             </S.Poster>
             <input
               type="file"
@@ -159,15 +154,13 @@ const CreateContest = () => {
               style={{ display: "none" }}
               onChange={change}
             />
-            {imglink &&
-              (console.log(imglink),
-              (
-                <img
-                  src={imglink}
-                  alt="이미지가 아닙니다."
-                  style={{ width: "284px", height: "224px" }}
-                />
-              ))}
+            {imglink && (
+              <img
+                src={imglink}
+                alt="이미지가 아닙니다."
+                style={{ width: "284px", height: "224px" }}
+              />
+            )}
           </p>
           <S.ButtonContainer>
             <S.Button

@@ -19,12 +19,12 @@ const LoginContent = () => {
   const login = async () => {
     if (isButtonActive) {
       try {
-        const res = await axios.post("http://3.37.189.59:8080/auth", loginData);
-        if (res) {
+        const res = await axios.post("http://3.37.189.59/auth", loginData);
+        if (res && res.data) {
+          localStorage.setItem("ACCESS_TOKEN", res.data.data.accessToken);
+          localStorage.setItem("REFRESH_TOKEN", res.data.data.refreshToken);
           navigate("/main");
           alert("로그인 완료");
-          localStorage.setItem("ACCESS_TOKEN", res.data.accessToken);
-          localStorage.setItem("REFRESH_TOKEN", res.data.refreshToken);
           setUser(loginData);
         }
       } catch (e) {
@@ -80,19 +80,6 @@ const LoginContent = () => {
             width: "385px",
           }}
         >
-          <S.Label>
-            <span
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                width: "80px",
-              }}
-            >
-              <S.CheckBox type="checkbox" />
-              <S.Span style={{ cursor: "pointer" }}>자동 로그인</S.Span>
-            </span>
-          </S.Label>
           <S.LoginOption>
             <S.Span style={{ color: "#B01E1E" }}>
               아이디나 비밀번호가 잘못되었습니다.
