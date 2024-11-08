@@ -7,7 +7,7 @@ import axios from "axios";
 const ContestInfo = () => {
   const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
 
-  const [contests, setContests] = useState();
+  const [contest, setContest] = useState();
   const [isSelect, setIsSelect] = useState(false);
   const [count, setCount] = useState(0);
 
@@ -17,7 +17,7 @@ const ContestInfo = () => {
         headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
       });
       if (res) {
-        setContests(res.data.data);
+        setContest(res.data.data);
       }
     } catch (e) {
       console.log(e);
@@ -49,25 +49,26 @@ const ContestInfo = () => {
       <S.Content>
         <S.ContentBox>
           <S.Text>
-            <S.Title>{contests.title}</S.Title>
+            <S.Title>{contest.title}</S.Title>
             <S.ContentDiv>
-              <S.ContentImg src="/images/money.svg" />총 상금 : 500만원
+              <S.ContentImg src="/images/money.svg" />
+              참가 비용 : {contest.cost}
             </S.ContentDiv>
             <S.ContentDiv>
               <S.ContentImg src="/images/clock.svg" />
-              접수 기간 : 2024.7.21~8.01
+              접수 기간 : {contest.submitStartDate} ~ {contest.submitEndDate}
             </S.ContentDiv>
             <S.ContentDiv>
               <S.ContentImg src="/images/contestcalendar.svg" />
-              대회 기간 : 2024.8.25~8.27
+              대회 기간 : {contest.contestStartDate} ~ {contest.contestEndDate}
             </S.ContentDiv>
             <S.ContentDiv>
               <S.ContentImg src="/images/map.svg" />
-              대회 장소 : 경상북도
+              대회 장소 : {contest.regions}
             </S.ContentDiv>
             <S.ContentDiv>
               <S.ContentImg src="/images/contentprofile.svg" />
-              참가 대상 : 대구 경북 소재 17세~39세 청년 IT 개발자
+              참가 대상 :{contest.targets}
             </S.ContentDiv>
           </S.Text>
           <S.Detail>
@@ -75,7 +76,12 @@ const ContestInfo = () => {
               <S.ContestImg src="/images/contestImage.svg"></S.ContestImg>
             </S.ImageBox>
             <S.Info>
-              <S.Button>방문하기</S.Button>
+              <a
+                href={contest.link}
+                style={{ textDecoration: "none", color: "white" }}
+              >
+                <S.Button>방문하기</S.Button>
+              </a>
               <S.HeartDiv onClick={Count} style={{ cursor: "pointer" }}>
                 <S.Heart
                   src={
