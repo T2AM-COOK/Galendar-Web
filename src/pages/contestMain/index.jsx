@@ -5,19 +5,21 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 const ContestInfo = () => {
+  const params = useParams();
   const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
 
-  const [contest, setContest] = useState();
+  const [contest, setContest] = useState({});
   const [isSelect, setIsSelect] = useState(false);
   const [count, setCount] = useState(0);
 
   const getContest = async () => {
     try {
-      const res = await axios.get("http://3.37.189.59/contest/list", {
+      const res = await axios.get(`http://3.37.189.59/contest/${params.id}`, {
         headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
       });
       if (res) {
         setContest(res.data.data);
+        console.log(res.data.data.contest);
       }
     } catch (e) {
       console.log(e);
@@ -52,7 +54,7 @@ const ContestInfo = () => {
             <S.Title>{contest.title}</S.Title>
             <S.ContentDiv>
               <S.ContentImg src="/images/money.svg" />
-              참가 비용 : {contest.cost}
+              참가 비용 : {contest.cost === "PAID" ? "유료" : "무료"}
             </S.ContentDiv>
             <S.ContentDiv>
               <S.ContentImg src="/images/clock.svg" />
@@ -64,21 +66,26 @@ const ContestInfo = () => {
             </S.ContentDiv>
             <S.ContentDiv>
               <S.ContentImg src="/images/map.svg" />
-              대회 장소 : {contest.regions}
+              대회 장소 :{" "}
+              {contest.regions &&
+                contest.regions.map((region) => region.name).join(", ")}
             </S.ContentDiv>
             <S.ContentDiv>
               <S.ContentImg src="/images/contentprofile.svg" />
-              참가 대상 :{contest.targets}
+              참가 대상 :{" "}
+              {contest.targets &&
+                contest.targets.map((target) => target.name).join(", ")}
             </S.ContentDiv>
           </S.Text>
           <S.Detail>
             <S.ImageBox>
-              <S.ContestImg src="/images/contestImage.svg"></S.ContestImg>
+              <S.ContestImg src={contest.imgLink}></S.ContestImg>
             </S.ImageBox>
             <S.Info>
               <a
                 href={contest.link}
                 style={{ textDecoration: "none", color: "white" }}
+                target="_blank"
               >
                 <S.Button>방문하기</S.Button>
               </a>
@@ -96,17 +103,15 @@ const ContestInfo = () => {
           </S.Detail>
         </S.ContentBox>
       </S.Content>
-      <S.ContestDetail>
-        <S.DetailBox>
-          <S.DetailTitle>해커그라운드 해커톤 2024 in 의성</S.DetailTitle>
-          <hr style={{ width: "1223px", border: "0.5px solid #B5B5B5" }} />
-          <S.DetailInfo>
-            해커그라운드 해커톤 2024 in 의성해커그라운드 해커톤 2024 in
-            의성해커그라운드 해커톤 2024 in 의성 의성해커그라운드 해커톤 2024 in
-            의성 의성해커그라운드 해커톤 2024 in 의성
-          </S.DetailInfo>
-        </S.DetailBox>
-      </S.ContestDetail>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <S.ContestDetail>
+          <S.DetailBox>
+            <S.DetailTitle>{contest.title}</S.DetailTitle>
+            <hr style={{ width: "80vw", border: "0.5px solid #B5B5B5" }} />
+            <S.DetailInfo>{contest.content}</S.DetailInfo>
+          </S.DetailBox>
+        </S.ContestDetail>
+      </div>
     </div>
   );
 };

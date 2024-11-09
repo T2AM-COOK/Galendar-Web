@@ -83,6 +83,7 @@ export const Heart = styled.img`
 `;
 
 export const ContestDetail = styled.div`
+  width: 80vw;
   display: flex;
   justify-content: center;
 `;
@@ -97,6 +98,7 @@ export const DetailTitle = styled.div`
 `;
 
 export const DetailInfo = styled.div`
+  font-size: 16px;
   margin-bottom: 60px;
 `;
 
