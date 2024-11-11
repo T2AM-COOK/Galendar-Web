@@ -17,10 +17,6 @@ const Topbar = () => {
     navigate(`/main`);
   };
 
-  const bookmark = () => {
-    navigate(`/bookmark`);
-  };
-
   const activeEnter = (e) => {
     if (e.key === "Enter") {
       navigate(`/search/${searchvalue}`);
@@ -40,14 +36,20 @@ const Topbar = () => {
             style={{ cursor: "pointer" }}
             onClick={main}
           />
-          <div onClick={main}>홈</div>
+          <div onClick={main} style={{ cursor: "pointer" }}>
+            홈
+          </div>
           <div
-            onClick={bookmark}
+            onClick={() => navigate("/bookmark")}
             style={{
               cursor: "pointer",
             }}
           >
-            북마크
+            {user.email === "admin@galendar.com" ? (
+              <span>대회 관리</span>
+            ) : (
+              <span>북마크</span>
+            )}
           </div>
           <div
             style={{

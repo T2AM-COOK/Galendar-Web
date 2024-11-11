@@ -4,6 +4,7 @@ import * as S from "./indexStyle";
 import BigContentBox from "../../components/common/contentsBox/big";
 import { useRecoilState } from "recoil";
 import { userState } from "../../recoil";
+import RecommendBoxWidth from "../../components/common/recommend/width";
 
 const Profile = () => {
   const [user] = useRecoilState(userState);
@@ -16,7 +17,9 @@ const Profile = () => {
             <S.Profile>
               <S.ProfileImage src="/images/profile.svg" />
               <S.ProfileText>
-                <div style={{ fontSize: "52px", fontWeight: "bold" }}>이름</div>
+                <div style={{ fontSize: "52px", fontWeight: "bold" }}>
+                  내 정보
+                </div>
                 <div style={{ fontSize: "20px" }}>{user.email}</div>
               </S.ProfileText>
             </S.Profile>
@@ -24,17 +27,10 @@ const Profile = () => {
           <S.BookMark>
             <S.BookMarkText>
               <S.TopNav>
-                <S.Title>내 북마크</S.Title>
-                <S.Hr />
+                <RecommendBoxWidth />
               </S.TopNav>
             </S.BookMarkText>
-            <S.BookMarks>
-              <BigContentBox />
-              <BigContentBox />
-              <BigContentBox />
-              <BigContentBox />
-              <BigContentBox />
-            </S.BookMarks>
+            <S.BookMarks></S.BookMarks>
           </S.BookMark>
         </S.All>
       </S.Div>

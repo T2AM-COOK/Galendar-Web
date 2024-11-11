@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import * as S from "./indexStyle";
 import Sidebar from "../../components/common/bars/sideBar";
 import {
@@ -64,6 +64,7 @@ const CreateContest = () => {
           }
         );
         if (res) {
+          console.log(imglink);
           setImgLink("");
           setTitle("");
           setContent("");
@@ -73,7 +74,7 @@ const CreateContest = () => {
           setContestStartDate("");
           setContestEndDate("");
           setTargets([]);
-          setRegions([]); 
+          setRegions([]);
           alert("대회 생성완료");
         }
       } catch {
@@ -82,10 +83,13 @@ const CreateContest = () => {
     }
   };
   const change = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setImgLink(URL.createObjectURL(file));
-    }
+    const { files } = e.target;
+    const uploadFile = files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(uploadFile);
+    reader.onloadend = () => {
+      setImgLink(reader.result);
+    };
   };
 
   return (
@@ -139,13 +143,18 @@ const CreateContest = () => {
               width: "284px",
               height: "224px",
               border: "3px dotted #2B32B2",
+              borderRadius: "3px",
             }}
           >
             <S.Poster
               htmlFor="file"
-              style={imglink ? { display: "none" } : { display: "flex" }}
+              style={{
+                backgroundImage: imglink ? `url(${imglink})` : "none",
+                backgroundSize: "cover",
+                backgroundRepeat: "no-repeat",
+              }}
             >
-              <div>업로드</div>
+              <div style={{ background: "white" }}>업로드</div>
             </S.Poster>
             <input
               type="file"
@@ -154,13 +163,6 @@ const CreateContest = () => {
               style={{ display: "none" }}
               onChange={change}
             />
-            {imglink && (
-              <img
-                src={imglink}
-                alt="이미지가 아닙니다."
-                style={{ width: "284px", height: "224px" }}
-              />
-            )}
           </p>
           <S.ButtonContainer>
             <S.Button

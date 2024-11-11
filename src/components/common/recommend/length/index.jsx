@@ -14,9 +14,10 @@ const RecommendBoxLength = () => {
       });
       if (res) {
         setContests(res.data.data);
+        console.log(contests);
       }
     } catch (e) {
-      console.log(e);
+      console.log("대회가 불러와지지 않았습니다.");
     }
   };
   useEffect(() => {

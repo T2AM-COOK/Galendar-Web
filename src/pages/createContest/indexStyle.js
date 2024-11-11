@@ -10,13 +10,12 @@ export const Div = styled.div`
   background-color: #f9f9f9;
 `;
 export const CreateContest = styled.div`
-  letter-spacing: -0.5px;
   font-size: 32px;
   font-weight: bold;
 `;
 
 export const Hr = styled.hr`
-  width: 971px;
+  width: 130%;
   border: 1px solid #b5b5b5;
 `;
 
@@ -26,8 +25,6 @@ export const Content = styled.div`
 `;
 
 export const FormName = styled.div`
-  font-family: "Paperlogy";
-  letter-spacing: -0.5px;
   font-size: 16px;
   font-weight: bold;
 `;
@@ -35,9 +32,9 @@ export const FormName = styled.div`
 export const NameField = styled.input`
   border-radius: 30px;
   border: 0px;
-  width: 700px;
+  width: 100%;
   height: 45px;
-  padding-left: 20px;
+  padding-left: 2vw;
   font-size: 16px;
   font-family: "Paperlogy";
 `;
@@ -45,9 +42,9 @@ export const NameField = styled.input`
 export const TextField = styled.textarea`
   border-radius: 15px;
   border: 0px;
-  width: 680px;
+  width: 100%;
   height: 133px;
-  padding: 20px;
+  padding: 2vw;
   resize: none;
   font-size: 16px;
   font-family: "Paperlogy";
@@ -57,21 +54,13 @@ export const Button = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "Paperlogy";
-  height: 44px;
-  width: 300px;
+  height: 5vh;
+  width: 50%;
   border-radius: 10px;
   justify-content: center;
   background-color: white;
   cursor: pointer;
   font-size: 12px;
-  transition: transform 1s, background-color 1s, border 1s;
-  &:hover {
-    transform: scale(1.1);
-    background-color: #2b32b2;
-    border: 0px;
-    color: white;
-  }
 `;
 export const Poster = styled.label`
   font-size: 16px;
@@ -88,13 +77,13 @@ export const Poster = styled.label`
 export const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 60px;
-  margin-bottom: 60px;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
 `;
 
 export const Form = styled.form`
-  margin-left: 90px;
-  margin-top: 40px;
+  margin-left: 5vw;
+  margin-top: 5vh;
   height: 180vh;
   display: flex;
   flex-direction: column;

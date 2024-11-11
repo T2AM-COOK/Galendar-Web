@@ -2,7 +2,16 @@ import { React, useState } from "react";
 import * as S from "./indexStyle";
 import { Link } from "react-router-dom";
 
-const BigContentBox = () => {
+const BigContentBox = ({
+  title,
+  id,
+  imgLink,
+  targets,
+  submitStartDate,
+  submitEndDate,
+  contestStartDate,
+  contestEndDate,
+}) => {
   const [isSelect, setIsSelect] = useState(false);
   const [count, setCount] = useState(0);
 
@@ -20,32 +29,34 @@ const BigContentBox = () => {
     <div style={{ marginTop: "40px" }}>
       <S.ContentBox>
         <Link
-          to="/contestinfo"
+          to={`/contestinfo/${id}`}
           style={{ textDecoration: "none", color: "inherit" }}
         >
           <S.ImageBox>
-            <S.ContestImg src="/images/contestImage.svg"></S.ContestImg>
+            <S.ContestImg src={imgLink}></S.ContestImg>
           </S.ImageBox>
         </Link>
         <S.ContentTextBox>
           <S.Text>
             <Link
-              to="/contestinfo"
+              to={`/contestinfo/${id}`}
               style={{ textDecoration: "none", color: "inherit" }}
             >
-              <S.Title>해커그라운드 해커톤 2024 in 의성</S.Title>
+              <S.Title>{title}</S.Title>
             </Link>
             <S.ContentDiv>
               <S.ContentImg src="/images/clock.svg" />
-              접수 기간 : 2024.7.21~8.01
+              접수 기간 :{submitStartDate} ~ {submitEndDate}
+              {targets && targets.map((target) => target.name).join(", ")}
             </S.ContentDiv>
             <S.ContentDiv>
               <S.ContentImg src="/images/contestcalendar.svg" />
-              대회 기간 : 2024.8.25~8.27
+              대회 기간 : {contestStartDate} ~ {contestEndDate}
             </S.ContentDiv>
             <S.ContentDiv>
               <S.ContentImg src="/images/map.svg" />
-              대회 장소 : 경상북도
+              대회 장소 :{" "}
+              {targets && targets.map((target) => target.name).join(", ")}
             </S.ContentDiv>
           </S.Text>
           <S.HeartDiv onClick={Count} style={{ cursor: "pointer" }}>
