@@ -18,7 +18,6 @@ const BookMark = () => {
       });
       if (res) {
         setContests(res.data.data);
-        console.log(contests);
       }
     } catch (e) {
       console.log("대회가 불러와지지 않았습니다.");
@@ -49,6 +48,11 @@ const BookMark = () => {
                     title={detail.title}
                     id={detail.id}
                     imgLink={detail.imgLink}
+                    submitStartDate={detail.submitStartDate}
+                    submitEndDate={detail.submitEndDate}
+                    contestStartDate={detail.contestStartDate}
+                    contestEndDate={detail.contestEndDate}
+                    cost={detail.cost}
                   />
                 ))
               : contests.map((detail) => (
@@ -56,6 +60,11 @@ const BookMark = () => {
                     title={detail.title}
                     id={detail.id}
                     imgLink={detail.imgLink}
+                    submitStartDate={detail.submitStartDate}
+                    submitEndDate={detail.submitEndDate}
+                    contestStartDate={detail.contestStartDate}
+                    contestEndDate={detail.contestEndDate}
+                    cost={detail.cost}
                   />
                 ))}
           </S.BookMarks>

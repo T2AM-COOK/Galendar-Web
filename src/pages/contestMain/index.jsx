@@ -19,10 +19,9 @@ const ContestInfo = () => {
       });
       if (res) {
         setContest(res.data.data);
-        console.log(res.data.data.contest);
       }
     } catch (e) {
-      console.log(e);
+      alert(e);
     }
   };
   useEffect(() => {

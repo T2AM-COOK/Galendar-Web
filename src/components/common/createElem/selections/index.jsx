@@ -48,7 +48,7 @@ const Join = ({ setTargets }) => {
   );
 };
 
-const Region = ({ regions, setRegions }) => {
+const Region = ({ setRegions }) => {
   const [regionOptions, setRegionOptions] = useState([]);
   const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
 

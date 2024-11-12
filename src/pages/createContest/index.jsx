@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import * as S from "./indexStyle";
 import Sidebar from "../../components/common/bars/sideBar";
+import { format } from "date-fns";
+import { useNavigate } from "react-router-dom";
+
 import {
   Fee,
   Join,
@@ -8,21 +11,24 @@ import {
 } from "../../components/common/createElem/selections";
 import axios from "axios";
 import { JoinSet, TimeSet } from "../../components/common/createElem/dates";
+const getFormattedDate = () => format(new Date(), "yyyy-MM-dd");
 
 const CreateContest = () => {
+  const navgiate = useNavigate();
   const [imglink, setImgLink] = useState();
   const [title, setTitle] = useState();
   const [content, setContent] = useState();
   const [link, setLink] = useState();
   const now = new Date();
-  const [submitStartDate, setSubmitStartDate] = useState(new Date());
-  const [submitEndDate, setSubmitEndDate] = useState(new Date());
-  const [contestStartDate, setContestStartDate] = useState(new Date());
-  const [contestEndDate, setContestEndDate] = useState(new Date());
+  const [submitStartDate, setSubmitStartDate] = useState(getFormattedDate);
+  const [submitEndDate, setSubmitEndDate] = useState(getFormattedDate);
+  const [contestStartDate, setContestStartDate] = useState(getFormattedDate);
+  const [contestEndDate, setContestEndDate] = useState(getFormattedDate);
   const [cost, setCost] = useState("");
   const [targets, setTargets] = useState([]);
   const [regions, setRegions] = useState([]);
   const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
+
   const contestData = {
     title: title,
     content: content,
@@ -64,18 +70,8 @@ const CreateContest = () => {
           }
         );
         if (res) {
-          console.log(imglink);
-          setImgLink("");
-          setTitle("");
-          setContent("");
-          setLink("");
-          setSubmitStartDate("");
-          setSubmitEndDate("");
-          setContestStartDate("");
-          setContestEndDate("");
-          setTargets([]);
-          setRegions([]);
           alert("대회 생성완료");
+          navgiate("/main");
         }
       } catch {
         alert("에러가 발생했습니다.");

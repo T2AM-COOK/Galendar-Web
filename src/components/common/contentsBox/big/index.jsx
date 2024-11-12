@@ -2,27 +2,24 @@ import { React, useState } from "react";
 import * as S from "./indexStyle";
 import { Link } from "react-router-dom";
 
+import { useRecoilState } from "recoil";
+import { userState } from "../../../../recoil";
+
 const BigContentBox = ({
   title,
   id,
   imgLink,
-  targets,
   submitStartDate,
   submitEndDate,
   contestStartDate,
   contestEndDate,
+  cost,
 }) => {
-  const [isSelect, setIsSelect] = useState(false);
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(false);
+  const [user] = useRecoilState(userState);
 
-  const Count = () => {
-    if (!isSelect) {
-      setCount((prevCount) => prevCount + 1);
-      setIsSelect(true);
-    } else {
-      setCount((prevCount) => prevCount - 1);
-      setIsSelect(false);
-    }
+  const Delete = () => {
+    console.log("삭제합니다");
   };
 
   return (
@@ -46,26 +43,34 @@ const BigContentBox = ({
             </Link>
             <S.ContentDiv>
               <S.ContentImg src="/images/clock.svg" />
-              접수 기간 :{submitStartDate} ~ {submitEndDate}
-              {targets && targets.map((target) => target.name).join(", ")}
+              접수 기간 : {submitStartDate} ~ {submitEndDate}
             </S.ContentDiv>
             <S.ContentDiv>
               <S.ContentImg src="/images/contestcalendar.svg" />
               대회 기간 : {contestStartDate} ~ {contestEndDate}
             </S.ContentDiv>
             <S.ContentDiv>
-              <S.ContentImg src="/images/map.svg" />
-              대회 장소 :{" "}
-              {targets && targets.map((target) => target.name).join(", ")}
+              <S.ContentImg src="/images/money.svg" />
+              대회 비용 : {cost === "PAID" ? "유료" : "무료"}
             </S.ContentDiv>
           </S.Text>
-          <S.HeartDiv onClick={Count} style={{ cursor: "pointer" }}>
+          <S.HeartDiv
+            onClick={
+              user.email === "admin@galendar.com"
+                ? Delete
+                : () => setCount(!count)
+            }
+            style={{ cursor: "pointer" }}
+          >
             <S.Heart
               src={
-                isSelect ? "/images/filledheart.svg" : "/images/emptyheart.svg"
+                user.email === "admin@galendar.com"
+                  ? "/images/delete.svg"
+                  : count
+                  ? "/images/filledheart.svg"
+                  : "/images/emptyheart.svg"
               }
             />
-            <span>{count}</span>
           </S.HeartDiv>
         </S.ContentTextBox>
       </S.ContentBox>

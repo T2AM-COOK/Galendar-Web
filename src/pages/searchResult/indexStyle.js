@@ -7,6 +7,10 @@ export const Div = styled.div`
   align-items: center;
 `;
 
+export const Filter = styled.div`
+  font-size: 20px;
+`;
+
 export const Title = styled.div`
   font-family: "Pretendard-Regular.otf";
   display: flex;

@@ -1,10 +1,8 @@
 import React from "react";
 import Sidebar from "../../components/common/bars/sideBar";
 import * as S from "./indexStyle";
-import BigContentBox from "../../components/common/contentsBox/big";
 import { useRecoilState } from "recoil";
 import { userState } from "../../recoil";
-import RecommendBoxWidth from "../../components/common/recommend/width";
 
 const Profile = () => {
   const [user] = useRecoilState(userState);
@@ -24,14 +22,6 @@ const Profile = () => {
               </S.ProfileText>
             </S.Profile>
           </S.Content>
-          <S.BookMark>
-            <S.BookMarkText>
-              <S.TopNav>
-                <RecommendBoxWidth />
-              </S.TopNav>
-            </S.BookMarkText>
-            <S.BookMarks></S.BookMarks>
-          </S.BookMark>
         </S.All>
       </S.Div>
     </div>
