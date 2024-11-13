@@ -23,12 +23,15 @@ const LoginContent = () => {
         if (res && res.data) {
           localStorage.setItem("ACCESS_TOKEN", res.data.data.accessToken);
           localStorage.setItem("REFRESH_TOKEN", res.data.data.refreshToken);
-          navigate("/main");
           alert("로그인 완료");
           setUser(loginData);
+          navigate("/main");
+          window.location.reload();
         }
-      } catch (e) {
-        alert(`${e}`);
+      } catch (err) {
+        if (err.response.data.status === 401) {
+          alert("아이디나 비밀번호가 잘못됐습니다.");
+        }
       }
     }
   };

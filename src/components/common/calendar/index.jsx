@@ -78,57 +78,59 @@ const MainCalendar = () => {
           </thead>
           <tbody>
             <S.Tr>
-              {prevDates.map((date) =>
-                PLDate - date <= PLDay ? <S.LastDayBox /> : null
+              {prevDates.map((date, index) =>
+                PLDate - date <= PLDay ? (
+                  <S.LastDayBox key={`prev-${index}`} />
+                ) : null
               )}
-              {thisDates.map((date) =>
+              {thisDates.map((date, index) =>
                 7 - PLDay > date ? (
-                  <S.DayBox>
+                  <S.DayBox key={`this-0-${index}`}>
                     <div>{date}</div>
                   </S.DayBox>
                 ) : null
               )}
             </S.Tr>
             <S.Tr>
-              {thisDates.map((date) =>
+              {thisDates.map((date, index) =>
                 6 - PLDay < date && date < 14 - PLDay ? (
-                  <S.DayBox>
+                  <S.DayBox key={`this-1-${index}`}>
                     <div>{date}</div>
                   </S.DayBox>
                 ) : null
               )}
             </S.Tr>
             <S.Tr>
-              {thisDates.map((date) =>
+              {thisDates.map((date, index) =>
                 13 - PLDay < date && date < 21 - PLDay ? (
-                  <S.DayBox>
+                  <S.DayBox key={`this-2-${index}`}>
                     <div>{date}</div>
                   </S.DayBox>
                 ) : null
               )}
             </S.Tr>
             <S.Tr>
-              {thisDates.map((date) =>
+              {thisDates.map((date, index) =>
                 20 - PLDay < date && date < 28 - PLDay ? (
-                  <S.DayBox>
+                  <S.DayBox key={`this-3-${index}`}>
                     <div>{date}</div>
                   </S.DayBox>
                 ) : null
               )}
             </S.Tr>
             <S.Tr>
-              {thisDates.map((date) =>
+              {thisDates.map((date, index) =>
                 27 - PLDay < date && date < 35 - PLDay ? (
-                  <S.DayBox>
+                  <S.DayBox key={`this-4-${index}`}>
                     <div>{date}</div>
                   </S.DayBox>
                 ) : null
               )}
             </S.Tr>
             <S.Tr>
-              {thisDates.map((date) =>
+              {thisDates.map((date, index) =>
                 34 - PLDay < date && date < 42 - PLDay ? (
-                  <S.DayBox>
+                  <S.DayBox key={`this-5-${index}`}>
                     <div>{date}</div>
                   </S.DayBox>
                 ) : null

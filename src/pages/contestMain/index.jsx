@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Topbar from "../../components/common/bars/topBar";
 import * as S from "./indexStyle";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 const ContestInfo = () => {
+  const navigate = useNavigate();
   const params = useParams();
   const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
 
@@ -21,7 +22,8 @@ const ContestInfo = () => {
         setContest(res.data.data);
       }
     } catch (e) {
-      alert(e);
+      alert("로그인 후 이용해 주세요.");
+      navigate("/login");
     }
   };
   useEffect(() => {

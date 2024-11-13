@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import * as S from "./indexStyle";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { userState } from "../../../../recoil";
+import axios from "axios";
+import { useEffect } from "react";
+const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
 
 const Topbar = () => {
   const navigate = useNavigate();
@@ -88,7 +91,7 @@ const Topbar = () => {
           </div>
         </div>
         <S.ProfileBar>
-          {user.email ? (
+          {ACCESS_TOKEN ? (
             <>
               <S.ProfileImage
                 src="/images/profile.svg"
