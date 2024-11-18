@@ -9,7 +9,7 @@ const StartPage = () => {
         <S.NavWrap>
           <S.NavItems>
             <S.Logo src="/images/blacklogo.svg" />
-            <div>팀 소개</div>
+            <div>ABOUT 갈랜더</div>
             <div>약관 내용</div>
             <div>나르샤 1등</div>
             <div>FAQ</div>

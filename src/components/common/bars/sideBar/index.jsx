@@ -5,7 +5,6 @@ import { useState } from "react";
 
 const Sidebar = () => {
   const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
-  const REFRESH_TOKEN = localStorage.getItem("REFRESH_TOKEN");
   const navigate = useNavigate();
 
   const [visible, setVisible] = useState(false);
@@ -29,7 +28,6 @@ const Sidebar = () => {
                 style={{ color: "#B01E1E" }}
                 onClick={() => {
                   localStorage.removeItem("ACCESS_TOKEN");
-                  localStorage.removeItem("REFRESH_TOKEN");
                   alert("로그아웃 되었습니다.");
                   navigate("/login");
                   window.location.reload();

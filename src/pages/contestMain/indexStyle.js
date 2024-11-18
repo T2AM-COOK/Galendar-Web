@@ -79,7 +79,7 @@ export const Button = styled.button`
 `;
 export const Heart = styled.img`
   width: 30px;
-  height: 30px;
+  height: 54px;
 `;
 
 export const ContestDetail = styled.div`

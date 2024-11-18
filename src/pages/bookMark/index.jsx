@@ -13,7 +13,7 @@ const BookMark = () => {
 
   const getContest = async () => {
     try {
-      const res = await axios.get("http://3.37.189.59/contest/list", {
+      const res = await axios.get("http://3.37.189.59/bookmark/list", {
         headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
       });
       if (res) {

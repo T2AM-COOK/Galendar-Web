@@ -22,21 +22,44 @@ const ContestInfo = () => {
         setContest(res.data.data);
       }
     } catch (e) {
-      alert("로그인 후 이용해 주세요.");
-      navigate("/login");
+      console.log(e);
     }
   };
   useEffect(() => {
     getContest();
   }, []);
 
-  const Count = () => {
+  const Count = async () => {
     if (!isSelect) {
-      setCount((prevCount) => prevCount + 1);
-      setIsSelect(true);
+      try {
+        const res = await axios.post(
+          `http://3.37.189.59/bookmark/${params.id}`,
+          "",
+          {
+            headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
+          }
+        );
+        if (res) {
+          setIsSelect(true);
+        }
+      } catch (err) {
+        console.log(err);
+      }
     } else {
-      setCount((prevCount) => prevCount - 1);
-      setIsSelect(false);
+      try {
+        const res = await axios.delete(
+          `http://3.37.189.59/bookmark/${params.id}`,
+          "",
+          {
+            headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
+          }
+        );
+        if (res) {
+          setIsSelect(false);
+        }
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
   return (
@@ -90,16 +113,15 @@ const ContestInfo = () => {
               >
                 <S.Button>방문하기</S.Button>
               </a>
-              <S.HeartDiv onClick={Count} style={{ cursor: "pointer" }}>
-                <S.Heart
-                  src={
-                    isSelect
-                      ? "/images/filledheart.svg"
-                      : "/images/emptyheart.svg"
-                  }
-                />
-                {count}
-              </S.HeartDiv>
+              <S.Heart
+                style={{ cursor: "pointer" }}
+                onClick={Count}
+                src={
+                  isSelect
+                    ? "/images/filledheart.svg"
+                    : "/images/emptyheart.svg"
+                }
+              />
             </S.Info>
           </S.Detail>
         </S.ContentBox>

@@ -5,12 +5,12 @@ import { useRecoilState } from "recoil";
 import { userState } from "../../../../recoil";
 import axios from "axios";
 import { useEffect } from "react";
-const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
 
 const Topbar = () => {
   const navigate = useNavigate();
   const [searchvalue, setSearchValue] = useState("");
   const [user] = useRecoilState(userState);
+  const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
 
   const changeSearch = (e) => {
     setSearchValue(e.target.value);
