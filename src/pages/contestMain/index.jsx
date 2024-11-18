@@ -5,13 +5,11 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 const ContestInfo = () => {
-  const navigate = useNavigate();
   const params = useParams();
   const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
 
   const [contest, setContest] = useState({});
   const [isSelect, setIsSelect] = useState(false);
-  const [count, setCount] = useState(0);
 
   const getContest = async () => {
     try {
@@ -49,7 +47,7 @@ const ContestInfo = () => {
       try {
         const res = await axios.delete(
           `http://3.37.189.59/bookmark/${params.id}`,
-          "",
+          params.id,
           {
             headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
           }

@@ -9,11 +9,25 @@ import axios from "axios";
 const BookMark = () => {
   const [user] = useRecoilState(userState);
   const [contests, setContests] = useState([]);
+  const [bookmarkContests, setBookmarkContests] = useState([]);
   const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
+
+  const getBookMarkContest = async () => {
+    try {
+      const res = await axios.get("http://3.37.189.59/bookmark/list", {
+        headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
+      });
+      if (res) {
+        setBookmarkContests(res.data.data);
+      }
+    } catch (e) {
+      console.log("대회가 불러와지지 않았습니다.");
+    }
+  };
 
   const getContest = async () => {
     try {
-      const res = await axios.get("http://3.37.189.59/bookmark/list", {
+      const res = await axios.get("http://3.37.189.59/contest/list", {
         headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
       });
       if (res) {
@@ -25,6 +39,7 @@ const BookMark = () => {
   };
 
   useEffect(() => {
+    getBookMarkContest();
     getContest();
   }, []);
 
@@ -55,7 +70,7 @@ const BookMark = () => {
                     cost={detail.cost}
                   />
                 ))
-              : contests.map((detail) => (
+              : bookmarkContests.map((detail) => (
                   <BigContentBox
                     title={detail.title}
                     id={detail.id}
@@ -65,6 +80,7 @@ const BookMark = () => {
                     contestStartDate={detail.contestStartDate}
                     contestEndDate={detail.contestEndDate}
                     cost={detail.cost}
+                    isBookmark={true}
                   />
                 ))}
           </S.BookMarks>
