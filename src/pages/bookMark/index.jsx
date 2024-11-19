@@ -41,7 +41,7 @@ const BookMark = () => {
   useEffect(() => {
     getBookMarkContest();
     getContest();
-  }, []);
+  }, [ACCESS_TOKEN]);
 
   return (
     <S.Div>

@@ -7,6 +7,7 @@ import axios from "axios";
 const ContestInfo = () => {
   const params = useParams();
   const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
+  const REFRESH_TOKEN = localStorage.getItem("REFRESH_TOKEN");
 
   const [contest, setContest] = useState({});
   const [isSelect, setIsSelect] = useState(false);
@@ -19,8 +20,17 @@ const ContestInfo = () => {
       if (res) {
         setContest(res.data.data);
       }
-    } catch (e) {
-      console.log(e);
+    } catch (err) {
+      if (err.response && err.response.status === 401) {
+        try {
+          const res = await axios.post(`http://3.37.189.59/auth/refresh`, {
+            refreshToken: REFRESH_TOKEN,
+          });
+          if (res) {
+            localStorage.setItem("REFRESH_TOKEN", res.data.data.refreshToken);
+          }
+        } catch {}
+      }
     }
   };
   useEffect(() => {

@@ -10,7 +10,7 @@ export const ContentBox = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 979px;
+  width: 70%;
   height: 472px;
 `;
 export const ContentDiv = styled.div`
@@ -43,6 +43,7 @@ export const ImageBox = styled.div`
 
 export const Title = styled.div`
   font-size: 32px;
+  width: 90%;
   font-weight: bold;
 `;
 

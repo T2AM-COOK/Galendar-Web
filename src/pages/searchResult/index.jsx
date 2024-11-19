@@ -15,7 +15,7 @@ const Search = () => {
   const [cost, setCost] = useState("");
   const [targets, setTargets] = useState([]);
   const [regions, setRegions] = useState([]);
-
+   
   const searchData = {
     id: params,
     regions: regions,

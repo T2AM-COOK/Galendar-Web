@@ -6,7 +6,7 @@ import axios from "axios";
 const RecommendBoxLength = () => {
   const [contests, setContests] = useState([]);
   const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
-
+  const REFRESH_TOKEN = localStorage.getItem("REFRESH_TOKEN");
   const getContest = async () => {
     try {
       const res = await axios.get("http://3.37.189.59/contest/list", {
@@ -15,8 +15,17 @@ const RecommendBoxLength = () => {
       if (res) {
         setContests(res.data.data);
       }
-    } catch (e) {
-      console.log("대회가 불러와지지 않았습니다.");
+    } catch (err) {
+      if (err.response && err.response.status === 401) {
+        try {
+          const res = await axios.post(`http://3.37.189.59/auth/refresh`, {
+            refreshToken: REFRESH_TOKEN,
+          });
+          if (res) {
+            localStorage.setItem("REFRESH_TOKEN", res.data.data.refreshToken);
+          }
+        } catch {}
+      }
     }
   };
   useEffect(() => {
