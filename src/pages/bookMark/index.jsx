@@ -11,6 +11,7 @@ const BookMark = () => {
   const [contests, setContests] = useState([]);
   const [bookmarkContests, setBookmarkContests] = useState([]);
   const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
+  const REFRESH_TOKEN = localStorage.getItem("REFRESH_TOKEN");
 
   const getBookMarkContest = async () => {
     try {
@@ -19,6 +20,7 @@ const BookMark = () => {
       });
       if (res) {
         setBookmarkContests(res.data.data);
+        console.log(res.data.data);
       }
     } catch (e) {
       console.log("대회가 불러와지지 않았습니다.");
@@ -33,15 +35,24 @@ const BookMark = () => {
       if (res) {
         setContests(res.data.data);
       }
-    } catch (e) {
-      console.log("대회가 불러와지지 않았습니다.");
+    } catch (err) {
+      if (err.response && err.response.status === 401) {
+        try {
+          const res = await axios.post(`http://3.37.189.59/auth/refresh`, {
+            refreshToken: REFRESH_TOKEN,
+          });
+          if (res) {
+            localStorage.setItem("REFRESH_TOKEN", res.data.data.refreshToken);
+          }
+        } catch {}
+      }
     }
   };
 
   useEffect(() => {
     getBookMarkContest();
     getContest();
-  }, [ACCESS_TOKEN]);
+  }, []);
 
   return (
     <S.Div>
@@ -73,7 +84,7 @@ const BookMark = () => {
               : bookmarkContests.map((detail) => (
                   <BigContentBox
                     title={detail.title}
-                    id={detail.id}
+                    id={detail.contestId}
                     imgLink={detail.imgLink}
                     submitStartDate={detail.submitStartDate}
                     submitEndDate={detail.submitEndDate}

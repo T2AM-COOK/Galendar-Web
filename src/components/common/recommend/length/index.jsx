@@ -22,14 +22,18 @@ const RecommendBoxLength = () => {
             refreshToken: REFRESH_TOKEN,
           });
           if (res) {
+            localStorage.setItem("ACCESS_TOKEN", res.data.data.accessToken);
             localStorage.setItem("REFRESH_TOKEN", res.data.data.refreshToken);
           }
-        } catch {}
+        } catch (e) {
+          console.log("에러러러");
+        }
       }
     }
   };
   useEffect(() => {
     getContest();
+    console.log(ACCESS_TOKEN, REFRESH_TOKEN);
   }, []);
   return (
     <S.Container>
