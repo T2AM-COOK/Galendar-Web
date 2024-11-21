@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Topbar from "../../components/common/bars/topBar";
 import * as S from "./indexStyle";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 
 const ContestInfo = () => {
   const params = useParams();
   const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
   const REFRESH_TOKEN = localStorage.getItem("REFRESH_TOKEN");
-
-  const [contest, setContest] = useState({});
-  const [isSelect, setIsSelect] = useState(false);
+  const [contest, setContest] = useState([]);
+  const [isSelect, setIsSelect] = useState();
 
   const getContest = async () => {
     try {
@@ -19,6 +18,8 @@ const ContestInfo = () => {
       });
       if (res) {
         setContest(res.data.data);
+        setIsSelect(contest.bookmarked);
+        console.log(contest[0]);
       }
     } catch (err) {
       if (err.response && err.response.status === 401) {
@@ -38,7 +39,20 @@ const ContestInfo = () => {
   }, []);
 
   const Count = async () => {
-    if (!isSelect) {
+    if (isSelect) {
+      try {
+        const res = await axios.delete(
+          `http://3.37.189.59/bookmark/${params.id}`,
+          "",
+          {
+            headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
+          }
+        );
+        if (res) {
+          setIsSelect(!isSelect);
+        }
+      } catch (err) {}
+    } else {
       try {
         const res = await axios.post(
           `http://3.37.189.59/bookmark/${params.id}`,
@@ -48,25 +62,10 @@ const ContestInfo = () => {
           }
         );
         if (res) {
-          setIsSelect(true);
+          setIsSelect(!isSelect);
         }
       } catch (err) {
-        console.log(err);
-      }
-    } else {
-      try {
-        const res = await axios.delete(
-          `http://3.37.189.59/bookmark/${params.id}`,
-          params.id,
-          {
-            headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
-          }
-        );
-        if (res) {
-          setIsSelect(false);
-        }
-      } catch (err) {
-        console.log(err);
+        alert(isSelect);
       }
     }
   };

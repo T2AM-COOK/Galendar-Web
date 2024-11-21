@@ -20,7 +20,6 @@ const BookMark = () => {
       });
       if (res) {
         setBookmarkContests(res.data.data);
-        console.log(res.data.data);
       }
     } catch (e) {
       console.log("대회가 불러와지지 않았습니다.");
@@ -85,6 +84,7 @@ const BookMark = () => {
                   <BigContentBox
                     title={detail.title}
                     id={detail.contestId}
+                    bookmarkId={detail.id}
                     imgLink={detail.imgLink}
                     submitStartDate={detail.submitStartDate}
                     submitEndDate={detail.submitEndDate}

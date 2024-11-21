@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import * as S from "./indexStyle";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { userState } from "../../../../recoil";
 import axios from "axios";
@@ -8,6 +8,7 @@ import axios from "axios";
 const BigContentBox = ({
   title,
   id,
+  bookmarkId,
   imgLink,
   submitStartDate,
   submitEndDate,
@@ -15,18 +16,17 @@ const BigContentBox = ({
   contestEndDate,
   cost,
   isBookmark,
+  removeBookmark,
 }) => {
   const [isSelect, setIsSelect] = useState(isBookmark);
   const [user] = useRecoilState(userState);
-  const params = useParams();
   const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
 
   const Count = async () => {
     if (!isSelect) {
       try {
         const res = await axios.post(
-          `http://3.37.189.59/bookmark/${params.id}`,
-          "",
+          `http://3.37.189.59/bookmark/${bookmarkId}`,
           {
             headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
           }
@@ -40,14 +40,14 @@ const BigContentBox = ({
     } else {
       try {
         const res = await axios.delete(
-          `http://3.37.189.59/bookmark/${params.id}`,
-          params.id,
+          `http://3.37.189.59/bookmark/${bookmarkId}`,
           {
             headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
           }
         );
         if (res) {
           setIsSelect(false);
+          removeBookmark(bookmarkId);
         }
       } catch (err) {
         console.log(err);
@@ -92,7 +92,7 @@ const BigContentBox = ({
             </S.ContentDiv>
           </S.Text>
           <S.HeartDiv
-            onClick={user.email === "admin@galendar.com" ? Delete : () => Count}
+            onClick={user.email === "admin@galendar.com" ? Delete : Count}
             style={{ cursor: "pointer" }}
           >
             <S.Heart
