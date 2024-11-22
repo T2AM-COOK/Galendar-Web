@@ -75,24 +75,26 @@ export const Nav = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
-export const Search = styled.input`
-  padding-left: 20px;
-  width: 30vw;
-  height: 45px;
-  border: 0px;
-  border-radius: 30px;
-  background-color: #f9f9f9;
+
+export const RightNav = styled.div`
+  display: flex;
+  width: 10vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 `;
 
-export const SearchDiv = styled.div`
-  position: absolute;
-  right: 2vw;
-  top: 1.6vh;
+export const Search = styled.div`
+  width: 10vw;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  border: 0px;
 `;
 
 export const SearchImg = styled.img`
-  width: 19px;
-  height: 19px;
+  width: 24px;
+  height: 24px;
   cursor: pointer;
   user-select: none;
   -webkit-user-drag: none;

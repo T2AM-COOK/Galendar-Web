@@ -22,7 +22,7 @@ const Router = () => {
         <Route path="/profile" element={<Profile />}></Route>
         <Route path="/bookmark" element={<BookMark />}></Route>
         <Route path="/contestinfo/:id" element={<ContestInfo />}></Route>
-        <Route path="/search/" element={<Search />}></Route>
+        <Route path="/search/:id" element={<Search />}></Route>
       </Routes>
     </BrowserRouter>
   );

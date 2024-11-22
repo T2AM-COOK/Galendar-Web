@@ -3,31 +3,49 @@ import MediumContestBox from "../../components/common/contentsBox/medium";
 import RecommendBoxWidth from "../../components/common/recommend/width";
 import * as S from "./indexStyle";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+
 import {
   Fee,
   Join,
   Region,
 } from "../../components/common/createElem/selections";
 const Search = () => {
-  const { params } = useParams();
+  const params = useParams();
   const [cost, setCost] = useState("");
   const [targets, setTargets] = useState([]);
   const [regions, setRegions] = useState([]);
-   
+  const [searchvalue, setSearchValue] = useState("");
+  const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
+
+  const changeSearch = (e) => {
+    setSearchValue(e.target.value);
+  };
+
+  const navigate = useNavigate();
+  const activeEnter = (e) => {
+    if (e.key === "Enter") {
+      navigate(`/search/${searchvalue}`);
+    }
+  };
+
+  const activeEnter2 = () => {
+    navigate(`/search/${searchvalue}`);
+  };
+
   const searchData = {
-    id: params,
+    id: params.id,
     regions: regions,
     targets: targets,
     cost: cost,
   };
 
   const getContest = async () => {
-    const res = await axios.post(
-      `http://3.37.189.59/contest/${params}`,
-      searchData
-    );
+    const res = await axios.get(`http://3.37.189.59/contest/list`, {
+      headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
+      searchData,
+    });
     try {
       if (res) {
       }
@@ -51,8 +69,26 @@ const Search = () => {
             width: "963px",
           }}
         >
+          <S.Search
+            placeholder="대회를 검색해주세요."
+            style={{ fontSize: "14px" }}
+            onChange={changeSearch}
+            onKeyDown={(e) => activeEnter(e)}
+          />
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-end",
+            }}
+          >
+            <S.SearchDiv>
+              <S.SearchImg src="/images/search.svg" onClick={activeEnter2} />
+            </S.SearchDiv>
+          </div>
+
           <S.Title>
-            <span style={{ fontSize: "32px" }}>{params}</span>{" "}
+            <span style={{ fontSize: "32px" }}>{params.id}</span>{" "}
             <span style={{ fontSize: "28px" }}>검색결과</span>
             <span style={{ fontSize: "16px" }}>${}건</span>
           </S.Title>

@@ -2,14 +2,11 @@ import React, { useState } from "react";
 import * as S from "./indexStyle";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useRecoilState } from "recoil";
-import { userState } from "../../../recoil";
 
 const LoginContent = () => {
   const navigate = useNavigate();
   const [emailValue, setEmail] = useState("");
   const [pwValue, setPw] = useState("");
-  const [user, setUser] = useRecoilState(userState);
 
   const loginData = {
     email: emailValue,
@@ -24,7 +21,6 @@ const LoginContent = () => {
           localStorage.setItem("ACCESS_TOKEN", res.data.data.accessToken);
           localStorage.setItem("REFRESH_TOKEN", res.data.data.refreshToken);
           alert("로그인 완료");
-          setUser(loginData);
           navigate("/main");
           window.location.reload();
         }

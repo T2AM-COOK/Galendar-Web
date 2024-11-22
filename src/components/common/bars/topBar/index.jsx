@@ -1,32 +1,19 @@
 import React, { useState } from "react";
 import * as S from "./indexStyle";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { useEffect } from "react";
 import useGetMe from "../../../../hooks/useGetMe";
 
 const Topbar = () => {
   const { user } = useGetMe();
   const navigate = useNavigate();
-  const [searchvalue, setSearchValue] = useState("");
   const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
-
-  const changeSearch = (e) => {
-    setSearchValue(e.target.value);
-  };
 
   const main = () => {
     navigate(`/main`);
   };
 
-  const activeEnter = (e) => {
-    if (e.key === "Enter") {
-      navigate(`/search/${searchvalue}`);
-    }
-  };
-
-  const activeEnter2 = () => {
-    navigate(`/search/${searchvalue}`);
+  const activeEnter = () => {
+    navigate(`/search/${"대회검색"}`);
   };
 
   if (!user) {
@@ -68,50 +55,31 @@ const Topbar = () => {
             )}
           </div>
         </S.Nav>
-        <div
-          style={{
-            position: "relative",
-            display: "inline-block",
-          }}
-        >
-          <S.Search
-            placeholder="대회를 검색해주세요."
-            style={{ fontSize: "14px" }}
-            onChange={changeSearch}
-            onKeyDown={(e) => activeEnter(e)}
-          />
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "flex-end",
-            }}
-          >
-            <S.SearchDiv>
-              <S.SearchImg src="/images/search.svg" onClick={activeEnter2} />
-            </S.SearchDiv>
-          </div>
-        </div>
-        <S.ProfileBar>
-          {ACCESS_TOKEN ? (
-            <>
-              <S.ProfileImage
-                src="/images/profile.svg"
-                onClick={() => navigate("/profile")}
-              />
-            </>
-          ) : (
-            <>
-              <S.Text
-                onClick={() => navigate("/register")}
-                style={{ color: "#2B32B2" }}
-              >
-                회원가입
-              </S.Text>
-              <S.Text onClick={() => navigate("/login")}>로그인</S.Text>
-            </>
-          )}
-        </S.ProfileBar>
+        <S.RightNav>
+          <S.Search>
+            <S.SearchImg src="/images/search.svg" onClick={activeEnter} />
+          </S.Search>
+          <S.ProfileBar>
+            {ACCESS_TOKEN ? (
+              <>
+                <S.ProfileImage
+                  src="/images/profile.svg"
+                  onClick={() => navigate("/profile")}
+                />
+              </>
+            ) : (
+              <>
+                <S.Text
+                  onClick={() => navigate("/register")}
+                  style={{ color: "#2B32B2" }}
+                >
+                  회원가입
+                </S.Text>
+                <S.Text onClick={() => navigate("/login")}>로그인</S.Text>
+              </>
+            )}
+          </S.ProfileBar>
+        </S.RightNav>
       </S.Contents>
     </S.Container>
   );
