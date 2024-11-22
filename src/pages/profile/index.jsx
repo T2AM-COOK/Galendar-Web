@@ -1,28 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Sidebar from "../../components/common/bars/sideBar";
 import * as S from "./indexStyle";
-import axios from "axios";
+import useGetMe from "../../hooks/useGetMe";
 
 const Profile = () => {
-  const [user, setUser] = useState([]);
-  const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
+  const { user } = useGetMe();
 
-  const getMe = async () => {
-    try {
-      const res = await axios.get("http://3.37.189.59/user/me", {
-        headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
-      });
-      if (res) {
-        setUser(res.data.data);
-      }
-    } catch (e) {
-      console.log("대회가 불러와지지 않았습니다.");
-    }
-  };
-
-  useEffect(() => {
-    getMe();
-  }, []);
+  if (!user) {
+    return;
+  }
 
   return (
     <div>

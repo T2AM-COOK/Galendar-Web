@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import * as S from "./indexStyle";
 import { useNavigate } from "react-router-dom";
-import { useRecoilState } from "recoil";
-import { userState } from "../../../../recoil";
 import axios from "axios";
 import { useEffect } from "react";
+import useGetMe from "../../../../hooks/useGetMe";
 
 const Topbar = () => {
+  const { user } = useGetMe();
   const navigate = useNavigate();
   const [searchvalue, setSearchValue] = useState("");
-  const [user] = useRecoilState(userState);
   const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
 
   const changeSearch = (e) => {
@@ -30,6 +29,9 @@ const Topbar = () => {
     navigate(`/search/${searchvalue}`);
   };
 
+  if (!user) {
+    return;
+  }
   return (
     <S.Container>
       <S.Contents>
@@ -48,7 +50,7 @@ const Topbar = () => {
               cursor: "pointer",
             }}
           >
-            {user.email === "admin@galendar.com" ? (
+            {user.role === "ROLE_ADMIN" ? (
               <span>대회 관리</span>
             ) : (
               <span>북마크</span>
@@ -59,7 +61,7 @@ const Topbar = () => {
               cursor: "pointer",
             }}
           >
-            {user.email === "admin@galendar.com" ? (
+            {user.role === "ROLE_ADMIN" ? (
               <span onClick={() => navigate("/createcontest")}>대회 생성</span>
             ) : (
               <span>ABOUT 갈랜더</span>

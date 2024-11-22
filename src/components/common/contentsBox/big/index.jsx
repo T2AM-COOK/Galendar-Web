@@ -1,37 +1,30 @@
-import { React, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as S from "./indexStyle";
 import { Link } from "react-router-dom";
-import { useRecoilState } from "recoil";
-import { userState } from "../../../../recoil";
+import useGetMe from "../../../../hooks/useGetMe";
 import axios from "axios";
+import useGetContest from "../../../../hooks/useGetContest";
 
 const BigContentBox = ({ id, bookmarkId }) => {
-  const [contest, setContest] = useState([]);
-  const [isSelect, setIsSelect] = useState();
-  const [user] = useRecoilState(userState);
+  const { user } = useGetMe();
+  const { contest } = useGetContest(id);
   const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
+  const [isBookmarked, setIsBookmarked] = useState(false);
 
-  const getContest = async () => {
-    try {
-      const res = await axios.get(`http://3.37.189.59/contest/${id}`, {
-        headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
-      });
-      if (res) {
-        setContest(res.data.data);
-        setIsSelect(res.data.data.bookmarked);
-      }
-    } catch {}
-  };
+  useEffect(() => {
+    if (contest) {
+      setIsBookmarked(contest.bookmarked);
+    }
+  }, [contest]);
 
   const Count = async () => {
-    if (!isSelect) {
+    if (!isBookmarked) {
       try {
         const res = await axios.post(`http://3.37.189.59/bookmark/${id}`, "", {
           headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
         });
         if (res) {
-          setIsSelect(true);
-          // setIsUpdated(true);
+          setIsBookmarked(true);
         }
       } catch (err) {
         console.log(err);
@@ -45,19 +38,36 @@ const BigContentBox = ({ id, bookmarkId }) => {
           }
         );
         if (res) {
-          setIsSelect(false);
+          setIsBookmarked(false);
         }
-      } catch (err) {}
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
+
+  const Delete = async () => {
+    try {
+      const res = await axios.delete(
+        `http://3.37.189.59/contest/${contest.id}`,
+        {
+          headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
+        }
+      );
+      if (res) {
+        console.log("삭제완료");
+      }
+    } catch (e) {
+      console.log(e.response);
     }
   };
 
   useEffect(() => {
-    getContest();
-  }, []);
-
-  const Delete = () => {
-    console.log("삭제합니다");
-  };
+    console.log(isBookmarked);
+  }, [isBookmarked]);
+  if (!user || !contest) {
+    return null;
+  }
 
   return (
     <div style={{ marginTop: "40px" }}>
@@ -92,14 +102,14 @@ const BigContentBox = ({ id, bookmarkId }) => {
             </S.ContentDiv>
           </S.Text>
           <S.HeartDiv
-            onClick={user.email === "admin@galendar.com" ? Delete : Count}
+            onClick={user.role === "ROLE_ADMIN" ? Delete : Count}
             style={{ cursor: "pointer" }}
           >
             <S.Heart
               src={
-                user.email === "admin@galendar.com"
+                user.role === "ROLE_ADMIN"
                   ? "/images/delete.svg"
-                  : isSelect
+                  : isBookmarked
                   ? "/images/filledheart.svg"
                   : "/images/emptyheart.svg"
               }

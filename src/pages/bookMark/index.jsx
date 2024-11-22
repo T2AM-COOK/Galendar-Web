@@ -2,12 +2,11 @@ import React, { useEffect, useState } from "react";
 import Sidebar from "../../components/common/bars/sideBar";
 import * as S from "./indexStyle";
 import BigContentBox from "../../components/common/contentsBox/big";
-import { useRecoilState } from "recoil";
-import { userState } from "../../recoil";
+import useGetMe from "../../hooks/useGetMe";
 import axios from "axios";
 
 const BookMark = () => {
-  const [user] = useRecoilState(userState);
+  const { user } = useGetMe();
   const [contests, setContests] = useState([]);
   const [bookmarkContests, setBookmarkContests] = useState([]);
   const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
@@ -53,6 +52,9 @@ const BookMark = () => {
     getContest();
   }, []);
 
+  if (!user) {
+    return;
+  }
   // useEffect(()=>{
   //   if(isUpdated){
   //     getBookMarkContest();
@@ -65,7 +67,7 @@ const BookMark = () => {
       <S.Content>
         <S.BookMarkText>
           <S.TopNav>
-            {user.email === "admin@galendar.com" ? (
+            {user.role === "ROLE_ADMIN" ? (
               <S.Title>대회 관리</S.Title>
             ) : (
               <S.Title>북마크</S.Title>
@@ -73,7 +75,7 @@ const BookMark = () => {
             <S.Hr />
           </S.TopNav>
           <S.BookMarks>
-            {user.email === "admin@galendar.com"
+            {user.role === "ROLE_ADMIN"
               ? contests.map((detail) => <BigContentBox id={detail.id} />)
               : bookmarkContests.map((detail) => (
                   <BigContentBox id={detail.contestId} bookmarkId={detail.id} />
