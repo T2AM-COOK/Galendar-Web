@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Div = styled.div`
   display: flex;
   background-color: #f9f9f9;
+  width: 100%;
 `;
 
 export const Hr = styled.hr`
@@ -15,6 +16,7 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: auto;
 `;
 
 export const BookMarkText = styled.div`

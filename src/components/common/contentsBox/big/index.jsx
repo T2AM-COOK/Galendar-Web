@@ -1,36 +1,34 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import * as S from "./indexStyle";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { userState } from "../../../../recoil";
 import axios from "axios";
 
-const BigContentBox = ({
-  title,
-  id,
-  bookmarkId,
-  imgLink,
-  submitStartDate,
-  submitEndDate,
-  contestStartDate,
-  contestEndDate,
-  cost,
-  isBookmark,
-  removeBookmark,
-}) => {
-  const [isSelect, setIsSelect] = useState(isBookmark);
+const BigContentBox = ({ id, bookmarkId }) => {
+  const [contest, setContest] = useState([]);
+  const [isSelect, setIsSelect] = useState();
   const [user] = useRecoilState(userState);
   const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
+
+  const getContest = async () => {
+    try {
+      const res = await axios.get(`http://3.37.189.59/contest/${id}`, {
+        headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
+      });
+      if (res) {
+        setContest(res.data.data);
+        setIsSelect(res.data.data.bookmarked);
+      }
+    } catch {}
+  };
 
   const Count = async () => {
     if (!isSelect) {
       try {
-        const res = await axios.post(
-          `http://3.37.189.59/bookmark/${bookmarkId}`,
-          {
-            headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
-          }
-        );
+        const res = await axios.post(`http://3.37.189.59/bookmark/${id}`, "", {
+          headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
+        });
         if (res) {
           setIsSelect(true);
         }
@@ -47,13 +45,14 @@ const BigContentBox = ({
         );
         if (res) {
           setIsSelect(false);
-          removeBookmark(bookmarkId);
         }
-      } catch (err) {
-        console.log(err);
-      }
+      } catch (err) {}
     }
   };
+
+  useEffect(() => {
+    getContest();
+  }, []);
 
   const Delete = () => {
     console.log("삭제합니다");
@@ -67,28 +66,28 @@ const BigContentBox = ({
           style={{ textDecoration: "none", color: "inherit" }}
         >
           <S.ImageBox>
-            <S.ContestImg src={imgLink}></S.ContestImg>
+            <S.ContestImg src={contest.imgLink}></S.ContestImg>
           </S.ImageBox>
         </Link>
         <S.ContentTextBox>
           <S.Text>
             <Link
-              to={`/contestinfo/${id}`}
+              to={`/contestinfo/${contest.id}`}
               style={{ textDecoration: "none", color: "inherit" }}
             >
-              <S.Title>{title}</S.Title>
+              <S.Title>{contest.title}</S.Title>
             </Link>
             <S.ContentDiv>
               <S.ContentImg src="/images/clock.svg" />
-              접수 기간 : {submitStartDate} ~ {submitEndDate}
+              접수 기간 : {contest.submitStartDate} ~ {contest.submitEndDate}
             </S.ContentDiv>
             <S.ContentDiv>
               <S.ContentImg src="/images/contestcalendar.svg" />
-              대회 기간 : {contestStartDate} ~ {contestEndDate}
+              대회 기간 : {contest.contestStartDate} ~ {contest.contestEndDate}
             </S.ContentDiv>
             <S.ContentDiv>
               <S.ContentImg src="/images/money.svg" />
-              대회 비용 : {cost === "PAID" ? "유료" : "무료"}
+              대회 비용 : {contest.cost === "PAID" ? "유료" : "무료"}
             </S.ContentDiv>
           </S.Text>
           <S.HeartDiv

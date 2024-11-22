@@ -68,31 +68,9 @@ const BookMark = () => {
           </S.TopNav>
           <S.BookMarks>
             {user.email === "admin@galendar.com"
-              ? contests.map((detail) => (
-                  <BigContentBox
-                    title={detail.title}
-                    id={detail.id}
-                    imgLink={detail.imgLink}
-                    submitStartDate={detail.submitStartDate}
-                    submitEndDate={detail.submitEndDate}
-                    contestStartDate={detail.contestStartDate}
-                    contestEndDate={detail.contestEndDate}
-                    cost={detail.cost}
-                  />
-                ))
+              ? contests.map((detail) => <BigContentBox id={detail.id} />)
               : bookmarkContests.map((detail) => (
-                  <BigContentBox
-                    title={detail.title}
-                    id={detail.contestId}
-                    bookmarkId={detail.id}
-                    imgLink={detail.imgLink}
-                    submitStartDate={detail.submitStartDate}
-                    submitEndDate={detail.submitEndDate}
-                    contestStartDate={detail.contestStartDate}
-                    contestEndDate={detail.contestEndDate}
-                    cost={detail.cost}
-                    isBookmark={true}
-                  />
+                  <BigContentBox id={detail.contestId} bookmarkId={detail.id} />
                 ))}
           </S.BookMarks>
         </S.BookMarkText>

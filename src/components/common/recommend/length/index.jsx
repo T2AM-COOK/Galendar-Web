@@ -33,7 +33,6 @@ const RecommendBoxLength = () => {
   };
   useEffect(() => {
     getContest();
-    console.log(ACCESS_TOKEN, REFRESH_TOKEN);
   }, []);
   return (
     <S.Container>

@@ -10,6 +10,7 @@ const ContestInfo = () => {
   const REFRESH_TOKEN = localStorage.getItem("REFRESH_TOKEN");
   const [contest, setContest] = useState([]);
   const [isSelect, setIsSelect] = useState();
+  const [bookNum, setBookNum] = useState(null);
 
   const getContest = async () => {
     try {
@@ -18,8 +19,7 @@ const ContestInfo = () => {
       });
       if (res) {
         setContest(res.data.data);
-        setIsSelect(contest.bookmarked);
-        console.log(contest[0]);
+        setIsSelect(res.data.data.bookmarked);
       }
     } catch (err) {
       if (err.response && err.response.status === 401) {
@@ -41,8 +41,28 @@ const ContestInfo = () => {
   const Count = async () => {
     if (isSelect) {
       try {
+        const res = await axios.get(
+          `http://3.37.189.59/bookmark/list`,
+          {
+            page: 1,
+            size: 1,
+            keyword: " ",
+          },
+          {
+            headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
+          }
+        );
+        if (res) {
+          res.data.data.map((list) => {
+            if (list.contestId === params.id) {
+              setBookNum(list.id);
+            }
+          });
+        }
+      } catch (err) {}
+      try {
         const res = await axios.delete(
-          `http://3.37.189.59/bookmark/${params.id}`,
+          `http://3.37.189.59/bookmark/${bookNum}`,
           "",
           {
             headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
@@ -64,9 +84,7 @@ const ContestInfo = () => {
         if (res) {
           setIsSelect(!isSelect);
         }
-      } catch (err) {
-        alert(isSelect);
-      }
+      } catch (err) {}
     }
   };
   return (
