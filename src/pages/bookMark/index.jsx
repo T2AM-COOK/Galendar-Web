@@ -53,6 +53,12 @@ const BookMark = () => {
     getContest();
   }, []);
 
+  // useEffect(()=>{
+  //   if(isUpdated){
+  //     getBookMarkContest();
+  //   }
+  // },[isUpdated]);
+
   return (
     <S.Div>
       <Sidebar />

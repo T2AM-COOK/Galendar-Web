@@ -31,6 +31,7 @@ const BigContentBox = ({ id, bookmarkId }) => {
         });
         if (res) {
           setIsSelect(true);
+          // setIsUpdated(true);
         }
       } catch (err) {
         console.log(err);
