@@ -61,7 +61,25 @@ const Search = () => {
   return (
     <div style={{ backgroundColor: "#F9F9F9", minHeight: "100vh" }}>
       <Topbar />
+
       <S.Div>
+        <S.SearchDiv>
+          <S.Search
+            placeholder="대회를 검색해주세요."
+            style={{ fontSize: "14px" }}
+            onChange={changeSearch}
+            onKeyDown={(e) => activeEnter(e)}
+          />
+          <S.SearchImg src="/images/search.svg" onClick={activeEnter2} />
+        </S.SearchDiv>
+
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-end",
+          }}
+        ></div>
         <div
           style={{
             display: "flex",
@@ -69,26 +87,10 @@ const Search = () => {
             width: "963px",
           }}
         >
-          <S.Search
-            placeholder="대회를 검색해주세요."
-            style={{ fontSize: "14px" }}
-            onChange={changeSearch}
-            onKeyDown={(e) => activeEnter(e)}
-          />
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "flex-end",
-            }}
-          >
-            <S.SearchDiv>
-              <S.SearchImg src="/images/search.svg" onClick={activeEnter2} />
-            </S.SearchDiv>
-          </div>
-
           <S.Title>
-            <span style={{ fontSize: "32px" }}>{params.id}</span>{" "}
+            <span style={{ fontSize: "32px", fontWeight: "bold" }}>
+              "{params.id}"
+            </span>
             <span style={{ fontSize: "28px" }}>검색결과</span>
             <span style={{ fontSize: "16px" }}>${}건</span>
           </S.Title>

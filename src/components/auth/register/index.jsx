@@ -31,31 +31,46 @@ const RegisterContent = () => {
         );
         if (res) {
           alert("회원 가입에 성공했습니다.");
-          navigate("/main");
-          localStorage.setItem("ACCESS_TOKEN", res.data.accessToken);
-          localStorage.setItem("REFRESH_TOKEN", res.data.refreshToken);
+          navigate("/login");
         }
-      } catch {
+      } catch (e) {
+        if (e.response.status === 400) {
+          alert("이미 존재하는 회원입니다.");
+        }
         alert("오류 발생");
       }
     }
   };
-  const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
   const sendEmail = async () => {
     if (emailValue.trim().length > 0 && regEmail.test(emailValue)) {
       try {
-        const res = await axios.post(
-          "http://3.37.189.59/email/send",
-          { email: emailValue },
-          {
-            headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
-          }
-        );
+        const res = await axios.post("http://3.37.189.59/email/send", {
+          email: emailValue,
+        });
         if (res) {
           alert("전송 완료");
         }
       } catch (e) {
         alert("오류가 발생했습니다.");
+        console.error(e);
+      }
+    }
+  };
+  const verify = async () => {
+    if (emailValue.trim().length > 0 && regEmail.test(emailValue)) {
+      try {
+        const res = await axios.post("http://3.37.189.59/email/verify", {
+          email: emailValue,
+          code: emailCode,
+        });
+        if (res) {
+          setIsEmailVerify(true);
+          alert("인증이 완료되었습니다.");
+        }
+      } catch (e) {
+        alert("오류가 발생했습니다.");
+        console.log(emailValue);
+        console.log(emailCode);
         console.error(e);
       }
     }
@@ -146,12 +161,17 @@ const RegisterContent = () => {
             >
               인증번호
             </div>
-            <S.LoginInput
-              type="text"
-              placeholder="인증번호를 입력하세요"
-              maxLength="6"
-              onChange={handleCodeChange}
-            />
+            <div style={{ display: "flex" }}>
+              <S.EmailInput
+                type="text"
+                placeholder="인증번호를 입력하세요."
+                maxLength="6"
+                onChange={handleCodeChange}
+              />
+              <S.SendNum style={{ cursor: "pointer" }} onClick={verify}>
+                인증확인
+              </S.SendNum>
+            </div>
             <div
               style={{
                 fontWeight: "bold",

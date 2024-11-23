@@ -1,6 +1,6 @@
 import React from "react";
 import * as S from "./indexStyle";
-import RegisterContent from "../../components/auth/register/registerProfile";
+import RegisterContent from "../../components/auth/register";
 
 const Register = () => {
   return (

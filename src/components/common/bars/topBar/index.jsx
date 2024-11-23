@@ -12,10 +12,6 @@ const Topbar = () => {
     navigate(`/main`);
   };
 
-  const activeEnter = () => {
-    navigate(`/search/${"대회검색"}`);
-  };
-
   if (!user) {
     return;
   }
@@ -57,7 +53,10 @@ const Topbar = () => {
         </S.Nav>
         <S.RightNav>
           <S.Search>
-            <S.SearchImg src="/images/search.svg" onClick={activeEnter} />
+            <S.SearchImg
+              src="/images/search.svg"
+              onClick={() => navigate(`/search/${"대회검색"}`)}
+            />
           </S.Search>
           <S.ProfileBar>
             {ACCESS_TOKEN ? (

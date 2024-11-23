@@ -7,24 +7,28 @@ export const Div = styled.div`
   align-items: center;
 `;
 
-export const Search = styled.input`
-  padding-left: 20px;
+export const SearchDiv = styled.div`
+  position: relative;
   width: 30vw;
   height: 45px;
-  border: 0px;
-  border-radius: 30px;
-  background-color: #f9f9f9;
 `;
 
-export const SearchDiv = styled.div`
-  position: absolute;
-  right: 2vw;
-  top: 8vw;
+export const Search = styled.input`
+  padding-left: 20px;
+  width: 100%;
+  height: 100%;
+  border: 0px;
+  border-radius: 30px;
+  background-color: white;
 `;
 
 export const SearchImg = styled.img`
   width: 19px;
   height: 19px;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
   cursor: pointer;
   user-select: none;
   -webkit-user-drag: none;
