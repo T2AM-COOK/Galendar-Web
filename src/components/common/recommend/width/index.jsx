@@ -27,11 +27,8 @@ const RecommendBoxWidth = () => {
             localStorage.setItem("REFRESH_TOKEN", res.data.data.refreshToken);
             await getContest(true);
           }
-        } catch (refreshError) {
-          console.error("Refresh token failed", refreshError);
-        }
+        } catch {}
       } else {
-        console.error("Failed to fetch contests", err);
       }
     }
   };

@@ -8,6 +8,7 @@ const MediumContestBox = ({
   imgLink,
   contestStartDate,
   contestEndDate,
+  content,
   cost,
 }) => {
   return (
@@ -42,6 +43,7 @@ const MediumContestBox = ({
             {title}
           </Link>
         </S.Title>
+        <S.Info>{content}</S.Info>
         <S.Bot>
           <S.DetailInfo>
             <S.Img src="/images/money.svg" />

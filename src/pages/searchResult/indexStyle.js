@@ -7,6 +7,14 @@ export const Div = styled.div`
   align-items: center;
 `;
 
+export const TopPart = styled.div`
+  height: 15vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+`;
+
 export const SearchDiv = styled.div`
   position: relative;
   width: 30vw;
@@ -37,8 +45,18 @@ export const SearchImg = styled.img`
   -o-user-drag: none;
 `;
 
+export const FilterDiv = styled.div`
+  height: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+`;
+
 export const Filter = styled.div`
-  font-size: 20px;
+  font-size: 16px;
+  display: flex;
+  justify-content: flex-start;
 `;
 
 export const Title = styled.div`

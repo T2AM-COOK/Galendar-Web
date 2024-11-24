@@ -1,6 +1,6 @@
-import { create } from "zustand";
-
 export const useSearchContest = create((set) => ({
-  yourState: "VALUE",
-  yourAction: (val) => set((state) => ({ yourState: state.yourState })),
+  regions: [],
+  targets: [],
+  setRegions: (regions) => set({ regions }),
+  setTargets: (targets) => set({ targets }),
 }));

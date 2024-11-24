@@ -5,6 +5,7 @@ import axios from "axios";
 const Join = ({ setTargets }) => {
   const [ageOptions, setAgeOptions] = useState([]);
   const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
+
   const handleChangeCheck = (checked, item) => {
     if (checked) {
       setTargets((prev) => [...prev, item]);
@@ -22,12 +23,14 @@ const Join = ({ setTargets }) => {
         setAgeOptions(res.data.data);
       }
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
+
   useEffect(() => {
     getTarget();
   }, []);
+
   return (
     <S.Form>
       {ageOptions.map((option) => (
@@ -61,7 +64,7 @@ const Region = ({ setRegions }) => {
         setRegionOptions(res.data.data);
       }
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
 
