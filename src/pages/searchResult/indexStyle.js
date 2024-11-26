@@ -16,27 +16,30 @@ export const TopPart = styled.div`
 `;
 
 export const SearchDiv = styled.div`
-  position: relative;
   width: 30vw;
   height: 45px;
+  display: flex;
+  background-color: white;
+  border-radius: 30px;
 `;
 
 export const Search = styled.input`
   padding-left: 20px;
-  width: 100%;
-  height: 100%;
-  border: 0px;
   border-radius: 30px;
-  background-color: white;
+  width: 85%;
+  border: 0px;
+  &:focus {
+    outline: none;  }
+`;
+
+export const ImgDiv = styled.div`
+  width: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const SearchImg = styled.img`
-  width: 19px;
-  height: 19px;
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
   cursor: pointer;
   user-select: none;
   -webkit-user-drag: none;

@@ -55,7 +55,7 @@ const Topbar = () => {
           <S.Search>
             <S.SearchImg
               src="/images/search.svg"
-              onClick={() => navigate(`/search/${"대회검색"}`)}
+              onClick={() => navigate(`/search`)}
             />
           </S.Search>
           <S.ProfileBar>

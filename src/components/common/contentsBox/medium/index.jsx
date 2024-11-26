@@ -1,6 +1,5 @@
 import React from "react";
 import * as S from "./indexStyle";
-import { Link } from "react-router-dom";
 
 const MediumContestBox = ({
   title,
@@ -22,18 +21,21 @@ const MediumContestBox = ({
         justifyContent: "space-between",
       }}
     >
-      <Link
-        to={`/ContestInfo/${id}`}
+      <a
+        target="_blank"
+        href={`/ContestInfo/${id}`}
         style={{ textDecoration: "none", color: "black", cursor: "pointer" }}
       >
         {" "}
         <S.ContestImg src={imgLink} />
-      </Link>
+      </a>
       <S.Detail>
         <S.Title>
           {" "}
-          <Link
-            to={`/ContestInfo/${id}`}
+          <a
+            href={`/ContestInfo/${id}`}
+            target="_blank"
+            rel="noopener noreferrer"
             style={{
               textDecoration: "none",
               color: "black",
@@ -41,7 +43,7 @@ const MediumContestBox = ({
             }}
           >
             {title}
-          </Link>
+          </a>
         </S.Title>
         <S.Info>{content}</S.Info>
         <S.Bot>
