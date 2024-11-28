@@ -2,7 +2,7 @@ import Topbar from "../../components/common/bars/topBar";
 import MediumContestBox from "../../components/common/contentsBox/medium";
 import RecommendBoxWidth from "../../components/common/recommend/width";
 import * as S from "./indexStyle";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Join, Region } from "../../components/common/createElem/selections";
 
@@ -27,19 +27,17 @@ const Search = () => {
     getContest();
   };
 
-  const filterData = {
-    page: 10,
-    size: 1,
-    keyword: searchValue,
-    regions: regions,
-    targets: targets,
-  };
-
   const getContest = async () => {
     try {
       const res = await axios.get("http://3.37.189.59/contest/list", {
         headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
-        filterData,
+        params: {
+          page: 1,
+          size: 10,
+          keyword: searchValue,
+          regions: regions,
+          targets: targets,
+        },
       });
       console.log(res.data.data);
       if (res) {

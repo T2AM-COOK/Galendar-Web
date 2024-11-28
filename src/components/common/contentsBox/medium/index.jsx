@@ -35,7 +35,6 @@ const MediumContestBox = ({
           <a
             href={`/ContestInfo/${id}`}
             target="_blank"
-            rel="noopener noreferrer"
             style={{
               textDecoration: "none",
               color: "black",
@@ -50,7 +49,6 @@ const MediumContestBox = ({
           <S.DetailInfo>
             <S.Img src="/images/money.svg" />
             {cost === "PAID" ? "유료" : "무료"}
-            <S.Text></S.Text>
           </S.DetailInfo>
           <S.DetailInfo>
             <S.Img src="/images/contestcalendar.svg" />

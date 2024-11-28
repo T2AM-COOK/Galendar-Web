@@ -15,7 +15,7 @@ const StartPage = () => {
             <div>FAQ</div>
           </S.NavItems>
           <Link to="/main" style={{ textDecoration: "none", color: "inherit" }}>
-            <S.Button>갈렌더 시작하기</S.Button>
+            <S.Button>갈랜더 시작하기</S.Button>
           </Link>
         </S.NavWrap>
       </div>
@@ -28,7 +28,7 @@ const StartPage = () => {
             </S.FirstDiv>
             <div>정보를 한눈에,</div>
             <div>
-              <span style={{ color: "#2B32B2" }}>"</span>갈렌더
+              <span style={{ color: "#2B32B2" }}>"</span>갈랜더
               <span style={{ color: "#2B32B2" }}>"</span>
             </div>
           </S.BodyBText>
@@ -41,9 +41,9 @@ const StartPage = () => {
               to="/login"
               style={{ textDecoration: "none", color: "inherit" }}
             >
-              <S.BodyLButton>갈렌더 로그인</S.BodyLButton>
+              <S.BodyLButton>갈랜더 로그인</S.BodyLButton>
             </Link>
-            <S.BodyInfoButton>갈렌더 알아보기</S.BodyInfoButton>
+            <S.BodyInfoButton>갈랜더 알아보기</S.BodyInfoButton>
           </S.ButtonDiv>
         </S.BodyText>
       </S.Body>
