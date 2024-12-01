@@ -158,6 +158,7 @@ const CreateContest = () => {
               id="file"
               style={{ display: "none" }}
               onChange={change}
+              accept=".svg, .jpg, .png"
             />
           </p>
           <S.ButtonContainer>
