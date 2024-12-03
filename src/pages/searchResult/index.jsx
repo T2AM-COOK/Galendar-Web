@@ -2,7 +2,7 @@ import Topbar from "../../components/common/bars/topBar";
 import MediumContestBox from "../../components/common/contentsBox/medium";
 import RecommendBoxWidth from "../../components/common/recommend/width";
 import * as S from "./indexStyle";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { Join, Region } from "../../components/common/createElem/selections";
 
@@ -11,6 +11,7 @@ const Search = () => {
   const [targets, setTargets] = useState([]);
   const [regions, setRegions] = useState([]);
   const [searchValue, setSearchValue] = useState("");
+  const [viewSearch, setViewSearch] = useState("");
   const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
 
   const changeSearch = (e) => {
@@ -19,11 +20,13 @@ const Search = () => {
 
   const activeEnter = (e) => {
     if (e.key === "Enter") {
+      setViewSearch(searchValue);
       getContest();
     }
   };
 
   const activeEnter2 = () => {
+    setViewSearch(searchValue);
     getContest();
   };
 
@@ -42,6 +45,7 @@ const Search = () => {
       console.log(res.data.data);
       if (res) {
         setContests(res.data.data);
+        console.log(contests);
       }
     } catch (e) {
       console.log(e);
@@ -65,10 +69,11 @@ const Search = () => {
             </S.ImgDiv>
           </S.SearchDiv>
           <S.Title>
-            <span style={{ fontSize: "32px", fontWeight: "bold" }}>
-              {searchValue}
+            <span style={{ fontSize: "32px", fontWeight: "500" }}>
+              "{viewSearch}"
             </span>
-            <span style={{ fontSize: "28px" }}>검색결과</span>
+
+            <span style={{ fontSize: "28px" }}> 검색결과</span>
           </S.Title>
         </S.TopPart>
         <S.Hr />

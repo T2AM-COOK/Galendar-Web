@@ -78,6 +78,11 @@ const CreateContest = () => {
       }
     }
   };
+
+  const postImage = async () => {
+
+  }
+
   const change = (e) => {
     const { files } = e.target;
     const uploadFile = files[0];
