@@ -29,12 +29,43 @@ const CreateContest = () => {
   const [regions, setRegions] = useState([]);
   const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
 
+  const postImage = async (file) => {
+    if (file) {
+      try {
+        const formData = new FormData();
+        formData.append("file", file);
+        const res = await axios.post("http://3.37.189.59/file", formData, {
+          headers: {
+            Authorization: `Bearer ${ACCESS_TOKEN}`,
+            "Content-Type": "multipart/form-data",
+          },
+        });
+
+        if (res) {
+          setImgLink(res.data.data);
+        }
+      } catch (e) {
+        console.error("이미지 업로드 실패:", e);
+      }
+    }
+  };
+
+  const change = (e) => {
+    const { files } = e.target;
+    const uploadFile = files[0];
+    if (uploadFile) {
+      const reader = new FileReader();
+      reader.readAsDataURL(uploadFile);
+      postImage(uploadFile);
+    }
+  };
+
   const contestData = {
     title: title,
     content: content,
     cost: cost,
     link: link,
-    imglink: imglink,
+    imgLink: imglink,
     submitStartDate: submitStartDate,
     submitEndDate: submitEndDate,
     contestStartDate: contestStartDate,
@@ -71,26 +102,13 @@ const CreateContest = () => {
         );
         if (res) {
           alert("대회 생성완료");
+          alert(contestData);
           navgiate("/main");
         }
       } catch {
         alert("에러가 발생했습니다.");
       }
     }
-  };
-
-  const postImage = async () => {
-
-  }
-
-  const change = (e) => {
-    const { files } = e.target;
-    const uploadFile = files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(uploadFile);
-    reader.onloadend = () => {
-      setImgLink(reader.result);
-    };
   };
 
   return (
@@ -163,7 +181,7 @@ const CreateContest = () => {
               id="file"
               style={{ display: "none" }}
               onChange={change}
-              accept=".svg, .jpg, .png"
+              accept=".jpg, .png"
             />
           </p>
           <S.ButtonContainer>
