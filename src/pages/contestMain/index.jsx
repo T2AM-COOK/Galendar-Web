@@ -11,6 +11,7 @@ const ContestInfo = () => {
   const [contest, setContest] = useState([]);
   const [isSelect, setIsSelect] = useState();
   const [list, setList] = useState([]);
+  const [bookmarkId, setBookMarkId] = useState();
 
   // 대회 정보 들고오기 (북마크 값 있음)
   const getContest = async () => {
@@ -61,14 +62,14 @@ const ContestInfo = () => {
       if (isSelect) {
         // 선택 된 경우 (삭제해야함)
         const res = await axios.delete(
-          `http://3.37.189.59/bookmark/${contest.id}`,
+          `http://3.37.189.59/bookmark/${bookmarkId}`,
           {
             headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
           }
         );
         if (res) {
-          alert("삭제 성공");
-          console.log("니에ㅇㅁㄹㄴ러");
+          setIsSelect(false);
+          setBookMarkId();
         }
       } else {
         // 추가 해야함
@@ -80,20 +81,30 @@ const ContestInfo = () => {
           }
         );
         if (res) {
-          alert("추가 성공");
           setIsSelect(true);
         }
       }
     } catch (e) {
       console.error(e);
-      console.log("니에러");
     }
+  };
+
+  const getBookmarkId = () => {
+    list.map((i) => {
+      if (i.contestId == params.id) {
+        setBookMarkId(i.id);
+      }
+    });
   };
 
   useEffect(() => {
     getContest();
     getList();
   }, []);
+  useEffect(() => {
+    getList();
+    getBookmarkId();
+  }, [Count]);
 
   return (
     <div
