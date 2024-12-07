@@ -43,7 +43,6 @@ export const ImageBox = styled.div`
 
 export const Title = styled.div`
   font-size: 32px;
-  width: 90%;
   font-weight: bold;
 `;
 

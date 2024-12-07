@@ -34,6 +34,7 @@ export const TopNav = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: left;
+  gap: 20px;
 `;
 
 export const BookMarks = styled.div`

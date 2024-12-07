@@ -102,7 +102,6 @@ const CreateContest = () => {
         );
         if (res) {
           alert("대회 생성완료");
-          alert(contestData);
           navgiate("/main");
         }
       } catch {

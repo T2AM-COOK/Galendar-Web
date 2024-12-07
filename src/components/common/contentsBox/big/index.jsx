@@ -55,7 +55,9 @@ const BigContentBox = ({ id, bookmarkId }) => {
         }
       );
       if (res) {
-        console.log("삭제완료");
+        alert("삭제를 완료했습니다.");
+        // eslint-disable-next-line no-restricted-globals
+        location.reload();
       }
     } catch (e) {
       console.log(e.response);
