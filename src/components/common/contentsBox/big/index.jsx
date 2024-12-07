@@ -5,11 +5,13 @@ import useGetMe from "../../../../hooks/useGetMe";
 import axios from "axios";
 import useGetContest from "../../../../hooks/useGetContest";
 
-const BigContentBox = ({ id, bookmarkId }) => {
+const BigContentBox = ({ id }) => {
   const { user } = useGetMe();
   const { contest } = useGetContest(id);
   const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
   const [isBookmarked, setIsBookmarked] = useState(false);
+  const [list, setList] = useState([]);
+  const [bookmarkId, setBookmarkId] = useState();
 
   useEffect(() => {
     if (contest) {
@@ -18,19 +20,9 @@ const BigContentBox = ({ id, bookmarkId }) => {
   }, [contest]);
 
   const Count = async () => {
-    if (!isBookmarked) {
-      try {
-        const res = await axios.post(`http://3.37.189.59/bookmark/${id}`, "", {
-          headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
-        });
-        if (res) {
-          setIsBookmarked(true);
-        }
-      } catch (err) {
-        console.log(err);
-      }
-    } else {
-      try {
+    try {
+      if (isBookmarked) {
+        // 선택 된 경우 (삭제해야함)
         const res = await axios.delete(
           `http://3.37.189.59/bookmark/${bookmarkId}`,
           {
@@ -39,10 +31,59 @@ const BigContentBox = ({ id, bookmarkId }) => {
         );
         if (res) {
           setIsBookmarked(false);
+          setBookmarkId();
         }
-      } catch (err) {
-        console.log(err);
+      } else {
+        // 추가 해야함
+        const res = await axios.post(
+          `http://3.37.189.59/bookmark/${contest.id}`,
+          "",
+          {
+            headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
+          }
+        );
+        if (res) {
+          setIsBookmarked(true);
+        }
       }
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const getBookmarkId = () => {
+    list.map((i) => {
+      if (i.contestId === id) {
+        setBookmarkId(i.id);
+      }
+    });
+  };
+
+  useEffect(() => {
+    getList();
+  }, []);
+  useEffect(() => {
+    getList();
+    getBookmarkId();
+  }, [Count]);
+
+  const getList = async () => {
+    try {
+      const res = await axios.get("http://3.37.189.59/bookmark/list", {
+        headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
+        params: {
+          page: 1,
+          size: 100,
+          keyword: "",
+        },
+      });
+      console.log(res.data.data);
+      if (res) {
+        setList(res.data.data);
+        console.log(list);
+      }
+    } catch (e) {
+      console.log(e);
     }
   };
 

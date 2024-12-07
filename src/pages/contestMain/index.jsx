@@ -91,7 +91,7 @@ const ContestInfo = () => {
 
   const getBookmarkId = () => {
     list.map((i) => {
-      if (i.contestId == params.id) {
+      if (i.contestId === params.id) {
         setBookMarkId(i.id);
       }
     });

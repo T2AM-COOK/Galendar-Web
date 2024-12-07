@@ -78,7 +78,7 @@ const BookMark = () => {
             {user.role === "ROLE_ADMIN"
               ? contests.map((detail) => <BigContentBox id={detail.id} />)
               : bookmarkContests.map((detail) => (
-                  <BigContentBox id={detail.contestId} bookmarkId={detail.id} />
+                  <BigContentBox id={detail.contestId} />
                 ))}
           </S.BookMarks>
         </S.BookMarkText>
