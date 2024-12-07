@@ -42,10 +42,8 @@ const Search = () => {
           targets: targets,
         },
       });
-      console.log(res.data.data);
       if (res) {
         setContests(res.data.data);
-        console.log(contests);
       }
     } catch (e) {
       console.log(e);
@@ -72,7 +70,6 @@ const Search = () => {
             <span style={{ fontSize: "32px", fontWeight: "500" }}>
               "{viewSearch}"
             </span>
-
             <span style={{ fontSize: "28px" }}> 검색결과</span>
           </S.Title>
         </S.TopPart>

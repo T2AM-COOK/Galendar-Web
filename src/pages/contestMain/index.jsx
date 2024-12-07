@@ -10,8 +10,9 @@ const ContestInfo = () => {
   const REFRESH_TOKEN = localStorage.getItem("REFRESH_TOKEN");
   const [contest, setContest] = useState([]);
   const [isSelect, setIsSelect] = useState();
-  const [bookNum, setBookNum] = useState(null);
+  const [list, setList] = useState([]);
 
+  // 대회 정보 들고오기 (북마크 값 있음)
   const getContest = async () => {
     try {
       const res = await axios.get(`http://3.37.189.59/contest/${params.id}`, {
@@ -34,59 +35,66 @@ const ContestInfo = () => {
       }
     }
   };
-  useEffect(() => {
-    getContest();
-  }, []);
 
-  const Count = async () => {
-    if (isSelect) {
-      try {
-        const res = await axios.get(
-          `http://3.37.189.59/bookmark/list`,
-          {
-            page: 1,
-            size: 1,
-            keyword: " ",
-          },
-          {
-            headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
-          }
-        );
-        if (res) {
-          res.data.data.map((list) => {
-            if (list.contestId === params.id) {
-              setBookNum(list.id);
-            }
-          });
-        }
-      } catch (err) {}
-      try {
-        const res = await axios.delete(
-          `http://3.37.189.59/bookmark/${bookNum}`,
-          "",
-          {
-            headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
-          }
-        );
-        if (res) {
-          setIsSelect(!isSelect);
-        }
-      } catch (err) {}
-    } else {
-      try {
-        const res = await axios.post(
-          `http://3.37.189.59/bookmark/${params.id}`,
-          "",
-          {
-            headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
-          }
-        );
-        if (res) {
-          setIsSelect(!isSelect);
-        }
-      } catch (err) {}
+  const getList = async () => {
+    try {
+      const res = await axios.get("http://3.37.189.59/bookmark/list", {
+        headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
+        params: {
+          page: 1,
+          size: 100,
+          keyword: "",
+        },
+      });
+      console.log(res.data.data);
+      if (res) {
+        setList(res.data.data);
+        console.log(list);
+      }
+    } catch (e) {
+      console.log(e);
     }
   };
+
+  const Count = async () => {
+    try {
+      if (isSelect) {
+        // 선택 된 경우 (삭제해야함)
+        const res = await axios.delete(
+          `http://3.37.189.59/bookmark/${contest.id}`,
+          {
+            headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
+          }
+        );
+        if (res) {
+          alert("삭제 성공");
+          console.log("니에ㅇㅁㄹㄴ러");
+        }
+      } else {
+        // 추가 해야함
+        const res = await axios.post(
+          `http://3.37.189.59/bookmark/${contest.id}`,
+          "",
+          {
+            headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
+          }
+        );
+        if (res) {
+          alert("추가 성공");
+          setIsSelect(true);
+        }
+      }
+    } catch (e) {
+      console.error(e);
+      console.log("니에러");
+    }
+  };
+
+  useEffect(() => {
+    getContest();
+    getList();
+  }, []);
+
   return (
     <div
       style={{

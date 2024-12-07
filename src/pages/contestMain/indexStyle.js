@@ -95,11 +95,13 @@ export const DetailBox = styled.div`
 export const DetailTitle = styled.div`
   font-size: 32px;
   font-weight: bold;
+  margin-bottom: 20px;
 `;
 
 export const DetailInfo = styled.div`
   font-size: 16px;
   margin-bottom: 60px;
+  margin-top: 20px;
 `;
 
 export const HeartDiv = styled.div`
