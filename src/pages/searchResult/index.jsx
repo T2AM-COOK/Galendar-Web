@@ -5,6 +5,7 @@ import * as S from "./indexStyle";
 import React, { useState } from "react";
 import axios from "axios";
 import { Join, Region } from "../../components/common/createElem/selections";
+import qs from "qs";
 
 const Search = () => {
   const [contests, setContests] = useState([]);
@@ -13,6 +14,14 @@ const Search = () => {
   const [searchValue, setSearchValue] = useState("");
   const [viewSearch, setViewSearch] = useState("");
   const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
+
+  const searchParams = {
+    page: 1,
+    size: 10,
+    keyword: searchValue.length > 0 ? searchValue : " ",
+    targets: targets.length > 0 ? targets : [],
+    regions: regions.length > 0 ? regions : [],
+  };
 
   const changeSearch = (e) => {
     setSearchValue(e.target.value);
@@ -34,22 +43,19 @@ const Search = () => {
     try {
       const res = await axios.get("http://3.37.189.59/contest/list", {
         headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
-        params: {
-          page: 1,
-          size: 10,
-          keyword: searchValue,
-          regions: regions,
-          targets: targets,
+        params: searchParams,
+        paramsSerializer: (params) => {
+          return qs.stringify(params, { arrayFormat: "repeat" });
         },
       });
+
       if (res) {
         setContests(res.data.data);
       }
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
-
   return (
     <div style={{ backgroundColor: "#F9F9F9", minHeight: "100vh" }}>
       <Topbar />

@@ -29,7 +29,8 @@ export const Search = styled.input`
   width: 85%;
   border: 0px;
   &:focus {
-    outline: none;  }
+    outline: none;
+  }
 `;
 
 export const ImgDiv = styled.div`
@@ -75,6 +76,7 @@ export const Hr = styled.hr`
 `;
 
 export const Content = styled.div`
+  margin-top: 50px;
   width: 963px;
   max-width: 963px;
   display: grid;

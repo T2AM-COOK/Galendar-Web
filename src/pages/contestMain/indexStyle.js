@@ -8,7 +8,7 @@ export const ContentBox = styled.div`
   font-family: "Paperlogy";
   letter-spacing: -0.5px;
   display: flex;
-  justify-content: space-between;
+  gap: 50px;
   align-items: center;
   width: 70%;
   height: 472px;

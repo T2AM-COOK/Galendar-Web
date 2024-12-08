@@ -144,9 +144,9 @@ const CreateContest = () => {
             setContestEndDate={setContestEndDate}
           />
           <S.FormName>참가 대상</S.FormName>
-          <Join targets={targets} setTargets={setTargets} />
+          <Join setTargets={setTargets} />
           <S.FormName>지역</S.FormName>
-          <Region regions={regions} setRegions={setRegions} />
+          <Region setRegions={setRegions} />
           <S.FormName>참가 비용</S.FormName>
           <Fee setCost={setCost} />
           <S.FormName>링크</S.FormName>
