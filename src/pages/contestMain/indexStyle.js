@@ -1,15 +1,10 @@
 import styled from "styled-components";
 
 export const ContentBox = styled.div`
-  @font-face {
-    font-family: "Paperlogy";
-    src: url("./fonts/Paperlogy-4Medium.ttf") format("truetype");
-  }
-  font-family: "Paperlogy";
   letter-spacing: -0.5px;
   display: flex;
-  gap: 50px;
   align-items: center;
+  justify-content: space-between;
   width: 70%;
   height: 472px;
 `;

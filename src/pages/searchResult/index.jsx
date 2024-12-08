@@ -72,14 +72,7 @@ const Search = () => {
               <S.SearchImg src="/images/search.svg" onClick={activeEnter2} />
             </S.ImgDiv>
           </S.SearchDiv>
-          <S.Title>
-            <span style={{ fontSize: "32px", fontWeight: "500" }}>
-              "{viewSearch}"
-            </span>
-            <span style={{ fontSize: "28px" }}> 검색결과</span>
-          </S.Title>
         </S.TopPart>
-        <S.Hr />
         <S.FilterDiv>
           <S.Filter>대상</S.Filter>
           <Join setTargets={setTargets} />

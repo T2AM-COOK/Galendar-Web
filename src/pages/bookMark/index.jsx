@@ -55,11 +55,6 @@ const BookMark = () => {
   if (!user) {
     return;
   }
-  // useEffect(()=>{
-  //   if(isUpdated){
-  //     getBookMarkContest();
-  //   }
-  // },[isUpdated]);
 
   return (
     <S.Div>

@@ -65,7 +65,7 @@ const BigContentBox = ({ id }) => {
   useEffect(() => {
     getList();
     getBookmarkId();
-  }, [Count]);
+  }, [list]);
 
   const getList = async () => {
     try {

@@ -33,11 +33,6 @@ export const LogoImage = styled.img`
 `;
 
 export const Button = styled.button`
-  @font-face {
-    font-family: "Paperlogy";
-    src: url("./fonts/Paperlogy-5Medium.ttf") format("truetype");
-  }
-  font-family: "Paperlogy";
   width: 120px;
   height: 40px;
   border: 0px;
