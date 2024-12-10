@@ -9,6 +9,7 @@ import BookMark from "../pages/bookMark";
 import ContestInfo from "../pages/contestMain";
 import StartPage from "../pages/startPage";
 import Search from "../pages/searchResult";
+import NotFound from "../pages/notFound";
 
 const Router = () => {
   return (
@@ -23,6 +24,7 @@ const Router = () => {
         <Route path="/bookmark" element={<BookMark />}></Route>
         <Route path="/contestinfo/:id" element={<ContestInfo />}></Route>
         <Route path="/search" element={<Search />}></Route>
+        <Route path="*" element={<NotFound />}></Route>
       </Routes>
     </BrowserRouter>
   );
