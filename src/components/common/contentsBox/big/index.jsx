@@ -12,7 +12,6 @@ const BigContentBox = ({ id }) => {
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [list, setList] = useState([]);
   const [bookmarkId, setBookmarkId] = useState();
-
   useEffect(() => {
     if (contest) {
       setIsBookmarked(contest.bookmarked);
@@ -20,6 +19,8 @@ const BigContentBox = ({ id }) => {
   }, [contest]);
 
   const Count = async () => {
+    getBookmarkId();
+    getList();
     try {
       if (isBookmarked) {
         // 선택 된 경우 (삭제해야함)
@@ -59,14 +60,6 @@ const BigContentBox = ({ id }) => {
     });
   };
 
-  useEffect(() => {
-    getList();
-  }, []);
-  useEffect(() => {
-    getList();
-    getBookmarkId();
-  }, [list]);
-
   const getList = async () => {
     try {
       const res = await axios.get("http://3.37.189.59/bookmark/list", {
@@ -77,13 +70,11 @@ const BigContentBox = ({ id }) => {
           keyword: "",
         },
       });
-      console.log(res.data.data);
       if (res) {
         setList(res.data.data);
-        console.log(list);
       }
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
 

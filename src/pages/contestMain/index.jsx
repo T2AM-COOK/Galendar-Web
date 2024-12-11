@@ -50,7 +50,6 @@ const ContestInfo = () => {
       console.log(res.data.data);
       if (res) {
         setList(res.data.data);
-        console.log(list);
       }
     } catch (e) {
       console.log(e);
@@ -58,6 +57,8 @@ const ContestInfo = () => {
   };
 
   const Count = async () => {
+    getList();
+    getBookmarkId();
     try {
       if (isSelect) {
         // 선택 된 경우 (삭제해야함)
@@ -101,10 +102,6 @@ const ContestInfo = () => {
     getContest();
     getList();
   }, []);
-  useEffect(() => {
-    getList();
-    getBookmarkId();
-  }, [list]);
 
   return (
     <div
