@@ -7,7 +7,7 @@ export const Contents = styled.div`
 `;
 
 export const Banner = styled.div`
-  width: 100%;
+  width: 100vw;
   height: 70px;
   background-color: #2b32b2;
   display: flex;
