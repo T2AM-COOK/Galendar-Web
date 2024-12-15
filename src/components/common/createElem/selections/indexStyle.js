@@ -1,9 +1,14 @@
 import styled from "styled-components";
 
-export const Val = styled.span`
+export const Val = styled.div`
   margin-right: 1vw;
+  display: flex;
+  align-items: center;
+  gap: 1vh;
+  font-size: 14px;
 `;
 export const Form = styled.form`
-  display: inline-block;
-  max-width: 50vw;
+  display: flex;
+  max-width: 80%;
+  flex-wrap: wrap;
 `;

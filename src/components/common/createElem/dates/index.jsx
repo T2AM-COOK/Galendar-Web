@@ -43,7 +43,12 @@ const DateStyle = forwardRef(({ value, onClick }, ref) => (
     className="example-custom-input"
     onClick={onClick}
     ref={ref}
-    style={{ cursor: "pointer", display: "flex", alignItems: "center" }}
+    style={{
+      cursor: "pointer",
+      display: "flex",
+      alignItems: "center",
+      height: "55px",
+    }}
   >
     <S.Day>
       <img src="/images/calendar.svg" alt="캘린더" />

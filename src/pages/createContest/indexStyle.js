@@ -1,17 +1,19 @@
 import styled from "styled-components";
 
 export const Div = styled.div`
-  @font-face {
-    font-family: "Paperlogy";
-    src: url("./fonts/Paperlogy-8Bold.ttf") format("truetype");
-  }
-  font-family: "Paperlogy";
   display: flex;
   background-color: #f9f9f9;
 `;
+
 export const CreateContest = styled.div`
   font-size: 32px;
   font-weight: bold;
+`;
+
+export const FormWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1vw;
 `;
 
 export const Hr = styled.hr`
@@ -20,13 +22,12 @@ export const Hr = styled.hr`
 `;
 
 export const Content = styled.div`
-  font-family: "Pretendard-Regular.otf";
   background: #f9f9f9;
 `;
 
 export const FormName = styled.div`
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 600;
 `;
 
 export const NameField = styled.input`
@@ -34,9 +35,8 @@ export const NameField = styled.input`
   border: 0px;
   width: 100%;
   height: 45px;
-  padding-left: 2vw;
+  padding-left: 1vw;
   font-size: 16px;
-  font-family: "Paperlogy";
 `;
 
 export const TextField = styled.textarea`
@@ -44,10 +44,9 @@ export const TextField = styled.textarea`
   border: 0px;
   width: 100%;
   height: 133px;
-  padding: 2vw;
+  padding: 1vw;
   resize: none;
   font-size: 16px;
-  font-family: "Paperlogy";
 `;
 
 export const Button = styled.div`
@@ -60,7 +59,6 @@ export const Button = styled.div`
   justify-content: center;
   background-color: white;
   cursor: pointer;
-  font-size: 12px;
 `;
 export const Poster = styled.label`
   font-size: 16px;

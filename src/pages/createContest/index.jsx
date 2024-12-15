@@ -126,72 +126,90 @@ const CreateContest = () => {
             <S.Form>
               <S.CreateContest>대회 생성</S.CreateContest>
               <S.Hr />
-              <S.FormName>대회 이름</S.FormName>
-              <S.NameField
-                placeholder="대회 이름을 입력해주세요"
-                onChange={(e) => setTitle(e.target.value)}
-              />
-              <S.FormName>대회 내용</S.FormName>
-              <S.TextField
-                placeholder="대회 내용을 입력해주세요"
-                onChange={(e) => setContent(e.target.value)}
-              />
-              <S.FormName>접수 기간</S.FormName>
-              <JoinSet
-                now={now}
-                submitStartDate={submitStartDate}
-                submitEndDate={submitEndDate}
-                setSubmitStartDate={setSubmitStartDate}
-                setSubmitEndDate={setSubmitEndDate}
-              />
-              <S.FormName>대회 기간</S.FormName>
-              <TimeSet
-                now={now}
-                contestStartDate={contestStartDate}
-                contestEndDate={contestEndDate}
-                setContestStartDate={setContestStartDate}
-                setContestEndDate={setContestEndDate}
-              />
-              <S.FormName>참가 대상</S.FormName>
-              <Join setTargets={setTargets} />
-              <S.FormName>지역</S.FormName>
-              <Region setRegions={setRegions} />
-              <S.FormName>참가 비용</S.FormName>
-              <Fee setCost={setCost} />
-              <S.FormName>링크</S.FormName>
-              <S.NameField
-                type="text"
-                placeholder="링크를 입력해주세요."
-                onChange={(e) => setLink(e.target.value)}
-              />
-              <S.FormName>포스터 사진</S.FormName>
-              <p
-                style={{
-                  width: "284px",
-                  height: "224px",
-                  border: "3px dotted #2B32B2",
-                  borderRadius: "3px",
-                }}
-              >
-                <S.Poster
-                  htmlFor="file"
+              <S.FormWrapper>
+                <S.FormName>대회 이름</S.FormName>
+                <S.NameField
+                  placeholder="대회 이름을 입력해주세요"
+                  onChange={(e) => setTitle(e.target.value)}
+                />
+              </S.FormWrapper>
+              <S.FormWrapper>
+                <S.FormName>대회 내용</S.FormName>
+                <S.TextField
+                  placeholder="대회 내용을 입력해주세요"
+                  onChange={(e) => setContent(e.target.value)}
+                />
+              </S.FormWrapper>
+              <S.FormWrapper>
+                <S.FormName>접수 기간</S.FormName>
+                <JoinSet
+                  now={now}
+                  submitStartDate={submitStartDate}
+                  submitEndDate={submitEndDate}
+                  setSubmitStartDate={setSubmitStartDate}
+                  setSubmitEndDate={setSubmitEndDate}
+                />
+              </S.FormWrapper>
+              <S.FormWrapper>
+                <S.FormName>대회 기간</S.FormName>
+                <TimeSet
+                  now={now}
+                  contestStartDate={contestStartDate}
+                  contestEndDate={contestEndDate}
+                  setContestStartDate={setContestStartDate}
+                  setContestEndDate={setContestEndDate}
+                />
+              </S.FormWrapper>
+              <S.FormWrapper>
+                <S.FormName>참가 대상</S.FormName>
+                <Join setTargets={setTargets} />
+              </S.FormWrapper>
+              <S.FormWrapper>
+                <S.FormName>지역</S.FormName>
+                <Region setRegions={setRegions} />
+              </S.FormWrapper>
+              <S.FormWrapper>
+                <S.FormName>참가 비용</S.FormName>
+                <Fee setCost={setCost} />
+              </S.FormWrapper>
+              <S.FormWrapper>
+                <S.FormName>링크</S.FormName>
+                <S.NameField
+                  type="text"
+                  placeholder="링크를 입력해주세요."
+                  onChange={(e) => setLink(e.target.value)}
+                />
+              </S.FormWrapper>
+              <S.FormWrapper>
+                <S.FormName>포스터 사진</S.FormName>
+                <p
                   style={{
-                    backgroundImage: imglink ? `url(${imglink})` : "none",
-                    backgroundSize: "cover",
-                    backgroundRepeat: "no-repeat",
+                    width: "284px",
+                    height: "224px",
+                    border: "3px dotted #2B32B2",
+                    borderRadius: "3px",
                   }}
                 >
-                  <div style={{ background: "white" }}>업로드</div>
-                </S.Poster>
-                <input
-                  type="file"
-                  name="file"
-                  id="file"
-                  style={{ display: "none" }}
-                  onChange={change}
-                  accept=".jpg, .png"
-                />
-              </p>
+                  <S.Poster
+                    htmlFor="file"
+                    style={{
+                      backgroundImage: imglink ? `url(${imglink})` : "none",
+                      backgroundSize: "cover",
+                      backgroundRepeat: "no-repeat",
+                    }}
+                  >
+                    <div style={{ background: "white" }}>업로드</div>
+                  </S.Poster>
+                  <input
+                    type="file"
+                    name="file"
+                    id="file"
+                    style={{ display: "none" }}
+                    onChange={change}
+                    accept=".jpg, .png"
+                  />
+                </p>
+              </S.FormWrapper>
               <S.ButtonContainer>
                 <S.Button
                   style={
