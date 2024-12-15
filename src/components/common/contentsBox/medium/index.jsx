@@ -1,5 +1,6 @@
 import React from "react";
 import * as S from "./indexStyle";
+import { useNavigate } from "react-router-dom";
 
 const MediumContestBox = ({
   title,
@@ -10,41 +11,21 @@ const MediumContestBox = ({
   content,
   cost,
 }) => {
+  const navigate = useNavigate();
+
   return (
-    <div
-      style={{
-        width: "284px",
-        height: "340px",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "space-between",
-      }}
-    >
-      <a
-        target="_blank"
-        href={`/ContestInfo/${id}`}
-        style={{ textDecoration: "none", color: "black", cursor: "pointer" }}
-      >
-        {" "}
-        <S.ContestImg src={imgLink} />
-      </a>
+    <S.Container>
+      {" "}
+      <S.ContestImg
+        src={imgLink}
+        onClick={() => navigate(`/contestInfo/${id}`)}
+      />
       <S.Detail>
-        <S.Title>
+        <S.Title onClick={() => navigate(`/contestInfo/${id}`)}>
           {" "}
-          <a
-            href={`/ContestInfo/${id}`}
-            target="_blank"
-            style={{
-              textDecoration: "none",
-              color: "black",
-              cursor: "pointer",
-            }}
-          >
-            {title}
-          </a>
+          {title}
         </S.Title>
-        <S.Info>{content}</S.Info>
+        {content}
         <S.Bot>
           <S.DetailInfo>
             <S.Img src="/images/money.svg" />
@@ -58,7 +39,7 @@ const MediumContestBox = ({
           </S.DetailInfo>
         </S.Bot>
       </S.Detail>
-    </div>
+    </S.Container>
   );
 };
 
