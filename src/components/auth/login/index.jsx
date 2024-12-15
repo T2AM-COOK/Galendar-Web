@@ -40,14 +40,6 @@ const LoginContent = () => {
     setPw(event.target.value);
   };
 
-  const goRegister = () => {
-    navigate("/register");
-  };
-
-  const goMain = () => {
-    navigate("/main");
-  };
-
   const activeEnter = (e) => {
     if (e.key === "Enter") {
       login();
@@ -58,7 +50,7 @@ const LoginContent = () => {
 
   return (
     <div>
-      <S.Logo src="/images/logo.svg" onClick={goMain} />
+      <S.Logo src="/images/logo.svg" onClick={() => navigate("/main")} />
       <S.IdContainer>
         <S.LoginInput
           type="text"
@@ -99,7 +91,7 @@ const LoginContent = () => {
         계정이 없으신가요?{" "}
         <span
           style={{ color: "#242B9C", cursor: "pointer" }}
-          onClick={goRegister}
+          onClick={() => navigate("/register")}
         >
           회원가입하기
         </span>
