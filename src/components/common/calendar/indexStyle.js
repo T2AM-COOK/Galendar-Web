@@ -73,7 +73,7 @@ export const ContestMark = styled.div`
   width: 100%;
   background-color: #2b32b2;
   color: white;
-  height: 20%;
+  text-align: center;
 `;
 
 export const LastDayBox = styled(DayBox)`

@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-const useGetBookmarkList = () => {
-  const [list, setList] = useState([]);
+export const useGetBookmarkList = () => {
   const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
+  const [bookmarkContests, setBookmarkContests] = useState([]);
+
   useEffect(() => {
     const getList = async () => {
       try {
@@ -12,13 +13,11 @@ const useGetBookmarkList = () => {
           params: {
             page: 1,
             size: 100,
-            keyword: "",
+            keyword: " ",
           },
         });
-        console.log(res.data.data);
         if (res) {
-          setList(res.data.data);
-          console.log(list);
+          setBookmarkContests(res.data.data);
         }
       } catch (e) {
         console.log(e);
@@ -26,7 +25,8 @@ const useGetBookmarkList = () => {
     };
     getList();
   }, []);
-  return { list };
+
+  return { bookmarkContests };
 };
 
 export default useGetBookmarkList;

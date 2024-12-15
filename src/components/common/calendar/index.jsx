@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./indexStyle";
 import useGetBookmarkList from "../../../hooks/useGetBookmarkList";
+import { Link } from "react-router-dom";
 
 const MainCalendar = () => {
   const date = new Date();
@@ -78,7 +79,24 @@ const MainCalendar = () => {
               {thisDates.map((date, index) => (
                 <S.DayBox key={`${index}`}>
                   {date}
-                  <S.ContestMark>안녕</S.ContestMark>
+                  {bookmarkContests.map((i) =>
+                    i.contestStartDate ===
+                    `${viewYear}-${
+                      viewMonth < 10 ? "0" + viewMonth : viewMonth
+                    }-${date < 10 ? "0" + date : date}` ? (
+                      <S.ContestMark>
+                        <Link
+                          to={i.link}
+                          style={{ color: "white", textDecoration: "none" }}
+                          target="_blank"
+                        >
+                          {i.title}
+                        </Link>
+                      </S.ContestMark>
+                    ) : (
+                      ""
+                    )
+                  )}
                 </S.DayBox>
               ))}
             </S.Tr>
