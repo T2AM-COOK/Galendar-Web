@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./indexStyle";
+import useGetBookmarkList from "../../../hooks/useGetBookmarkList";
 
 const MainCalendar = () => {
   const date = new Date();
   const [viewYear, setViewYear] = useState(date.getFullYear());
   const [viewMonth, setViewMonth] = useState(date.getMonth() + 1);
-  const [prevDates, setPrevDates] = useState([]);
   const [thisDates, setThisDates] = useState([]);
+  const { bookmarkContests } = useGetBookmarkList();
 
   // 저번 달 마지막 날짜와 이번 달 마지막 날짜
   const prevLast = new Date(viewYear, viewMonth - 1, 0); // 저번 달 마지막 날
   const prevThis = new Date(viewYear, viewMonth, 0); // 이번 달 마지막 날
-
-  const PLDate = prevLast.getDate(); // 저번 달 마지막 날
   const PTDate = prevThis.getDate(); // 이번 달 마지막 날
   const PLDay = prevLast.getDay(); // 저번 달 마지막 요일
 
@@ -29,17 +28,10 @@ const MainCalendar = () => {
 
   // 날짜 생성
   useEffect(() => {
-    let newPrevDates = [];
     let newThisDates = [];
-
-    for (let i = 1; i <= PLDate; i++) {
-      newPrevDates.unshift(i);
-    }
     for (let i = 1; i <= PTDate; i++) {
       newThisDates.unshift(i);
     }
-
-    setPrevDates(newPrevDates.reverse());
     setThisDates(newThisDates.reverse());
   }, [viewMonth, viewYear]);
 
@@ -78,63 +70,18 @@ const MainCalendar = () => {
           </thead>
           <tbody>
             <S.Tr>
-              {prevDates.map((date, index) =>
-                PLDate - date <= PLDay ? (
-                  <S.LastDayBox key={`prev-${index}`} />
-                ) : null
-              )}
-              {thisDates.map((date, index) =>
-                7 - PLDay > date ? (
-                  <S.DayBox key={`this-0-${index}`}>
-                    <div>{date}</div>
-                  </S.DayBox>
-                ) : null
-              )}
-            </S.Tr>
-            <S.Tr>
-              {thisDates.map((date, index) =>
-                6 - PLDay < date && date < 14 - PLDay ? (
-                  <S.DayBox key={`this-1-${index}`}>
-                    <div>{date}</div>
-                  </S.DayBox>
-                ) : null
-              )}
-            </S.Tr>
-            <S.Tr>
-              {thisDates.map((date, index) =>
-                13 - PLDay < date && date < 21 - PLDay ? (
-                  <S.DayBox key={`this-2-${index}`}>
-                    <div>{date}</div>
-                  </S.DayBox>
-                ) : null
-              )}
-            </S.Tr>
-            <S.Tr>
-              {thisDates.map((date, index) =>
-                20 - PLDay < date && date < 28 - PLDay ? (
-                  <S.DayBox key={`this-3-${index}`}>
-                    <div>{date}</div>
-                  </S.DayBox>
-                ) : null
-              )}
-            </S.Tr>
-            <S.Tr>
-              {thisDates.map((date, index) =>
-                27 - PLDay < date && date < 35 - PLDay ? (
-                  <S.DayBox key={`this-4-${index}`}>
-                    <div>{date}</div>
-                  </S.DayBox>
-                ) : null
-              )}
-            </S.Tr>
-            <S.Tr>
-              {thisDates.map((date, index) =>
-                34 - PLDay < date && date < 42 - PLDay ? (
-                  <S.DayBox key={`this-5-${index}`}>
-                    <div>{date}</div>
-                  </S.DayBox>
-                ) : null
-              )}
+              {PLDay !== 6
+                ? Array.from({ length: PLDay + 1 }).map((_, index) => (
+                    <S.DayBox key={`empty-${index}`}>
+                      <div></div>
+                    </S.DayBox>
+                  ))
+                : ""}
+              {thisDates.map((date, index) => (
+                <S.DayBox key={`${index}`}>
+                  <div>{date}</div>
+                </S.DayBox>
+              ))}
             </S.Tr>
           </tbody>
         </S.DateBox>

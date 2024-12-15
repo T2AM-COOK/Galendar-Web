@@ -52,11 +52,6 @@ export const DateBox = styled.table`
 
 export const Td = styled.td`
   font-size: 20px;
-  @font-face {
-    font-family: "Paperlogy";
-    src: url("./fonts/Paperlogy-1Thin.ttf") format("truetype");
-  }
-  font-family: "Paperlogy";
   width: 139px;
   text-align: center;
   border-left: 1px solid #e6e6e6;
