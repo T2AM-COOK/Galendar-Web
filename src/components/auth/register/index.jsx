@@ -3,6 +3,7 @@ import { useState } from "react";
 import * as S from "./indexStyle";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import WarningText from "../elements/warningText";
 
 const RegisterContent = () => {
   const navigate = useNavigate();
@@ -107,35 +108,19 @@ const RegisterContent = () => {
     regPassword.test(pwValue);
 
   return (
-    <div>
+    <>
       {
         <S.RegisterContainer>
           <S.Logo src="/images/logo.svg" />
           <S.InputContainer>
-            <div
-              style={{
-                fontWeight: "bold",
-                fontSize: "16px",
-                fontFamily: "paperlogy",
-              }}
-            >
-              이름
-            </div>
+            <S.Title>이름</S.Title>
             <S.LoginInput
               type="text"
               placeholder="이름을 입력하세요"
               onChange={handleNameChange}
             />
-            <div
-              style={{
-                fontWeight: "bold",
-                fontSize: "16px",
-                fontFamily: "paperlogy",
-              }}
-            >
-              이메일
-            </div>
-            <div style={{ display: "flex" }}>
+            <S.Title>이메일</S.Title>
+            <S.ConfirmContainer>
               <S.EmailInput
                 type="text"
                 placeholder="이메일을 입력하세요"
@@ -144,24 +129,15 @@ const RegisterContent = () => {
               <S.SendNum style={{ cursor: "pointer" }} onClick={sendEmail}>
                 전송하기
               </S.SendNum>
-            </div>
-            <p
-              style={{ color: "#B01E1E", fontSize: "12px", textAlign: "right" }}
-            >
-              {emailValue.trim().length > 0 && !regEmail.test(emailValue)
-                ? "이메일 형식이 올바르지 않습니다."
-                : ""}
-            </p>
-            <div
-              style={{
-                fontWeight: "bold",
-                fontSize: "16px",
-                fontFamily: "paperlogy",
-              }}
-            >
-              인증번호
-            </div>
-            <div style={{ display: "flex" }}>
+            </S.ConfirmContainer>
+            <WarningText
+              condition={
+                emailValue.trim().length > 0 && !regEmail.test(emailValue)
+              }
+              detail={"이메일 형식이 올바르지 않습니다."}
+            ></WarningText>
+            <S.Title>인증번호</S.Title>
+            <S.ConfirmContainer>
               <S.EmailInput
                 type="text"
                 placeholder="인증번호를 입력하세요."
@@ -171,16 +147,8 @@ const RegisterContent = () => {
               <S.SendNum style={{ cursor: "pointer" }} onClick={verify}>
                 인증확인
               </S.SendNum>
-            </div>
-            <div
-              style={{
-                fontWeight: "bold",
-                fontSize: "16px",
-                fontFamily: "paperlogy",
-              }}
-            >
-              비밀번호
-            </div>
+            </S.ConfirmContainer>
+            <S.Title>비밀번호</S.Title>
             <S.LoginInput
               style={{
                 border:
@@ -195,22 +163,13 @@ const RegisterContent = () => {
               onChange={handlePwChange}
               maxLength="16"
             ></S.LoginInput>
-            <p
-              style={{ color: "#B01E1E", fontSize: "12px", textAlign: "right" }}
-            >
-              {pwValue.trim().length > 0 && !regPassword.test(pwValue)
-                ? "8~16글자, 특수문자를 포함해서 작성해 주세요."
-                : ""}
-            </p>
-            <div
-              style={{
-                fontWeight: "bold",
-                fontSize: "16px",
-                fontFamily: "paperlogy",
-              }}
-            >
-              비밀번호 확인
-            </div>
+            <WarningText
+              condition={
+                pwValue.trim().length > 0 && !regPassword.test(pwValue)
+              }
+              detail={"8~16글자, 특수문자를 포함해서 작성해 주세요."}
+            ></WarningText>
+            <S.Title>비밀번호 확인</S.Title>
             <S.LoginInput
               style={{
                 border:
@@ -230,8 +189,6 @@ const RegisterContent = () => {
               style={{
                 backgroundColor: isButtonRegister ? "#242B9C" : "#CDCDCD",
                 cursor: isButtonRegister ? "pointer" : "",
-                fontWeight: "bold",
-                fontFamily: "paperlogy",
               }}
               onClick={goNext}
             >
@@ -256,7 +213,7 @@ const RegisterContent = () => {
           </S.InputContainer>
         </S.RegisterContainer>
       }
-    </div>
+    </>
   );
 };
 

@@ -5,7 +5,6 @@ import LoginContent from "../../components/auth/login";
 const Login = () => {
   return (
     <S.Div>
-      <S.Container />
       <LoginContent />
     </S.Div>
   );

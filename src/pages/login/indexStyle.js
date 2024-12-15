@@ -5,6 +5,7 @@ export const Div = styled.body`
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-color: white;
 `;
 export const Calendar = styled.img`
   user-select: none;

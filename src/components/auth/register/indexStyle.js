@@ -16,6 +16,22 @@ export const SendMail = styled.div`
   width: 365px;
 `;
 
+export const Title = styled.div`
+  font-size: 16px;
+  font-weight: 600;
+`;
+
+export const Warning = styled.div`
+  color: #b01e1e;
+  text-align: right;
+`;
+
+export const ConfirmContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 export const RegisterText = styled.div`
   font-size: 12px;
   width: 80%;
@@ -36,11 +52,6 @@ export const EmailInput = styled.input`
 `;
 
 export const SendNum = styled.button`
-  @font-face {
-    font-family: "Paperlogy";
-    src: url("./fonts/Paperlogy-4Regular.ttf") format("truetype");
-  }
-  font-family: "Paperlogy";
   letter-spacing: -0.5px;
   color: white;
   font-size: 12px;

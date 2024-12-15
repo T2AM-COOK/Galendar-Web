@@ -90,8 +90,6 @@ const LoginContent = () => {
         style={{
           backgroundColor: isButtonActive ? "#242B9C" : "#CDCDCD",
           cursor: isButtonActive ? "pointer" : "",
-          fontWeight: "bold",
-          fontFamily: "paperlogy",
         }}
         onClick={login}
       >
