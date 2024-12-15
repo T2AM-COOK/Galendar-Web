@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./indexStyle";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useGetMe from "../../../../hooks/useGetMe";
 import axios from "axios";
 import useGetContest from "../../../../hooks/useGetContest";
@@ -12,6 +12,8 @@ const BigContentBox = ({ id }) => {
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [list, setList] = useState([]);
   const [bookmarkId, setBookmarkId] = useState();
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (contest) {
       setIsBookmarked(contest.bookmarked);
@@ -104,24 +106,19 @@ const BigContentBox = ({ id }) => {
   }
 
   return (
-    <div style={{ marginTop: "40px" }}>
+    <>
       <S.ContentBox>
-        <Link
-          to={`/contestinfo/${id}`}
-          style={{ textDecoration: "none", color: "inherit" }}
-        >
-          <S.ImageBox>
-            <S.ContestImg src={contest.imgLink}></S.ContestImg>
-          </S.ImageBox>
-        </Link>
+        <S.ImageBox>
+          <S.ContestImg
+            src={contest.imgLink}
+            onClick={() => navigate(`/contestInfo/${id}`)}
+          ></S.ContestImg>
+        </S.ImageBox>
         <S.ContentTextBox>
           <S.Text>
-            <Link
-              to={`/contestinfo/${contest.id}`}
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              <S.Title>{contest.title}</S.Title>
-            </Link>
+            <S.Title onClick={() => navigate(`/contestInfo/${id}`)}>
+              {contest.title}
+            </S.Title>
             <S.ContentDiv>
               <S.ContentImg src="/images/clock.svg" />
               접수 기간 : {contest.submitStartDate} ~ {contest.submitEndDate}
@@ -151,7 +148,7 @@ const BigContentBox = ({ id }) => {
           </S.HeartDiv>
         </S.ContentTextBox>
       </S.ContentBox>
-    </div>
+    </>
   );
 };
 

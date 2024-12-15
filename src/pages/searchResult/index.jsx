@@ -12,7 +12,6 @@ const Search = () => {
   const [targets, setTargets] = useState([]);
   const [regions, setRegions] = useState([]);
   const [searchValue, setSearchValue] = useState("");
-  const [viewSearch, setViewSearch] = useState("");
   const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
 
   const searchParams = {
@@ -29,13 +28,11 @@ const Search = () => {
 
   const activeEnter = (e) => {
     if (e.key === "Enter") {
-      setViewSearch(searchValue);
       getContest();
     }
   };
 
   const activeEnter2 = () => {
-    setViewSearch(searchValue);
     getContest();
   };
 

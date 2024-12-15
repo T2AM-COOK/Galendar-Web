@@ -7,7 +7,7 @@ export const Div = styled.div`
 `;
 
 export const Hr = styled.hr`
-  width: 971px;
+  width: 80%;
   border: 1px solid #b5b5b5;
   margin-left: 90px;
 `;
@@ -16,7 +16,6 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: auto;
 `;
 
 export const BookMarkText = styled.div`
@@ -25,7 +24,7 @@ export const BookMarkText = styled.div`
 
 export const Title = styled.div`
   font-size: 32px;
-  font-weight: bold;
+  font-weight: 800;
   margin-left: 90px;
 `;
 
@@ -38,5 +37,6 @@ export const TopNav = styled.div`
 `;
 
 export const BookMarks = styled.div`
+  margin-top: 40px;
   margin-left: 90px;
 `;

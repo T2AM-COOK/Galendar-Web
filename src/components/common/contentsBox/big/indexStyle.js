@@ -14,22 +14,17 @@ export const ContestImg = styled.img`
   width: 284px;
   height: 224px;
   border-radius: 10px;
+  cursor: pointer;
 `;
 
 export const ImageBox = styled.div`
   border-radius: 10px;
-  justify-content: left;
 `;
 
 export const Title = styled.div`
-  @font-face {
-    font-family: "Paperlogy";
-    src: url("./fonts/Paperlogy-8Bold.ttf") format("truetype");
-  }
-  font-family: "Paperlogy";
-  letter-spacing: -0.5px;
+  cursor: pointer;
   font-size: 24px;
-  font-weight: bold;
+  font-weight: 700;
   margin-bottom: 20px;
 `;
 
@@ -47,7 +42,7 @@ export const ContentTextBox = styled.div`
   height: 224px;
   display: flex;
   justify-content: space-between;
-  padding-left: 20px;
+  padding-left: 30px;
   padding-right: 30px;
 `;
 
