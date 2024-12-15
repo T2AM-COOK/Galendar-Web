@@ -2,22 +2,25 @@ import styled from "styled-components";
 
 export const MainBox = styled.div`
   width: 100%;
-  height: 677px;
+  height: 670px;
   background: white;
 `;
-export const DecreaseButton = styled.div`
+
+export const DateButton = styled.div`
   cursor: pointer;
   width: 32px;
   height: 32px;
   border-radius: 5px;
   border: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
-export const IncreaseButton = styled.div`
+
+export const ViewDate = styled.div`
   cursor: pointer;
-  width: 32px;
-  height: 32px;
-  border-radius: 5px;
-  border: 0px;
+  font-size: 16px;
+  display: flex;
 `;
 
 export const Tr = styled.tr`
@@ -28,20 +31,20 @@ export const Tr = styled.tr`
 export const Date = styled.div`
   display: flex;
   align-items: center;
+  height: 32px;
   width: 214px;
   justify-content: space-around;
-  font-weight: bold;
+  font-weight: 700;
   margin-top: 28px;
 `;
 
-export const DecreaseArrow = styled.img`
-  margin-top: 20%;
-  margin-left: 30%;
-`;
-
-export const IncreaseArrow = styled.img`
-  margin-top: 20%;
-  margin-left: 30%;
+export const Td = styled.td`
+  color: rgb(99, 99, 99);
+  padding-right: 5px;
+  width: 139px;
+  border-collapse: collapse;
+  border-left: 1px solid #e6e6e6;
+  border-right: 1px solid #e6e6e6;
 `;
 
 export const DateBox = styled.table`
@@ -49,21 +52,19 @@ export const DateBox = styled.table`
   height: 48px;
   border-top: 0.5px solid #b5b5b5;
   margin-top: 23px;
-`;
-
-export const Td = styled.td`
-  font-size: 20px;
-  width: 139px;
-  text-align: center;
-  border-left: 1px solid #e6e6e6;
-  border-right: 1px solid #e6e6e6;
+  border-spacing: 0;
 `;
 
 export const DayBox = styled.td`
   width: 139px;
   height: 100px;
-  border: 1px solid #e6e6e6;
   background-color: white;
+  border: 0.5px solid #e6e6e6;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: rgb(248, 248, 248);
+  }
 `;
 
 export const ContestMark = styled.div`
@@ -74,10 +75,12 @@ export const ContestMark = styled.div`
   background-color: #2b32b2;
   color: white;
   text-align: center;
+  cursor: pointer;
 `;
 
 export const LastDayBox = styled(DayBox)`
   color: #a7a7a7;
+  border-collapse: collapse;
 `;
 
 export const Day = styled.div`

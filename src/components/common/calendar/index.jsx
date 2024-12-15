@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./indexStyle";
 import useGetBookmarkList from "../../../hooks/useGetBookmarkList";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const MainCalendar = () => {
   const date = new Date();
@@ -9,6 +9,7 @@ const MainCalendar = () => {
   const [viewMonth, setViewMonth] = useState(date.getMonth() + 1);
   const [thisDates, setThisDates] = useState([]);
   const { bookmarkContests } = useGetBookmarkList();
+  const navigate = useNavigate();
 
   // 저번 달 마지막 날짜와 이번 달 마지막 날짜
   const prevLast = new Date(viewYear, viewMonth - 1, 0); // 저번 달 마지막 날
@@ -46,15 +47,15 @@ const MainCalendar = () => {
       <S.MainBox>
         <div style={{ display: "flex", justifyContent: "center" }}>
           <S.Date>
-            <S.DecreaseButton onClick={Decrease}>
-              <S.DecreaseArrow src="/images/decreasearrow.svg" />
-            </S.DecreaseButton>
-            <div onClick={setDate} style={{ cursor: "pointer" }}>
+            <S.DateButton onClick={Decrease}>
+              <img src="/images/decreasearrow.svg" />
+            </S.DateButton>
+            <S.ViewDate onClick={setDate}>
               {viewYear}.{viewMonth <= 9 ? `0${viewMonth}` : `${viewMonth}`}
-            </div>
-            <S.IncreaseButton onClick={Increase}>
-              <S.IncreaseArrow src="/images/increasearrow.svg" />
-            </S.IncreaseButton>
+            </S.ViewDate>
+            <S.DateButton onClick={Increase}>
+              <img src="/images/increasearrow.svg" />
+            </S.DateButton>
           </S.Date>
         </div>
         <S.DateBox cellSpacing={0} cellPadding={5} bgcolor="">
@@ -73,7 +74,10 @@ const MainCalendar = () => {
             <S.Tr>
               {PLDay !== 6
                 ? Array.from({ length: PLDay + 1 }).map((_, index) => (
-                    <S.DayBox key={`${index}`}></S.DayBox>
+                    <S.DayBox
+                      key={`${index}`}
+                      style={{ background: "#FBFBFB" }}
+                    ></S.DayBox>
                   ))
                 : ""}
               {thisDates.map((date, index) => (
@@ -84,14 +88,10 @@ const MainCalendar = () => {
                     `${viewYear}-${
                       viewMonth < 10 ? "0" + viewMonth : viewMonth
                     }-${date < 10 ? "0" + date : date}` ? (
-                      <S.ContestMark>
-                        <Link
-                          to={i.link}
-                          style={{ color: "white", textDecoration: "none" }}
-                          target="_blank"
-                        >
-                          {i.title}
-                        </Link>
+                      <S.ContestMark
+                        onClick={() => navigate(`/contestInfo/${i.contestId}`)}
+                      >
+                        {i.title}
                       </S.ContestMark>
                     ) : (
                       ""
