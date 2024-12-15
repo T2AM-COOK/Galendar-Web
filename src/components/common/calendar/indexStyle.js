@@ -33,6 +33,7 @@ export const Date = styled.div`
   font-weight: bold;
   margin-top: 28px;
 `;
+
 export const DecreaseArrow = styled.img`
   margin-top: 20%;
   margin-left: 30%;
@@ -63,6 +64,16 @@ export const DayBox = styled.td`
   height: 100px;
   border: 1px solid #e6e6e6;
   background-color: white;
+`;
+
+export const ContestMark = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #2b32b2;
+  color: white;
+  height: 20%;
 `;
 
 export const LastDayBox = styled(DayBox)`

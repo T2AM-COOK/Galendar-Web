@@ -72,14 +72,13 @@ const MainCalendar = () => {
             <S.Tr>
               {PLDay !== 6
                 ? Array.from({ length: PLDay + 1 }).map((_, index) => (
-                    <S.DayBox key={`empty-${index}`}>
-                      <div></div>
-                    </S.DayBox>
+                    <S.DayBox key={`${index}`}></S.DayBox>
                   ))
                 : ""}
               {thisDates.map((date, index) => (
                 <S.DayBox key={`${index}`}>
-                  <div>{date}</div>
+                  {date}
+                  <S.ContestMark>안녕</S.ContestMark>
                 </S.DayBox>
               ))}
             </S.Tr>
