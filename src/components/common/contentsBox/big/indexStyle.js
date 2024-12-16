@@ -2,12 +2,11 @@ import styled from "styled-components";
 
 export const ContentBox = styled.div`
   box-sizing: border-box;
-  width: 971px;
+  width: 60vw;
   border-radius: 10px;
   height: 224px;
   display: flex;
   margin: 0 auto;
-  margin-bottom: 50px;
 `;
 
 export const ContestImg = styled.img`

@@ -33,11 +33,7 @@ const Topbar = () => {
               cursor: "pointer",
             }}
           >
-            {user.role === "ROLE_ADMIN" ? (
-              <span>대회 관리</span>
-            ) : (
-              <span>북마크</span>
-            )}
+            {user.role === "ROLE_ADMIN" ? "대회 관리" : "북마크"}
           </div>
           <div
             style={{
@@ -47,7 +43,7 @@ const Topbar = () => {
             {user.role === "ROLE_ADMIN" ? (
               <span onClick={() => navigate("/createcontest")}>대회 생성</span>
             ) : (
-              <span>ABOUT 갈랜더</span>
+              "ABOUT 갈랜더"
             )}
           </div>
         </S.Nav>

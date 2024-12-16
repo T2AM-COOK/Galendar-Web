@@ -1,15 +1,20 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 1128px;
+  width: 80vw;
   height: 400px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 `;
 
+export const Title = styled.div`
+  font-size: 2.5rem;
+  font-weight: 600;
+`;
+
 export const ScrollBox = styled.div`
-  width: 1128px;
+  width: 100%;
   height: 330px;
   white-space: nowrap;
   overflow: auto;

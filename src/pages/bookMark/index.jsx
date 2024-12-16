@@ -61,10 +61,8 @@ const BookMark = () => {
     <S.Div>
       <Sidebar />
       <S.Content>
+        <MenuBar title={user.role === "ROLE_ADMIN" ? "대회 관리" : "북마크"} />
         <S.BookMarkText>
-          <MenuBar
-            title={user.role === "ROLE_ADMIN" ? "대회 관리" : "북마크"}
-          />
           {user.role === "ROLE_ADMIN"
             ? contests.map((detail) => <BigContentBox id={detail.id} />)
             : bookmarkContests.map((detail) => (

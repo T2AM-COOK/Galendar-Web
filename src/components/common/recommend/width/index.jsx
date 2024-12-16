@@ -44,9 +44,7 @@ const RecommendBoxWidth = () => {
       }}
     >
       <S.Container>
-        <div style={{ fontSize: "32px", fontWeight: "bold" }}>
-          이런 대회 어때요?
-        </div>
+        <S.Title>이런 대회 어때요?</S.Title>
         <S.ScrollBox>
           <S.Contents>
             {contests.map((detail) => (

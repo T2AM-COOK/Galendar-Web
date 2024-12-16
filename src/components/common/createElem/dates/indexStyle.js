@@ -10,7 +10,7 @@ export const Div = styled.div`
 `;
 
 export const Space = styled.div`
-  width: 20vw;
+  width: 25vw;
   background-color: white;
   border-radius: 30px;
 `;

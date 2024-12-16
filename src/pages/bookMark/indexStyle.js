@@ -10,9 +10,11 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-left: 5vw;
 `;
 
 export const BookMarkText = styled.div`
-  margin-top: 40px;
-  margin-left: 5vw;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
 `;
