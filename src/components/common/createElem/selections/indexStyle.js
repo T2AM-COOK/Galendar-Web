@@ -9,6 +9,5 @@ export const Val = styled.div`
 `;
 export const Form = styled.form`
   display: flex;
-  max-width: 80%;
   flex-wrap: wrap;
 `;

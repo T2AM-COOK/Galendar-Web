@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const MainBox = styled.div`
   width: 70%;
   background: none;
-  height: 1280px;
 `;
 
 export const DateButton = styled.div`
@@ -11,7 +10,6 @@ export const DateButton = styled.div`
   width: 32px;
   height: 32px;
   border-radius: 5px;
-  border: 0px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,13 +55,12 @@ export const Td = styled.td`
 
 export const DateBox = styled.table`
   width: 100%;
-  height: 100%;
+  height: auto;
   border-top: 0.5px solid #b5b5b5;
 `;
 
 export const DayBox = styled.td`
   height: auto;
-  background-color: white;
   border: 0.5px solid #e6e6e6;
   transition: background-color 0.3s ease;
   &:hover {

@@ -14,10 +14,11 @@ export const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1vw;
+  width: 60vw;
 `;
 
 export const Hr = styled.hr`
-  width: 130%;
+  width: 60vw;
   border: 1px solid #b5b5b5;
 `;
 
@@ -44,7 +45,7 @@ export const TextField = styled.textarea`
   border: 0px;
   width: 100%;
   height: 133px;
-  padding: 1vw;
+  padding: 12px;
   resize: none;
   font-size: 16px;
 `;
@@ -60,6 +61,7 @@ export const Button = styled.div`
   background-color: white;
   cursor: pointer;
 `;
+
 export const Poster = styled.label`
   font-size: 16px;
   display: flex;

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Div = styled.div`
   display: flex;
   font-size: 16px;
-  width: 50vw;
+  width: 60vw;
   height: 55px;
   align-items: center;
   justify-content: space-between;

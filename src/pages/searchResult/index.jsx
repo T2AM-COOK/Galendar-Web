@@ -32,10 +32,6 @@ const Search = () => {
     }
   };
 
-  const activeEnter2 = () => {
-    getContest();
-  };
-
   const getContest = async () => {
     try {
       const res = await axios.get("http://3.37.189.59/contest/list", {
@@ -66,15 +62,22 @@ const Search = () => {
               onKeyDown={activeEnter}
             />
             <S.ImgDiv>
-              <S.SearchImg src="/images/search.svg" onClick={activeEnter2} />
+              <S.SearchImg
+                src="/images/search.svg"
+                onClick={() => getContest()}
+              />
             </S.ImgDiv>
           </S.SearchDiv>
         </S.TopPart>
         <S.FilterDiv>
           <S.Filter>대상</S.Filter>
-          <Join setTargets={setTargets} />
+          <div style={{ display: "flex", justifyContent: "flex-start" }}>
+            <Join setTargets={setTargets} />
+          </div>
           <S.Filter>지역</S.Filter>
-          <Region setRegions={setRegions} />
+          <div style={{ display: "flex", justifyContent: "flex-start" }}>
+            <Region setRegions={setRegions} />
+          </div>
         </S.FilterDiv>
         <S.Content>
           {contests.map((detail) => {

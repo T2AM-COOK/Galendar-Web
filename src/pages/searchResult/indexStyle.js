@@ -54,13 +54,14 @@ export const FilterDiv = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  align-items: flex-start;
+  max-width: 60%;
 `;
 
 export const Filter = styled.div`
   font-size: 16px;
   display: flex;
   justify-content: flex-start;
+  align-self: start;
 `;
 
 export const Content = styled.div`
