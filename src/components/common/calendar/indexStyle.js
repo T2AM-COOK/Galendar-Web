@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const MainBox = styled.div`
-  width: 100%;
-  height: 670px;
-  background: white;
+  width: 70%;
+  background: none;
+  height: 1280px;
 `;
 
 export const DateButton = styled.div`
@@ -24,8 +24,18 @@ export const ViewDate = styled.div`
 `;
 
 export const Tr = styled.tr`
+  width: 100%;
+  height: 600px;
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, minmax(50px, 1fr));
+  background-color: white;
+`;
+
+export const DateContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  padding-bottom: 23px;
 `;
 
 export const Date = styled.div`
@@ -40,47 +50,37 @@ export const Date = styled.div`
 
 export const Td = styled.td`
   color: rgb(99, 99, 99);
-  padding-right: 5px;
-  width: 139px;
   border-collapse: collapse;
-  border-left: 1px solid #e6e6e6;
-  border-right: 1px solid #e6e6e6;
+  border-left: 0.5px solid #e6e6e6;
+  border-right: 0.5px solid #e6e6e6;
 `;
 
 export const DateBox = styled.table`
-  width: 1000px;
-  height: 48px;
+  width: 100%;
+  height: 100%;
   border-top: 0.5px solid #b5b5b5;
-  margin-top: 23px;
-  border-spacing: 0;
 `;
 
 export const DayBox = styled.td`
-  width: 139px;
-  height: 100px;
+  height: auto;
   background-color: white;
   border: 0.5px solid #e6e6e6;
   transition: background-color 0.3s ease;
-
   &:hover {
     background-color: rgb(248, 248, 248);
   }
 `;
 
 export const ContestMark = styled.div`
+  width: 100%;
+  margin-top: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
   background-color: #2b32b2;
   color: white;
   text-align: center;
   cursor: pointer;
-`;
-
-export const LastDayBox = styled(DayBox)`
-  color: #a7a7a7;
-  border-collapse: collapse;
 `;
 
 export const Day = styled.div`

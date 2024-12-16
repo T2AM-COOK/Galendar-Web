@@ -16,6 +16,7 @@ const MainCalendar = () => {
   const prevThis = new Date(viewYear, viewMonth, 0); // 이번 달 마지막 날
   const PTDate = prevThis.getDate(); // 이번 달 마지막 날
   const PLDay = prevLast.getDay(); // 저번 달 마지막 요일
+  const PTDay = prevThis.getDay(); // 이번 달 마지막 요일
 
   // 날짜 이동 함수
   const Decrease = () => {
@@ -43,47 +44,55 @@ const MainCalendar = () => {
   };
 
   return (
-    <div>
-      <S.MainBox>
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <S.Date>
-            <S.DateButton onClick={Decrease}>
-              <img src="/images/decreasearrow.svg" />
-            </S.DateButton>
-            <S.ViewDate onClick={setDate}>
-              {viewYear}.{viewMonth <= 9 ? `0${viewMonth}` : `${viewMonth}`}
-            </S.ViewDate>
-            <S.DateButton onClick={Increase}>
-              <img src="/images/increasearrow.svg" />
-            </S.DateButton>
-          </S.Date>
-        </div>
-        <S.DateBox cellSpacing={0} cellPadding={5} bgcolor="">
-          <thead>
-            <tr style={{ display: "flex", justifyContent: "space-around" }}>
-              <S.Td style={{ color: "#FF0000" }}>SUN</S.Td>
-              <S.Td>MON</S.Td>
-              <S.Td>TUE</S.Td>
-              <S.Td>WED</S.Td>
-              <S.Td>THU</S.Td>
-              <S.Td>FRI</S.Td>
-              <S.Td style={{ color: "#2B32B2" }}>SAT</S.Td>
-            </tr>
-          </thead>
-          <tbody>
-            <S.Tr>
-              {PLDay !== 6
-                ? Array.from({ length: PLDay + 1 }).map((_, index) => (
-                    <S.DayBox
-                      key={`${index}`}
-                      style={{ background: "#FBFBFB" }}
-                    ></S.DayBox>
-                  ))
-                : ""}
-              {thisDates.map((date, index) => (
-                <S.DayBox key={`${index}`}>
-                  {date}
-                  {bookmarkContests.map((i) =>
+    <S.MainBox>
+      <S.DateContainer>
+        <S.Date>
+          <S.DateButton onClick={Decrease}>
+            <img src="/images/decreasearrow.svg" />
+          </S.DateButton>
+          <S.ViewDate onClick={setDate}>
+            {viewYear}.{viewMonth <= 9 ? `0${viewMonth}` : `${viewMonth}`}
+          </S.ViewDate>
+          <S.DateButton onClick={Increase}>
+            <img src="/images/increasearrow.svg" />
+          </S.DateButton>
+        </S.Date>
+      </S.DateContainer>
+      <S.DateBox cellSpacing={0} cellPadding={5} bgcolor="">
+        <thead>
+          <tr
+            style={{ display: "grid", gridTemplateColumns: "repeat(7, 1fr)" }}
+          >
+            <S.Td style={{ color: "#FF0000" }}>SUN</S.Td>
+            <S.Td>MON</S.Td>
+            <S.Td>TUE</S.Td>
+            <S.Td>WED</S.Td>
+            <S.Td>THU</S.Td>
+            <S.Td>FRI</S.Td>
+            <S.Td style={{ color: "#2B32B2" }}>SAT</S.Td>
+          </tr>
+        </thead>
+        <tbody>
+          <S.Tr>
+            {PLDay !== 6
+              ? Array.from({ length: PLDay + 1 }).map((_, index) => (
+                  <S.DayBox
+                    key={`${index}`}
+                    style={{ background: "#FBFBFB" }}
+                  ></S.DayBox>
+                ))
+              : ""}
+            {thisDates.map((date, index) => (
+              <S.DayBox key={`${index}`}>
+                {date}
+                {bookmarkContests.some(
+                  (i) =>
+                    i.contestStartDate ===
+                    `${viewYear}-${
+                      viewMonth < 10 ? "0" + viewMonth : viewMonth
+                    }-${date < 10 ? "0" + date : date}`
+                ) ? (
+                  bookmarkContests.map((i) =>
                     i.contestStartDate ===
                     `${viewYear}-${
                       viewMonth < 10 ? "0" + viewMonth : viewMonth
@@ -93,17 +102,23 @@ const MainCalendar = () => {
                       >
                         {i.title}
                       </S.ContestMark>
-                    ) : (
-                      ""
-                    )
-                  )}
-                </S.DayBox>
-              ))}
-            </S.Tr>
-          </tbody>
-        </S.DateBox>
-      </S.MainBox>
-    </div>
+                    ) : null
+                  )
+                ) : (
+                  <div style={{ height: "32px" }}></div>
+                )}
+              </S.DayBox>
+            ))}
+            {Array.from({ length: 7 - PTDay - 1 }).map((_, index) => (
+              <S.DayBox
+                key={`${index}`}
+                style={{ background: "#FBFBFB" }}
+              ></S.DayBox>
+            ))}
+          </S.Tr>
+        </tbody>
+      </S.DateBox>
+    </S.MainBox>
   );
 };
 

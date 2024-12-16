@@ -27,6 +27,8 @@ const LoginContent = () => {
       } catch (err) {
         if (err.response.data.status === 401) {
           alert("아이디나 비밀번호가 잘못됐습니다.");
+        }else{
+          alert("네트워크 에러")
         }
       }
     }
@@ -83,11 +85,11 @@ const LoginContent = () => {
           backgroundColor: isButtonActive ? "#242B9C" : "#CDCDCD",
           cursor: isButtonActive ? "pointer" : "",
         }}
-        onClick={login}
+        onClick={() => login()}
       >
         로그인
       </S.Button>
-      <div style={{ fontSize: "12px", float: "right", marginTop: "10px" }}>
+      <div style={{ float: "right", marginTop: "10px" }}>
         계정이 없으신가요?{" "}
         <span
           style={{ color: "#242B9C", cursor: "pointer" }}
