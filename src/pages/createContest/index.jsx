@@ -12,6 +12,7 @@ import {
 import axios from "axios";
 import { JoinSet, TimeSet } from "../../components/common/createElem/dates";
 import NotFound from "../notFound";
+import MenuBar from "../../components/common/bars/menuBar";
 
 const getFormattedDate = () => format(new Date(), "yyyy-MM-dd");
 
@@ -124,8 +125,7 @@ const CreateContest = () => {
           <Sidebar />
           <S.Content>
             <S.Form>
-              <S.CreateContest>대회 생성</S.CreateContest>
-              <S.Hr />
+              <MenuBar title="대회 생성" />
               <S.FormWrapper>
                 <S.FormName>대회 이름</S.FormName>
                 <S.NameField

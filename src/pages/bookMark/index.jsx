@@ -4,6 +4,7 @@ import * as S from "./indexStyle";
 import BigContentBox from "../../components/common/contentsBox/big";
 import useGetMe from "../../hooks/useGetMe";
 import axios from "axios";
+import MenuBar from "../../components/common/bars/menuBar";
 
 const BookMark = () => {
   const { user } = useGetMe();
@@ -61,21 +62,14 @@ const BookMark = () => {
       <Sidebar />
       <S.Content>
         <S.BookMarkText>
-          <S.TopNav>
-            {user.role === "ROLE_ADMIN" ? (
-              <S.Title>대회 관리</S.Title>
-            ) : (
-              <S.Title>북마크</S.Title>
-            )}
-            <S.Hr />
-          </S.TopNav>
-          <S.BookMarks>
-            {user.role === "ROLE_ADMIN"
-              ? contests.map((detail) => <BigContentBox id={detail.id} />)
-              : bookmarkContests.map((detail) => (
-                  <BigContentBox id={detail.contestId} />
-                ))}
-          </S.BookMarks>
+          <MenuBar
+            title={user.role === "ROLE_ADMIN" ? "대회 관리" : "북마크"}
+          />
+          {user.role === "ROLE_ADMIN"
+            ? contests.map((detail) => <BigContentBox id={detail.id} />)
+            : bookmarkContests.map((detail) => (
+                <BigContentBox id={detail.contestId} />
+              ))}
         </S.BookMarkText>
       </S.Content>
     </S.Div>

@@ -5,21 +5,11 @@ export const Div = styled.div`
   background-color: #f9f9f9;
 `;
 
-export const CreateContest = styled.div`
-  font-size: 32px;
-  font-weight: bold;
-`;
-
 export const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1vw;
   width: 60vw;
-`;
-
-export const Hr = styled.hr`
-  width: 60vw;
-  border: 1px solid #b5b5b5;
 `;
 
 export const Content = styled.div`
@@ -83,7 +73,6 @@ export const ButtonContainer = styled.div`
 
 export const Form = styled.form`
   margin-left: 5vw;
-  margin-top: 5vh;
   height: 180vh;
   display: flex;
   flex-direction: column;
