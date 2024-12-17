@@ -36,28 +36,20 @@ const RecommendBoxWidth = () => {
     getContest();
   }, []);
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <S.Container>
-        <S.Title>이런 대회 어때요?</S.Title>
-        <S.ScrollBox>
-          <S.Contents>
-            {contests.map((detail) => (
-              <SmallContestBox
-                title={detail.title}
-                id={detail.id}
-                imgLink={detail.imgLink}
-              />
-            ))}
-          </S.Contents>
-        </S.ScrollBox>
-      </S.Container>
-    </div>
+    <S.Container>
+      <S.Title>이런 대회 어때요?</S.Title>
+      <S.ScrollBox>
+        <S.Contents>
+          {contests.map((detail) => (
+            <SmallContestBox
+              title={detail.title}
+              id={detail.id}
+              imgLink={detail.imgLink}
+            />
+          ))}
+        </S.Contents>
+      </S.ScrollBox>
+    </S.Container>
   );
 };
 

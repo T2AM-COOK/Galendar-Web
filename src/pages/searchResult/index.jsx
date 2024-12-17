@@ -100,9 +100,9 @@ const Search = () => {
           })}
         </S.Content>
       </S.Div>
-      <div style={{ marginTop: "80px", paddingBottom: "80px" }}>
+      <S.RecommendBox>
         <RecommendBoxWidth />
-      </div>
+      </S.RecommendBox>
     </div>
   );
 };

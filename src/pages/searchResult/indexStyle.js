@@ -72,3 +72,9 @@ export const Content = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   row-gap: 30px;
 `;
+
+export const RecommendBox = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 50px;
+`;

@@ -15,14 +15,12 @@ const MediumContestBox = ({
 
   return (
     <S.Container>
-      {" "}
       <S.ContestImg
         src={imgLink}
         onClick={() => navigate(`/contestInfo/${id}`)}
       />
       <S.Detail>
         <S.Title onClick={() => navigate(`/contestInfo/${id}`)}>
-          {" "}
           {title}
         </S.Title>
         {content}
