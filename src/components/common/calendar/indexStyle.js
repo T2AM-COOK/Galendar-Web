@@ -2,7 +2,9 @@ import styled from "styled-components";
 
 export const MainBox = styled.div`
   width: 70%;
-  background: none;
+  background: white;
+  padding-left: 10px;
+  padding-right: 10px;
 `;
 
 export const DateButton = styled.div`
@@ -51,6 +53,8 @@ export const Td = styled.td`
   border-collapse: collapse;
   border-left: 0.5px solid #e6e6e6;
   border-right: 0.5px solid #e6e6e6;
+  font-weight: 600;
+  background-color: #fcfcfc;
 `;
 
 export const DateBox = styled.table`

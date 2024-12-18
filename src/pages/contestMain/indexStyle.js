@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const ContentBox = styled.div`
-  letter-spacing: -0.5px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -58,11 +57,6 @@ export const Info = styled.div`
 `;
 
 export const Button = styled.button`
-  @font-face {
-    font-family: "Paperlogy";
-    src: url("./fonts/Paperlogy-4Medium.ttf") format("truetype");
-  }
-  font-family: "Paperlogy";
   width: 341px;
   height: 52px;
   border: 0px;

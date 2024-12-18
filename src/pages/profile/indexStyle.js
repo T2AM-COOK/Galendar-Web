@@ -18,12 +18,6 @@ export const Content = styled.div`
 `;
 
 export const Profile = styled.div`
-  @font-face {
-    font-family: "Paperlogy";
-    src: url("./fonts/Paperlogy-8Bold.ttf") format("truetype");
-  }
-  font-family: "Paperlogy";
-  letter-spacing: -0.5px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -42,6 +36,7 @@ export const ProfileText = styled.div`
 export const BookMarkText = styled.div`
   margin-top: 40px;
 `;
+
 export const TopNav = styled.div`
   display: flex;
   flex-direction: column;
@@ -64,5 +59,3 @@ export const All = styled.div`
   display: flex;
   flex-direction: column;
 `;
-
-export const BookMarks = styled.div``;

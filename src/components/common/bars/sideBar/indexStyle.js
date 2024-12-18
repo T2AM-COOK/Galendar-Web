@@ -40,12 +40,6 @@ export const ProfileMenu = styled.div`
   display: none;
 `;
 export const Profile = styled.div`
-  @font-face {
-    font-family: "Paperlogy";
-    src: url("./fonts/Paperlogy-4Regular.ttf") format("truetype");
-  }
-  font-family: "Paperlogy";
-  letter-spacing: -0.5px;
   display: flex;
   flex-direction: column;
   align-items: center;
