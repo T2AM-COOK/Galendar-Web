@@ -16,7 +16,6 @@ export const Banner = styled.div`
 `;
 
 export const Content = styled.div`
-  background-color: #f9f9f9;
   height: 100%;
   flex-direction: column;
   justify-content: space-between;
