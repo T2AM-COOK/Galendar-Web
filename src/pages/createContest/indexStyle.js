@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const Div = styled.div`
   display: flex;
-  background-color: #f9f9f9;
 `;
 
 export const FormWrapper = styled.div`

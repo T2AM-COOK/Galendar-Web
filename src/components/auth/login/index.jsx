@@ -27,19 +27,11 @@ const LoginContent = () => {
       } catch (err) {
         if (err.response.data.status === 401) {
           alert("아이디나 비밀번호가 잘못됐습니다.");
-        }else{
-          alert("네트워크 에러")
+        } else {
+          alert("네트워크 에러");
         }
       }
     }
-  };
-
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
-
-  const handlePwChange = (event) => {
-    setPw(event.target.value);
   };
 
   const activeEnter = (e) => {
@@ -57,13 +49,13 @@ const LoginContent = () => {
         <S.LoginInput
           type="text"
           placeholder="이메일을 입력하세요"
-          onChange={handleEmailChange}
+          onChange={(e) => setEmail(e.target.value)}
           onKeyDown={(e) => activeEnter(e)}
         />
         <S.LoginInput
           type="password"
           placeholder="비밀번호를 입력하세요"
-          onChange={handlePwChange}
+          onChange={(e) => setPw(e.target.value)}
           onKeyDown={(e) => activeEnter(e)}
         />
         <div

@@ -6,7 +6,7 @@ import RecommendBoxLength from "../../components/common/recommend/length";
 
 const Main = () => {
   return (
-    <div style={{ height: "130vh", width: "100%" }}>
+    <S.Container>
       <Topbar />
       <S.Content>
         <S.Contents>
@@ -17,7 +17,7 @@ const Main = () => {
           <img src="/images/whitelogo.svg" />
         </S.Banner>
       </S.Content>
-    </div>
+    </S.Container>
   );
 };
 export default Main;

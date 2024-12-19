@@ -2,11 +2,12 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 284px;
-  height: 340px;
+  height: 320px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  gap: 20px;
 `;
 
 export const ContestImg = styled.img`
@@ -17,7 +18,7 @@ export const ContestImg = styled.img`
 
 export const Title = styled.div`
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 600;
 `;
 
 export const Detail = styled.div`

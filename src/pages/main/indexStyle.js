@@ -1,9 +1,15 @@
 import styled from "styled-components";
 
+export const Container = styled.div`
+  width: 100%;
+  height: 130vh;
+`;
+
 export const Contents = styled.div`
   padding-top: 100px;
   display: flex;
   justify-content: space-around;
+  overflow: hidden;
 `;
 
 export const Banner = styled.div`

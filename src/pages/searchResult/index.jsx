@@ -50,7 +50,7 @@ const Search = () => {
     }
   };
   return (
-    <div style={{ backgroundColor: "#F9F9F9", minHeight: "100vh" }}>
+    <>
       <Topbar />
       <S.Div>
         <S.TopPart>
@@ -82,8 +82,8 @@ const Search = () => {
         <S.Content>
           {contests.map((detail) => {
             const shortenedContent =
-              detail.content.length >= 50
-                ? detail.content.slice(0, 50) + "..."
+              detail.content.length >= 65
+                ? detail.content.slice(0, 65) + "..."
                 : detail.content;
             return (
               <MediumContestBox
@@ -103,7 +103,7 @@ const Search = () => {
       <S.RecommendBox>
         <RecommendBoxWidth />
       </S.RecommendBox>
-    </div>
+    </>
   );
 };
 
