@@ -6,7 +6,6 @@ export const Container = styled.div`
 `;
 
 export const Contents = styled.div`
-  padding-top: 100px;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -29,7 +28,6 @@ export const Copyright = styled.div`
 `;
 
 export const Banner = styled.div`
-  margin-top: 10vh;
   width: 100vw;
   height: 70px;
   color: white;

@@ -4,11 +4,13 @@ import Topbar from "../../components/common/bars/topBar";
 import MainCalendar from "../../components/common/calendar";
 import RecommendBox from "../../components/common/main/recommend";
 import MyProfile from "../../components/common/main/myProfile";
+import AdBanner from "../../components/common/main/adBanner";
 
 const Main = () => {
   return (
     <S.Container>
       <Topbar />
+      <AdBanner />
       <S.Content>
         <S.Contents>
           <MainCalendar />
