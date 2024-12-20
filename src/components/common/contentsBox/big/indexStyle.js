@@ -32,7 +32,7 @@ export const Text = styled(Box)`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  height: 70%;
+  height: 100%;
 `;
 
 export const ContentTextBox = styled(Box)`
@@ -42,9 +42,16 @@ export const ContentTextBox = styled(Box)`
   background-color: white;
   width: 800px;
   height: 100%;
+  gap: 10vh;
 `;
 
-export const ContentDiv = styled(Box)`
+export const ContentDetail = styled(Box)`
+  flex-direction: column;
+  height: 40%;
+`;
+
+export const ContentContainer = styled(Box)`
+  width: 100%;
   justify-content: flex-start;
 `;
 

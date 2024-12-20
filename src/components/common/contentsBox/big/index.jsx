@@ -125,20 +125,26 @@ const BigContentBox = ({ id }) => {
         <S.ContentTextBox>
           <S.Text>
             <S.Title onClick={() => navigate(`/contestInfo/${id}`)}>
-              {contest.title}
+              {contest.title && contest.title.length >= 16
+                ? contest.title.slice(0, 16) + "..."
+                : contest?.title || ""}
             </S.Title>
-            <S.ContentDiv>
-              <S.ContentImg src="/images/clock.svg" />
-              접수 기간 : {contest.submitStartDate} ~ {contest.submitEndDate}
-            </S.ContentDiv>
-            <S.ContentDiv>
-              <S.ContentImg src="/images/contestcalendar.svg" />
-              대회 기간 : {contest.contestStartDate} ~ {contest.contestEndDate}
-            </S.ContentDiv>
-            <S.ContentDiv>
-              <S.ContentImg src="/images/money.svg" />
-              대회 비용 : {contest.cost === "PAID" ? "유료" : "무료"}
-            </S.ContentDiv>
+
+            <S.ContentDetail>
+              <S.ContentContainer>
+                <S.ContentImg src="/images/clock.svg" />
+                접수 기간 : {contest.submitStartDate} ~ {contest.submitEndDate}
+              </S.ContentContainer>
+              <S.ContentContainer>
+                <S.ContentImg src="/images/contestcalendar.svg" />
+                대회 기간 : {contest.contestStartDate} ~{" "}
+                {contest.contestEndDate}
+              </S.ContentContainer>
+              <S.ContentContainer>
+                <S.ContentImg src="/images/money.svg" />
+                대회 비용 : {contest.cost === "PAID" ? "유료" : "무료"}
+              </S.ContentContainer>
+            </S.ContentDetail>
           </S.Text>
           <S.Heart
             src={
