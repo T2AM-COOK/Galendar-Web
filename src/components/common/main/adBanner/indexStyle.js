@@ -1,12 +1,11 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 70%;
+  width: 100%;
   height: 400px;
   margin-top: 112px;
   margin-bottom: 30px;
   overflow: hidden;
-  border-radius: 10px;
   border: 1px solid #e6e6e6;
 `;
 
@@ -21,7 +20,8 @@ export const ContestWrapper = styled.div`
 export const Contest = styled.div`
   background-image: ${(props) => `url(${props.img})`};
   background-repeat: no-repeat;
-  background-position: center;
-  flex: 1 0 100%;
+  background-image: center;
+  height: 100%;
+  width: 100%;
   cursor: pointer;
 `;

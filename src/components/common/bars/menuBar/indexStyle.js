@@ -13,6 +13,8 @@ export const Title = styled.div`
   font-weight: 700;
 `;
 
-export const Hr = styled.hr`
+export const Hr = styled.div`
+  height: 0.5px;
+  background-color: #e6e6e6;
   width: 60vw;
 `;

@@ -15,7 +15,7 @@ const AdBanner = () => {
   return (
     <S.Container slideCount={slideCount}>
       <S.ContestWrapper currentIndex={currentIndex} slideCount={slideCount}>
-        <S.Contest img={"/images/contestImage.svg"} />
+        <S.Contest img={"/images/logo.svg"} />
         <S.Contest style={{ background: "red" }} />
         <S.Contest style={{ background: "blue" }} />
       </S.ContestWrapper>
