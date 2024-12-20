@@ -19,6 +19,10 @@ const Main = () => {
         </S.Contents>
         <S.Banner>
           <img src="/images/whitelogo.svg" />
+          <S.Copyright>
+            <div>@Copyright By T2EM-COOK. All rights reserved. </div>
+            <div>Since 2024</div>
+          </S.Copyright>
         </S.Banner>
       </S.Content>
     </S.Container>

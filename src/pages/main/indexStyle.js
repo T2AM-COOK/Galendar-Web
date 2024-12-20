@@ -22,13 +22,22 @@ export const SideContainer = styled.div`
   flex-direction: column;
 `;
 
+export const Copyright = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+`;
+
 export const Banner = styled.div`
-  margin-top: 50px;
+  margin-top: 10vh;
   width: 100vw;
   height: 70px;
+  color: white;
   background-color: #2b32b2;
   display: flex;
-  justify-content: center;
+  font-size: 0.8rem;
+  gap: 40%;
+  justify-content: space-around;
   align-items: center;
 `;
 
