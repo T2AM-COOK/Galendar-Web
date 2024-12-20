@@ -17,65 +17,24 @@ const Topbar = () => {
   }
   return (
     <S.Container>
-      <S.Contents>
-        <S.Nav>
-          <S.LogoImage
-            src="/images/logo.svg"
-            style={{ cursor: "pointer" }}
-            onClick={main}
-          />
-          <div onClick={main} style={{ cursor: "pointer" }}>
-            홈
-          </div>
-          <div
-            onClick={() => navigate("/bookmark")}
-            style={{
-              cursor: "pointer",
-            }}
-          >
-            {user.role === "ROLE_ADMIN" ? "대회 관리" : "북마크"}
-          </div>
-          <div
-            style={{
-              cursor: "pointer",
-            }}
-          >
-            {user.role === "ROLE_ADMIN" ? (
-              <span onClick={() => navigate("/createcontest")}>대회 생성</span>
-            ) : (
-              "ABOUT 갈랜더"
-            )}
-          </div>
-        </S.Nav>
-        <S.RightNav>
-          <S.Search>
-            <S.SearchImg
-              src="/images/search.svg"
-              onClick={() => navigate(`/search`)}
-            />
-          </S.Search>
-          <S.ProfileBar>
-            {ACCESS_TOKEN ? (
-              <>
-                <S.ProfileImage
-                  src="/images/profile.svg"
-                  onClick={() => navigate("/profile")}
-                />
-              </>
-            ) : (
-              <>
-                <S.Text
-                  onClick={() => navigate("/register")}
-                  style={{ color: "#2B32B2" }}
-                >
-                  회원가입
-                </S.Text>
-                <S.Text onClick={() => navigate("/login")}>로그인</S.Text>
-              </>
-            )}
-          </S.ProfileBar>
-        </S.RightNav>
-      </S.Contents>
+      <S.Nav>
+        <img
+          src="/images/logo.svg"
+          style={{ cursor: "pointer" }}
+          onClick={main}
+        />
+        <S.Text onClick={main}>홈</S.Text>
+        <S.Text onClick={() => navigate("/bookmark")}>
+          {user.role === "ROLE_ADMIN" ? "대회 관리" : "북마크"}
+        </S.Text>
+        <S.Text onClick={() => navigate("/createcontest")}>
+          {user.role === "ROLE_ADMIN" ? "대회 생성" : "ABOUT 갈랜더"}
+        </S.Text>
+      </S.Nav>
+      <S.SearchImg
+        src="/images/search.svg"
+        onClick={() => navigate(`/search`)}
+      />
     </S.Container>
   );
 };
