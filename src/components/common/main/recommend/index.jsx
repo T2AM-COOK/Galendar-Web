@@ -3,7 +3,7 @@ import SmallContestBox from "../../contentsBox/small";
 import * as S from "./indexStyle";
 import { useContestList } from "../../../../store/getContestList";
 
-const RecommendBoxWidth = () => {
+const RecommendBox = () => {
   const { contestList, fetchContestList } = useContestList();
 
   useEffect(() => {
@@ -27,4 +27,4 @@ const RecommendBoxWidth = () => {
   );
 };
 
-export default RecommendBoxWidth;
+export default RecommendBox;

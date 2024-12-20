@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as S from "./indexStyle";
 import Sidebar from "../../components/common/bars/sideBar";
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
-import useGetMe from "../../hooks/useGetMe";
 import {
   Fee,
   Join,
@@ -13,11 +12,12 @@ import axios from "axios";
 import { JoinSet, TimeSet } from "../../components/common/createElem/dates";
 import NotFound from "../notFound";
 import MenuBar from "../../components/common/bars/menuBar";
+import { useGetMe } from "../../store/getMe";
 
 const getFormattedDate = () => format(new Date(), "yyyy-MM-dd");
 
 const CreateContest = () => {
-  const { user } = useGetMe();
+  const { user, fetchUser } = useGetMe();
   const navgiate = useNavigate();
   const [imglink, setImgLink] = useState();
   const [title, setTitle] = useState();
@@ -33,9 +33,9 @@ const CreateContest = () => {
   const [regions, setRegions] = useState([]);
   const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
 
-  if (!user) {
-    return;
-  }
+  useEffect(() => {
+    fetchUser();
+  }, [fetchUser]);
 
   const postImage = async (file) => {
     if (file) {

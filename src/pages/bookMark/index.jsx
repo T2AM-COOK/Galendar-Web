@@ -1,30 +1,19 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../../components/common/bars/sideBar";
 import * as S from "./indexStyle";
+
 import BigContentBox from "../../components/common/contentsBox/big";
-import useGetMe from "../../hooks/useGetMe";
-import axios from "axios";
 import MenuBar from "../../components/common/bars/menuBar";
+import { useGetMe } from "../../store/getMe";
+import { useGetBookmark } from "../../store/getBookMark";
+import axios from "axios";
 
 const BookMark = () => {
-  const { user } = useGetMe();
+  const { user, fetchUser } = useGetMe();
+  const { bookmark, fetchBookmark } = useGetBookmark();
   const [contests, setContests] = useState([]);
-  const [bookmarkContests, setBookmarkContests] = useState([]);
   const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
   const REFRESH_TOKEN = localStorage.getItem("REFRESH_TOKEN");
-
-  const getBookMarkContest = async () => {
-    try {
-      const res = await axios.get("http://3.37.189.59/bookmark/list", {
-        headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
-      });
-      if (res) {
-        setBookmarkContests(res.data.data);
-      }
-    } catch (e) {
-      console.log("대회가 불러와지지 않았습니다.");
-    }
-  };
 
   const getContest = async () => {
     try {
@@ -49,13 +38,16 @@ const BookMark = () => {
   };
 
   useEffect(() => {
-    getBookMarkContest();
+    fetchUser();
+  }, [fetchUser]);
+
+  useEffect(() => {
+    fetchBookmark();
+  }, [fetchBookmark]);
+
+  useEffect(() => {
     getContest();
   }, []);
-
-  if (!user) {
-    return;
-  }
 
   return (
     <S.Div>
@@ -65,9 +57,7 @@ const BookMark = () => {
         <S.BookMarkText>
           {user.role === "ROLE_ADMIN"
             ? contests.map((detail) => <BigContentBox id={detail.id} />)
-            : bookmarkContests.map((detail) => (
-                <BigContentBox id={detail.contestId} />
-              ))}
+            : bookmark.map((detail) => <BigContentBox id={detail.contestId} />)}
         </S.BookMarkText>
       </S.Content>
     </S.Div>

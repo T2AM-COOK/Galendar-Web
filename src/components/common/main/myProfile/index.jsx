@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import * as S from "./indexStyle";
-import { useGetMe } from "../../../store/getMe";
 import { useNavigate } from "react-router-dom";
+import { useGetMe } from "../../../../store/getMe";
 
 const MyProfile = () => {
   const { user, fetchUser } = useGetMe();

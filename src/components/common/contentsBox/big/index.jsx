@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./indexStyle";
 import { useNavigate } from "react-router-dom";
-import useGetMe from "../../../../hooks/useGetMe";
 import axios from "axios";
 import useGetContest from "../../../../hooks/useGetContest";
+import { useGetMe } from "../../../../store/getMe";
 
 const BigContentBox = ({ id }) => {
-  const { user } = useGetMe();
+  const { user, fetchUser } = useGetMe();
   const { contest } = useGetContest(id);
   const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
   const [isBookmarked, setIsBookmarked] = useState(false);
@@ -19,6 +19,10 @@ const BigContentBox = ({ id }) => {
       setIsBookmarked(contest.bookmarked);
     }
   }, [contest]);
+
+  useEffect(() => {
+    fetchUser();
+  }, [fetchUser]);
 
   const Count = async () => {
     getBookmarkId();

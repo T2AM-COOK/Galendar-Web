@@ -2,8 +2,8 @@ import React from "react";
 import * as S from "./indexStyle";
 import Topbar from "../../components/common/bars/topBar";
 import MainCalendar from "../../components/common/calendar";
-import RecommendBoxLength from "../../components/common/recommend/length";
-import MyProfile from "../../components/common/myProfile";
+import RecommendBox from "../../components/common/main/recommend";
+import MyProfile from "../../components/common/main/myProfile";
 
 const Main = () => {
   return (
@@ -14,7 +14,7 @@ const Main = () => {
           <MainCalendar />
           <S.SideContainer>
             <MyProfile />
-            <RecommendBoxLength />
+            <RecommendBox />
           </S.SideContainer>
         </S.Contents>
         <S.Banner>

@@ -1,20 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import * as S from "./indexStyle";
 import { useNavigate } from "react-router-dom";
-import useGetMe from "../../../../hooks/useGetMe";
+import { useGetMe } from "../../../../store/getMe";
 
 const Topbar = () => {
-  const { user } = useGetMe();
+  const { user, fetchUser } = useGetMe();
   const navigate = useNavigate();
-  const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
 
   const main = () => {
     navigate(`/main`);
   };
 
-  if (!user) {
-    return;
-  }
+  useEffect(() => {
+    fetchUser();
+  }, [fetchUser]);
+
   return (
     <S.Container>
       <S.Nav>
