@@ -1,11 +1,13 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 100%;
+  width: 70%;
   height: 400px;
   margin-top: 112px;
   margin-bottom: 30px;
   overflow: hidden;
+  border-radius: 10px;
+  border: 1px solid #e6e6e6;
 `;
 
 export const ContestWrapper = styled.div`
