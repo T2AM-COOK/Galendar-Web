@@ -20,7 +20,6 @@ const LoginContent = () => {
         if (res && res.data) {
           localStorage.setItem("ACCESS_TOKEN", res.data.data.accessToken);
           localStorage.setItem("REFRESH_TOKEN", res.data.data.refreshToken);
-          alert("로그인 완료");
           navigate("/main");
           window.location.reload();
         }

@@ -16,7 +16,7 @@ const Sidebar = () => {
   return (
     <S.Container>
       <Link to="/main">
-        <S.LogoImage src="/images/logo.svg" alt />
+        <S.LogoImage src="/images/logo.svg" />
       </Link>
       <S.ProfileContainer>
         <S.ProfileMenu style={{ display: visible ? "block" : "none" }}>

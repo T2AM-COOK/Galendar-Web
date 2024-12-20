@@ -1,14 +1,16 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 25%;
-  height: 727px;
+  width: 100%;
+  height: 70%;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: space-evenly;
-  border: 0.5px solid #e6e6e6;
+  border-radius: 10px;
+  border: 1px solid #e6e6e6;
   background-color: white;
+  padding-top: 20px;
 `;
 
 export const Title = styled.div`

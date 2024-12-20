@@ -3,6 +3,7 @@ import * as S from "./indexStyle";
 import Topbar from "../../components/common/bars/topBar";
 import MainCalendar from "../../components/common/calendar";
 import RecommendBoxLength from "../../components/common/recommend/length";
+import MyProfile from "../../components/common/myProfile";
 
 const Main = () => {
   return (
@@ -11,7 +12,10 @@ const Main = () => {
       <S.Content>
         <S.Contents>
           <MainCalendar />
-          <RecommendBoxLength />
+          <S.SideContainer>
+            <MyProfile />
+            <RecommendBoxLength />
+          </S.SideContainer>
         </S.Contents>
         <S.Banner>
           <img src="/images/whitelogo.svg" />

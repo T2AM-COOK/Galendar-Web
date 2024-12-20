@@ -2,9 +2,13 @@ import styled from "styled-components";
 
 export const MainBox = styled.div`
   width: 70%;
+  height: 100%;
   background: white;
   padding-left: 10px;
   padding-right: 10px;
+  border-radius: 10px;
+  border: 1px solid #e6e6e6;
+  box-sizing: border-box;
 `;
 
 export const DateButton = styled.div`

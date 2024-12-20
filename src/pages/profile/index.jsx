@@ -1,17 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Sidebar from "../../components/common/bars/sideBar";
 import * as S from "./indexStyle";
-import useGetMe from "../../hooks/useGetMe";
+import { useGetMe } from "../../store/getMe";
 
 const Profile = () => {
-  const { user } = useGetMe();
+  const { user, fetchUser } = useGetMe();
 
-  if (!user) {
-    return;
-  }
+  useEffect(() => {
+    fetchUser();
+  }, [fetchUser]);
 
   return (
-    <div>
+    <>
       <S.Div>
         <Sidebar />
         <S.All>
@@ -28,7 +28,7 @@ const Profile = () => {
           </S.Content>
         </S.All>
       </S.Div>
-    </div>
+    </>
   );
 };
 
