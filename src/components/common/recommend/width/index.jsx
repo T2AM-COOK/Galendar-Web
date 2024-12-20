@@ -9,6 +9,7 @@ const RecommendBoxWidth = () => {
   useEffect(() => {
     fetchContestList();
   }, [fetchContestList]);
+
   return (
     <S.Container>
       <S.Title>이런 대회 어때요?</S.Title>

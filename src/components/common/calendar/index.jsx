@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./indexStyle";
-import useGetBookmarkList from "../../../hooks/useGetBookmarkList";
 import { useNavigate } from "react-router-dom";
+import { useGetBookmark } from "../../../store/getBookMark";
 
 const MainCalendar = () => {
   const date = new Date();
   const [viewYear, setViewYear] = useState(date.getFullYear());
   const [viewMonth, setViewMonth] = useState(date.getMonth() + 1);
   const [thisDates, setThisDates] = useState([]);
-  const { bookmarkContests } = useGetBookmarkList();
+  const { bookmark, fetchBookmark } = useGetBookmark();
   const navigate = useNavigate();
 
   // 저번 달 마지막 날짜와 이번 달 마지막 날짜
@@ -85,14 +85,14 @@ const MainCalendar = () => {
             {thisDates.map((date, index) => (
               <S.DayBox key={`${index}`}>
                 {date}
-                {bookmarkContests.some(
+                {bookmark.some(
                   (i) =>
                     i.contestStartDate ===
                     `${viewYear}-${
                       viewMonth < 10 ? "0" + viewMonth : viewMonth
                     }-${date < 10 ? "0" + date : date}`
                 ) ? (
-                  bookmarkContests.map((i) =>
+                  bookmark.map((i) =>
                     i.contestStartDate ===
                     `${viewYear}-${
                       viewMonth < 10 ? "0" + viewMonth : viewMonth

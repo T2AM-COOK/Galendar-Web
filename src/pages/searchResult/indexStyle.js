@@ -28,6 +28,7 @@ export const Search = styled.input`
   border-radius: 30px;
   width: 85%;
   border: 0px;
+  font-size: 14px;
   &:focus {
     outline: none;
   }

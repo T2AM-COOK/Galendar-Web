@@ -1,67 +1,39 @@
 import React, { useEffect, useState } from "react";
 import Topbar from "../../components/common/bars/topBar";
 import * as S from "./indexStyle";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { useGetBookmark } from "../../store/getBookMark";
+import { useContest } from "../../store/getContest";
+import { useContestList } from "../../store/getContestList";
 
 const ContestInfo = () => {
-  const params = useParams();
+  const params = useParams(); // useParams로 contest ID를 가져옵니다.
   const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
-  const REFRESH_TOKEN = localStorage.getItem("REFRESH_TOKEN");
-  const [contest, setContest] = useState([]);
   const [isSelect, setIsSelect] = useState();
-  const [list, setList] = useState([]);
+  const { contestList, fetchContestList } = useContestList();
+  const { bookmark, fetchBookmark } = useGetBookmark();
+  const { contest, fetchContest } = useContest();
   const [bookmarkId, setBookMarkId] = useState();
-
+  const navigate = useNavigate();
   // 대회 정보 들고오기 (북마크 값 있음)
-  const getContest = async () => {
-    try {
-      const res = await axios.get(`http://3.37.189.59/contest/${params.id}`, {
-        headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
-      });
-      if (res) {
-        setContest(res.data.data);
-        setIsSelect(res.data.data.bookmarked);
-      }
-    } catch (err) {
-      if (err.response && err.response.status === 401) {
-        try {
-          const res = await axios.post(`http://3.37.189.59/auth/refresh`, {
-            refreshToken: REFRESH_TOKEN,
-          });
-          if (res) {
-            localStorage.setItem("REFRESH_TOKEN", res.data.data.refreshToken);
-          }
-        } catch {}
-      }
+  useEffect(() => {
+    if (params.id) {
+      fetchContest(params.id);
     }
-  };
+  }, []);
 
-  const getList = async () => {
-    try {
-      const res = await axios.get("http://3.37.189.59/bookmark/list", {
-        headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
-        params: {
-          page: 1,
-          size: 100,
-          keyword: "",
-        },
-      });
-      console.log(res.data.data);
-      if (res) {
-        setList(res.data.data);
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  useEffect(() => {
+    fetchBookmark();
+  }, [fetchBookmark]);
 
   const Count = async () => {
-    getList();
-    getBookmarkId();
+    fetchContest();
+    fetchBookmark();
     try {
       if (isSelect) {
         // 선택 된 경우 (삭제해야함)
+
         const res = await axios.delete(
           `http://3.37.189.59/bookmark/${bookmarkId}`,
           {
@@ -91,17 +63,12 @@ const ContestInfo = () => {
   };
 
   const getBookmarkId = () => {
-    list.map((i) => {
+    contestList.map((i) => {
       if (i.contestId == params.id) {
         setBookMarkId(i.id);
       }
     });
   };
-
-  useEffect(() => {
-    getContest();
-    getList();
-  }, []);
 
   return (
     <div
@@ -147,13 +114,9 @@ const ContestInfo = () => {
               <S.ContestImg src={contest.imgLink}></S.ContestImg>
             </S.ImageBox>
             <S.Info>
-              <a
-                href={contest.link}
-                style={{ textDecoration: "none", color: "white" }}
-                target="_blank"
-              >
-                <S.Button>방문하기</S.Button>
-              </a>
+              <S.Button onClick={() => navigate(contest.link)}>
+                방문하기
+              </S.Button>
               <S.Heart
                 style={{ cursor: "pointer" }}
                 onClick={Count}

@@ -2,17 +2,31 @@ import React, { useEffect, useState } from "react";
 import * as S from "./indexStyle";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import useGetContest from "../../../../hooks/useGetContest";
 import { useGetMe } from "../../../../store/getMe";
+import { useContest } from "../../../../store/getContest";
+import { useGetBookmark } from "../../../../store/getBookMark";
 
 const BigContentBox = ({ id }) => {
   const { user, fetchUser } = useGetMe();
-  const { contest } = useGetContest(id);
+  const { bookmark, fetchBookmark } = useGetBookmark();
+  const [contest, setContest] = useState([]);
   const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
   const [isBookmarked, setIsBookmarked] = useState(false);
-  const [list, setList] = useState([]);
   const [bookmarkId, setBookmarkId] = useState();
   const navigate = useNavigate();
+
+  const getContest = async () => {
+    try {
+      const res = await axios.get(`http://3.37.189.59/contest/${id}`, {
+        headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
+      });
+      if (res) {
+        setContest(res.data.data);
+      }
+    } catch (error) {
+      console.error("사용자 데이터를 불러오지 못했습니다.", error);
+    }
+  };
 
   useEffect(() => {
     if (contest) {
@@ -24,9 +38,17 @@ const BigContentBox = ({ id }) => {
     fetchUser();
   }, [fetchUser]);
 
+  useEffect(() => {
+    getContest();
+  }, []);
+
   const Count = async () => {
     getBookmarkId();
-    getList();
+    fetchBookmark({
+      page: 1,
+      size: 100,
+      keyword: "",
+    });
     try {
       if (isBookmarked) {
         // 선택 된 경우 (삭제해야함)
@@ -59,29 +81,11 @@ const BigContentBox = ({ id }) => {
   };
 
   const getBookmarkId = () => {
-    list.map((i) => {
+    bookmark.map((i) => {
       if (i.contestId === id) {
         setBookmarkId(i.id);
       }
     });
-  };
-
-  const getList = async () => {
-    try {
-      const res = await axios.get("http://3.37.189.59/bookmark/list", {
-        headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
-        params: {
-          page: 1,
-          size: 100,
-          keyword: "",
-        },
-      });
-      if (res) {
-        setList(res.data.data);
-      }
-    } catch (e) {
-      console.error(e);
-    }
   };
 
   const Delete = async () => {

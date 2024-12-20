@@ -4,11 +4,12 @@ import { create } from "zustand";
 export const useGetBookmark = create((set) => ({
   bookmark: [],
   setBookmark: (bookmark) => set({ bookmark }),
-  fetchBookmark: async () => {
+  fetchBookmark: async (params) => {
     const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
     try {
       const res = await axios.get("http://3.37.189.59/bookmark/list", {
         headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
+        params,
       });
       set({ bookmark: res.data.data });
     } catch (error) {
