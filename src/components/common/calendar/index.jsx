@@ -29,6 +29,10 @@ const MainCalendar = () => {
     setViewYear(viewMonth === 12 ? viewYear + 1 : viewYear);
   };
 
+  useEffect(() => {
+    fetchBookmark();
+  }, []);
+
   // 날짜 생성
   useEffect(() => {
     let newThisDates = [];

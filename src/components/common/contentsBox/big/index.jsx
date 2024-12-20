@@ -140,20 +140,16 @@ const BigContentBox = ({ id }) => {
               대회 비용 : {contest.cost === "PAID" ? "유료" : "무료"}
             </S.ContentDiv>
           </S.Text>
-          <S.HeartDiv
+          <S.Heart
+            src={
+              user.role === "ROLE_ADMIN"
+                ? "/images/delete.svg"
+                : isBookmarked
+                ? "/images/filledheart.svg"
+                : "/images/emptyheart.svg"
+            }
             onClick={user.role === "ROLE_ADMIN" ? Delete : Count}
-            style={{ cursor: "pointer" }}
-          >
-            <S.Heart
-              src={
-                user.role === "ROLE_ADMIN"
-                  ? "/images/delete.svg"
-                  : isBookmarked
-                  ? "/images/filledheart.svg"
-                  : "/images/emptyheart.svg"
-              }
-            />
-          </S.HeartDiv>
+          />
         </S.ContentTextBox>
       </S.ContentBox>
     </>

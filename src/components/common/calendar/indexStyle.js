@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Box } from "../main/myProfile/indexStyle";
 
 export const MainBox = styled.div`
   width: 70%;
@@ -11,14 +12,12 @@ export const MainBox = styled.div`
   box-sizing: border-box;
 `;
 
-export const DateButton = styled.div`
+export const DateButton = styled(Box)`
   cursor: pointer;
   width: 32px;
   height: 32px;
   border-radius: 5px;
-  display: flex;
   justify-content: center;
-  align-items: center;
 `;
 
 export const ViewDate = styled.div`
@@ -35,16 +34,13 @@ export const Tr = styled.tr`
   background-color: white;
 `;
 
-export const DateContainer = styled.div`
-  display: flex;
+export const DateContainer = styled(Box)`
   justify-content: center;
   background-color: white;
   padding-bottom: 23px;
 `;
 
-export const Date = styled.div`
-  display: flex;
-  align-items: center;
+export const Date = styled(Box)`
   height: 32px;
   width: 214px;
   justify-content: space-around;
@@ -76,12 +72,10 @@ export const DayBox = styled.td`
   }
 `;
 
-export const ContestMark = styled.div`
+export const ContestMark = styled(Box)`
   width: 100%;
   margin-top: 10px;
-  display: flex;
   justify-content: center;
-  align-items: center;
   background-color: #2b32b2;
   color: white;
   text-align: center;

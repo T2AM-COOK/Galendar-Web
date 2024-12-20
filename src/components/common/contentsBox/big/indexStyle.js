@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { Box } from "../../main/myProfile/indexStyle";
 
-export const ContentBox = styled.div`
+export const ContentBox = styled(Box)`
   box-sizing: border-box;
   width: 60vw;
   border-radius: 10px;
@@ -22,47 +23,37 @@ export const ImageBox = styled.div`
 
 export const Title = styled.div`
   cursor: pointer;
-  font-size: 24px;
+  font-size: 2rem;
   font-weight: 700;
   margin-bottom: 20px;
 `;
 
-export const Text = styled.div`
-  display: flex;
+export const Text = styled(Box)`
   flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
+  height: 70%;
 `;
 
-export const ContentTextBox = styled.div`
+export const ContentTextBox = styled(Box)`
   border-radius: 15px;
   margin-left: 50px;
+  justify-content: space-around;
   background-color: white;
   width: 800px;
-  height: 224px;
-  display: flex;
-  justify-content: space-between;
-  padding-left: 30px;
-  padding-right: 30px;
+  height: 100%;
 `;
 
-export const ContentDiv = styled.div`
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
+export const ContentDiv = styled(Box)`
+  justify-content: flex-start;
 `;
 
 export const ContentImg = styled.img`
-  font-size: 24px;
+  font-size: 2rem;
   margin-right: 30px;
 `;
 
 export const Heart = styled.img`
   width: 30px;
   height: 29px;
-  margin-right: 12px;
-`;
-
-export const HeartDiv = styled.div`
-  display: flex;
-  align-items: center;
 `;

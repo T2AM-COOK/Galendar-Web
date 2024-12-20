@@ -1,23 +1,21 @@
 import styled from "styled-components";
+import { Box } from "../../main/myProfile/indexStyle";
 
-export const Container = styled.div`
-  display: flex;
+export const Container = styled(Box)`
   background: white;
   width: 100%;
   justify-content: space-around;
   gap: 40%;
-  align-items: center;
   height: 82px;
   position: fixed;
   top: 0px;
+  border-bottom: 1px solid #e6e6e6;
 `;
 
-export const Nav = styled.div`
-  display: flex;
+export const Nav = styled(Box)`
   width: 30vw;
   font-size: 1.2rem;
   justify-content: space-between;
-  align-items: center;
 `;
 
 export const ProfileImage = styled.img`
@@ -30,14 +28,6 @@ export const ProfileImage = styled.img`
 
 export const Text = styled.div`
   cursor: pointer;
-`;
-
-export const Search = styled.div`
-  width: 10vw;
-  height: 45px;
-  display: flex;
-  align-items: center;
-  border: 0px;
 `;
 
 export const SearchImg = styled.img`
