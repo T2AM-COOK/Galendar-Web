@@ -8,15 +8,14 @@ export const Container = styled.div`
   overflow: hidden;
   border: 1px solid #e6e6e6;
   display: flex;
-  align-items: flex-end;
-  justify-content: center;
+  position: relative;
 `;
 
 export const ContestWrapper = styled.div`
   display: flex;
   transition: transform 1s ease-in-out;
   height: 100%;
-  width: ${(props) => `${props.slideCount * 100}%`};
+  width: ${(props) => `${props.slideCount * 100}vw`};
   transform: translateX(${(props) => `-${props.currentIndex * 100}vw`});
 `;
 
@@ -34,16 +33,18 @@ export const Contest = styled.div`
 export const SlideWrapper = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
   position: absolute;
   bottom: 20px;
   gap: 10px;
+  width: 100%;
 `;
 
 export const SlideButton = styled.div`
   width: 16px;
   height: 16px;
   background-color: ${(props) =>
-    props.currentIndex === props.i ? "#2b32b2" : "#e6e6e6"};
-  display: flex;
+    props.currentIndex === props.index ? "#2b32b2" : "#e6e6e6"};
   border-radius: 50%;
+  cursor: pointer;
 `;
