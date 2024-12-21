@@ -119,11 +119,11 @@ const CreateContest = () => {
   };
 
   return (
-    <div>
+    <>
       {user.role === "ROLE_ADMIN" ? (
-        <S.Div>
+        <S.Container>
           <Sidebar />
-          <S.Content>
+          <>
             <S.Form>
               <MenuBar title="대회 생성" />
               <S.FormWrapper>
@@ -212,31 +212,19 @@ const CreateContest = () => {
               </S.FormWrapper>
               <S.ButtonContainer>
                 <S.Button
-                  style={
-                    isCreateReady()
-                      ? {
-                          backgroundColor: "#2B32B2",
-                          color: "white",
-                          border: "0px",
-                        }
-                      : {
-                          backgroundColor: "white",
-                          color: "#2B32B2",
-                          border: "1px solid #2B32B2",
-                        }
-                  }
+                  isCreateReady={isCreateReady}
                   onClick={isCreateReady() ? createContest : null}
                 >
                   대회 생성
                 </S.Button>
               </S.ButtonContainer>
             </S.Form>
-          </S.Content>
-        </S.Div>
+          </>
+        </S.Container>
       ) : (
         <NotFound />
       )}
-    </div>
+    </>
   );
 };
 

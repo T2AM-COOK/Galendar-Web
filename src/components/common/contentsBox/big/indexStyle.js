@@ -15,6 +15,7 @@ export const ContestImg = styled.img`
   height: 224px;
   border-radius: 10px;
   cursor: pointer;
+  border: 1px solid #e6e6e6;
 `;
 
 export const ImageBox = styled.div`
@@ -36,6 +37,7 @@ export const Text = styled(Box)`
 `;
 
 export const ContentTextBox = styled(Box)`
+  border: 1px solid #e6e6e6;
   border-radius: 15px;
   margin-left: 50px;
   justify-content: space-around;

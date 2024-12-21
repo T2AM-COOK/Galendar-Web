@@ -15,7 +15,7 @@ const ContestInfo = () => {
   const { bookmark, fetchBookmark } = useGetBookmark();
   const { contest, fetchContest } = useContest();
   const [bookmarkId, setBookMarkId] = useState();
-  const navigate = useNavigate();
+
   // 대회 정보 들고오기 (북마크 값 있음)
   useEffect(() => {
     if (params.id) {
@@ -71,14 +71,7 @@ const ContestInfo = () => {
   };
 
   return (
-    <div
-      style={{
-        backgroundColor: "#F9F9F9",
-        display: "flex",
-        flexDirection: "column",
-        minHeight: "100vh",
-      }}
-    >
+    <S.Container>
       <Topbar />
       <S.Content>
         <S.ContentBox>
@@ -114,11 +107,10 @@ const ContestInfo = () => {
               <S.ContestImg src={contest.imgLink}></S.ContestImg>
             </S.ImageBox>
             <S.Info>
-              <S.Button onClick={() => navigate(contest.link)}>
-                방문하기
-              </S.Button>
+              <a href={contest.link} target="_blank">
+                <S.Button>방문하기</S.Button>
+              </a>
               <S.Heart
-                style={{ cursor: "pointer" }}
                 onClick={Count}
                 src={
                   isSelect
@@ -130,7 +122,7 @@ const ContestInfo = () => {
           </S.Detail>
         </S.ContentBox>
       </S.Content>
-      <div style={{ display: "flex", justifyContent: "center" }}>
+      <S.DetailWrapper>
         <S.ContestDetail>
           <S.DetailBox>
             <S.DetailTitle>{contest.title}</S.DetailTitle>
@@ -138,8 +130,8 @@ const ContestInfo = () => {
             <S.DetailInfo>{contest.content}</S.DetailInfo>
           </S.DetailBox>
         </S.ContestDetail>
-      </div>
-    </div>
+      </S.DetailWrapper>
+    </S.Container>
   );
 };
 

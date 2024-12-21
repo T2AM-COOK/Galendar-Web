@@ -72,7 +72,7 @@ const JoinSet = ({
         setChangeDate={setSubmitStartDate}
         now={now}
       />
-      <S.Slash>~</S.Slash>
+      ~
       <SetType
         DatePickerSelector={DatePickerSelector}
         changeDate={submitEndDate}
@@ -98,7 +98,7 @@ const TimeSet = ({
         setChangeDate={setContestStartDate}
         now={now}
       />
-      <S.Slash>~</S.Slash>
+      ~
       <SetType
         DatePickerSelector={DatePickerSelector}
         changeDate={contestEndDate}

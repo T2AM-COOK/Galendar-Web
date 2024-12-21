@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+export const Container = styled.div`
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+`;
+
 export const ContentBox = styled.div`
   display: flex;
   align-items: center;
@@ -69,6 +75,12 @@ export const Button = styled.button`
 export const Heart = styled.img`
   width: 30px;
   height: 54px;
+  cursor: pointer;
+`;
+
+export const DetailWrapper = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 
 export const ContestDetail = styled.div`

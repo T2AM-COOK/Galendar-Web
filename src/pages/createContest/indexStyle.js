@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Div = styled.div`
+export const Container = styled.div`
   display: flex;
 `;
 
@@ -11,32 +11,28 @@ export const FormWrapper = styled.div`
   width: 60vw;
 `;
 
-export const Content = styled.div`
-  background: #f9f9f9;
-`;
-
 export const FormName = styled.div`
   font-size: 16px;
   font-weight: 600;
 `;
 
 export const NameField = styled.input`
-  border-radius: 30px;
-  border: 0px;
+  border: 1px solid #e6e6e6;
+  outline: none;
+  border-radius: 10px;
   width: 100%;
   height: 45px;
   padding-left: 1vw;
-  font-size: 16px;
 `;
 
 export const TextField = styled.textarea`
+  border: 1px solid #e6e6e6;
+  outline: none;
   border-radius: 15px;
-  border: 0px;
   width: 100%;
   height: 133px;
   padding: 12px;
   resize: none;
-  font-size: 16px;
 `;
 
 export const Button = styled.div`
@@ -47,7 +43,9 @@ export const Button = styled.div`
   width: 50%;
   border-radius: 10px;
   justify-content: center;
-  background-color: white;
+  background-color: ${(props) => (props.isCreateReady() ? "#2B32B2" : "white")};
+  color: ${(props) => (props.isCreateReady() ? "white" : "#2B32B2")};
+  border: ${(props) => (props.isCreateReady() ? "0px" : "1px solid #2B32B2")};
   cursor: pointer;
 `;
 

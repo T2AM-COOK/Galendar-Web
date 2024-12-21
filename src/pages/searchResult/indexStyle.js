@@ -21,6 +21,8 @@ export const SearchDiv = styled.div`
   display: flex;
   background-color: white;
   border-radius: 30px;
+  border: 1px solid #e6e6e6;
+  outline: none;
 `;
 
 export const Search = styled.input`

@@ -5,7 +5,6 @@ const AdBanner = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const imgData = ["/images/bannerImg.svg", "/images/hackerground.svg"];
   const slideCount = imgData.length;
-
   const intervalRef = useRef(null);
 
   const startInterval = () => {

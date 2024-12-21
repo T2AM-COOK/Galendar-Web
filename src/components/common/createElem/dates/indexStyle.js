@@ -13,14 +13,10 @@ export const Space = styled.div`
   width: 25vw;
   background-color: white;
   border-radius: 30px;
-`;
-export const Slash = styled.div`
-  display: flex;
+  border: 1px solid #e6e6e6;
+  outline: none;
 `;
 
-export const Text = styled.div`
-  font-size: 16px;
-`;
 export const DatePicker = styled.div`
   display: flex;
   align-items: center;
