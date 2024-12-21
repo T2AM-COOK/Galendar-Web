@@ -206,7 +206,7 @@ const CreateContest = () => {
                     id="file"
                     style={{ display: "none" }}
                     onChange={change}
-                    accept=".jpg, .png"
+                    accept=".jpg, .png,"
                   />
                 </p>
               </S.FormWrapper>
