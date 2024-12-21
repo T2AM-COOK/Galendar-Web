@@ -103,9 +103,7 @@ const ContestInfo = () => {
             </S.ContentDiv>
           </S.Text>
           <S.Detail>
-            <S.ImageBox>
-              <S.ContestImg src={contest.imgLink}></S.ContestImg>
-            </S.ImageBox>
+            <S.ContestImg src={contest.imgLink} />
             <S.Info>
               <a href={contest.link} target="_blank">
                 <S.Button>방문하기</S.Button>
@@ -126,7 +124,7 @@ const ContestInfo = () => {
         <S.ContestDetail>
           <S.DetailBox>
             <S.DetailTitle>{contest.title}</S.DetailTitle>
-            <hr style={{ width: "80vw", border: "0.5px solid #B5B5B5" }} />
+            <hr style={{ width: "100%", border: "0.5px solid #B5B5B5" }} />
             <S.DetailInfo>{contest.content}</S.DetailInfo>
           </S.DetailBox>
         </S.ContestDetail>

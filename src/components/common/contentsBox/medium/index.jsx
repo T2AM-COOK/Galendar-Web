@@ -16,7 +16,7 @@ const MediumContestBox = ({
   return (
     <S.Container>
       <S.ContestImg
-        src={imgLink}
+        img={imgLink}
         onClick={() => navigate(`/contestInfo/${id}`)}
       />
       <S.Detail>

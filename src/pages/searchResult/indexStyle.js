@@ -69,11 +69,11 @@ export const Filter = styled.div`
 
 export const Content = styled.div`
   margin-top: 50px;
-  width: 963px;
-  max-width: 963px;
+  width: 60vw;
+  gap: 2vw;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  row-gap: 30px;
+  row-gap: 50px;
 `;
 
 export const RecommendBox = styled.div`

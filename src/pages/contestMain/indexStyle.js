@@ -35,15 +35,12 @@ export const ContestImg = styled.img`
   width: 400px;
   height: 286px;
   border-radius: 10px;
-`;
-
-export const ImageBox = styled.div`
-  justify-content: left;
+  border: 1px solid #e6e6e6;
 `;
 
 export const Title = styled.div`
   font-size: 32px;
-  font-weight: bold;
+  font-weight: 800;
 `;
 
 export const Detail = styled.div`
@@ -116,6 +113,7 @@ export const HeartDiv = styled.div`
 `;
 
 export const Content = styled.div`
+  border: 1px solid #e6e6e6;
   background-color: white;
   display: flex;
   align-items: center;

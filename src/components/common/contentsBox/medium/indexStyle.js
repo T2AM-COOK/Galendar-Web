@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 284px;
-  height: 320px;
+  width: 100%;
+  height: 360px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,16 +10,21 @@ export const Container = styled.div`
   gap: 20px;
 `;
 
-export const ContestImg = styled.img`
-  border-radius: 10px;
+export const ContestImg = styled.div`
   width: 100%;
-  height: 224px;
-  border: 1px solid #e6e6e6;
+  background-image: url(${(props) => props.img});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 10px;
+  min-height: 224px;
+  cursor: pointer;
 `;
 
 export const Title = styled.div`
   font-size: 16px;
   font-weight: 600;
+  cursor: pointer;
 `;
 
 export const Detail = styled.div`
