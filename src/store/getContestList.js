@@ -9,7 +9,6 @@ export const useContestList = create((set) => ({
     try {
       const res = await axios.get("http://3.37.189.59/contest/list", {
         headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
-        params,
       });
       set({ contestList: res.data.data });
     } catch (error) {

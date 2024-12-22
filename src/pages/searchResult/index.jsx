@@ -3,14 +3,16 @@ import MediumContestBox from "../../components/common/contentsBox/medium";
 import RecommendBoxWidth from "../../components/common/recommend/width";
 import * as S from "./indexStyle";
 import React, { useState } from "react";
+import axios from "axios";
 import { Join, Region } from "../../components/common/createElem/selections";
-import { useContestList } from "../../store/getContestList";
+import qs from "qs";
 
 const Search = () => {
-  const { contestList, fetchContestList } = useContestList();
+  const [contests, setContests] = useState([]);
   const [targets, setTargets] = useState([]);
   const [regions, setRegions] = useState([]);
   const [searchValue, setSearchValue] = useState("");
+  const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
 
   const searchParams = {
     page: 1,
@@ -26,10 +28,27 @@ const Search = () => {
 
   const activeEnter = (e) => {
     if (e.key === "Enter") {
-      fetchContestList(searchParams);
+      getContest();
     }
   };
 
+  const getContest = async () => {
+    try {
+      const res = await axios.get("http://3.37.189.59/contest/list", {
+        headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
+        params: searchParams,
+        paramsSerializer: (params) => {
+          return qs.stringify(params, { arrayFormat: "repeat" });
+        },
+      });
+
+      if (res) {
+        setContests(res.data.data);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  };
   return (
     <>
       <Topbar />
@@ -44,23 +63,19 @@ const Search = () => {
             <S.ImgDiv>
               <S.SearchImg
                 src="/images/search.svg"
-                onClick={() => fetchContestList(searchParams)}
+                onClick={() => getContest()}
               />
             </S.ImgDiv>
           </S.SearchDiv>
         </S.TopPart>
         <S.FilterDiv>
           <S.Filter>대상</S.Filter>
-          <div style={{ display: "flex", justifyContent: "flex-start" }}>
-            <Join setTargets={setTargets} />
-          </div>
+          <Join setTargets={setTargets} />
           <S.Filter>지역</S.Filter>
-          <div style={{ display: "flex", justifyContent: "flex-start" }}>
-            <Region setRegions={setRegions} />
-          </div>
+          <Region setRegions={setRegions} />
         </S.FilterDiv>
         <S.Content>
-          {contestList.map((detail) => {
+          {contests.map((detail) => {
             const shortenedContent =
               detail.content.length >= 65
                 ? detail.content.slice(0, 65) + "..."
