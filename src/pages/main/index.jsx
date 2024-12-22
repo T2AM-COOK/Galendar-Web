@@ -9,8 +9,8 @@ import AdBanner from "../../components/common/main/adBanner";
 const Main = () => {
   return (
     <S.Container>
-      <Topbar />
       <AdBanner />
+      <Topbar />
       <S.Content>
         <S.Contents>
           <MainCalendar />

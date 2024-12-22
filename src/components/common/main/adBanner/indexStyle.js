@@ -6,7 +6,6 @@ export const Container = styled.div`
   margin-top: 112px;
   margin-bottom: 30px;
   overflow: hidden;
-  border: 1px solid #e6e6e6;
   display: flex;
   position: relative;
 `;
