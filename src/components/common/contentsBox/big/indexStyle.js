@@ -65,6 +65,7 @@ export const ContentImg = styled.img`
 `;
 
 export const Heart = styled.img`
+  cursor: pointer;
   width: 30px;
   height: 29px;
 `;

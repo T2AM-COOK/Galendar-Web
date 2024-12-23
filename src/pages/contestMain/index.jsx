@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Topbar from "../../components/common/bars/topBar";
 import * as S from "./indexStyle";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useGetBookmark } from "../../store/getBookMark";
 import { useContest } from "../../store/getContest";
-import { useContestList } from "../../store/getContestList";
 
 const ContestInfo = () => {
   const params = useParams(); // useParams로 contest ID를 가져옵니다.
   const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
   const [isSelect, setIsSelect] = useState();
-  const { contestList, fetchContestList } = useContestList();
   const { bookmark, fetchBookmark } = useGetBookmark();
   const { contest, fetchContest } = useContest();
   const [bookmarkId, setBookMarkId] = useState();
@@ -27,13 +25,34 @@ const ContestInfo = () => {
     fetchBookmark();
   }, [fetchBookmark]);
 
-  const Count = async () => {
+  useEffect(() => {
     fetchContest();
+  }, [fetchContest]);
+
+  useEffect(() => {
+    if (contest.bookmarked === true) {
+      setIsSelect(true);
+    } else {
+      setIsSelect(false);
+    }
+  });
+
+  const getBookmarkId = () => {
+    bookmark.map((i) => {
+      if (i.contestId == params.id) {
+        console.log(i);
+        setBookMarkId(i.id);
+      }
+    });
+  };
+
+  const Count = async () => {
+    getBookmarkId();
+    fetchContest(params.id);
     fetchBookmark();
     try {
       if (isSelect) {
         // 선택 된 경우 (삭제해야함)
-
         const res = await axios.delete(
           `http://3.37.189.59/bookmark/${bookmarkId}`,
           {
@@ -42,7 +61,6 @@ const ContestInfo = () => {
         );
         if (res) {
           setIsSelect(false);
-          setBookMarkId();
         }
       } else {
         // 추가 해야함
@@ -54,20 +72,15 @@ const ContestInfo = () => {
           }
         );
         if (res) {
+          getBookmarkId();
           setIsSelect(true);
+          fetchBookmark();
+          fetchContest(params.id);
         }
       }
     } catch (e) {
       console.error(e);
     }
-  };
-
-  const getBookmarkId = () => {
-    contestList.map((i) => {
-      if (i.contestId == params.id) {
-        setBookMarkId(i.id);
-      }
-    });
   };
 
   return (

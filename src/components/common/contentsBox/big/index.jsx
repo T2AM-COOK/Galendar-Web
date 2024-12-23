@@ -11,7 +11,7 @@ const BigContentBox = ({ id }) => {
   const { bookmark, fetchBookmark } = useGetBookmark();
   const [contest, setContest] = useState([]);
   const ACCESS_TOKEN = localStorage.getItem("ACCESS_TOKEN");
-  const [isBookmarked, setIsBookmarked] = useState(false);
+  const [isSelect, setIsSelect] = useState();
   const [bookmarkId, setBookmarkId] = useState();
   const navigate = useNavigate();
 
@@ -30,7 +30,7 @@ const BigContentBox = ({ id }) => {
 
   useEffect(() => {
     if (contest) {
-      setIsBookmarked(contest.bookmarked);
+      setIsSelect(contest.bookmarked);
     }
   }, [contest]);
 
@@ -44,13 +44,10 @@ const BigContentBox = ({ id }) => {
 
   const Count = async () => {
     getBookmarkId();
-    fetchBookmark({
-      page: 1,
-      size: 100,
-      keyword: "",
-    });
+    getContest(id);
+    fetchBookmark();
     try {
-      if (isBookmarked) {
+      if (isSelect) {
         // 선택 된 경우 (삭제해야함)
         const res = await axios.delete(
           `http://3.37.189.59/bookmark/${bookmarkId}`,
@@ -59,8 +56,7 @@ const BigContentBox = ({ id }) => {
           }
         );
         if (res) {
-          setIsBookmarked(false);
-          setBookmarkId();
+          setIsSelect(false);
         }
       } else {
         // 추가 해야함
@@ -72,7 +68,10 @@ const BigContentBox = ({ id }) => {
           }
         );
         if (res) {
-          setIsBookmarked(true);
+          getBookmarkId();
+          setIsSelect(true);
+          fetchBookmark();
+          getContest(id);
         }
       }
     } catch (e) {
@@ -107,8 +106,8 @@ const BigContentBox = ({ id }) => {
   };
 
   useEffect(() => {
-    console.log(isBookmarked);
-  }, [isBookmarked]);
+    console.log(setIsSelect);
+  }, [setIsSelect]);
   if (!user || !contest) {
     return null;
   }
@@ -150,7 +149,7 @@ const BigContentBox = ({ id }) => {
             src={
               user.role === "ROLE_ADMIN"
                 ? "/images/delete.svg"
-                : isBookmarked
+                : isSelect
                 ? "/images/filledheart.svg"
                 : "/images/emptyheart.svg"
             }
