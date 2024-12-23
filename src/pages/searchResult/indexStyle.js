@@ -5,6 +5,7 @@ export const Div = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 100vh;
 `;
 
 export const TopPart = styled.div`
@@ -74,6 +75,7 @@ export const Content = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   row-gap: 50px;
+  margin-bottom: 50px;
 `;
 
 export const RecommendBox = styled.div`

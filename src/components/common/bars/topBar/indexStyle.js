@@ -3,7 +3,7 @@ import { Box } from "../../main/myProfile/indexStyle";
 
 export const Container = styled(Box)`
   background: white;
-  width: 100%;
+  width: 100vw;
   justify-content: space-around;
   gap: 40%;
   height: 82px;

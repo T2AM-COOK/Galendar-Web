@@ -8,6 +8,7 @@ export const Container = styled.div`
   overflow: hidden;
   display: flex;
   position: relative;
+  border: 1px solid #e6e6e6;
 `;
 
 export const ContestWrapper = styled.div`

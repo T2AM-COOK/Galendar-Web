@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  height: 70%;
+  height: 65%;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -11,11 +11,13 @@ export const Container = styled.div`
   border: 1px solid #e6e6e6;
   background-color: white;
   padding-top: 20px;
+  padding-bottom: 20px;
 `;
 
 export const Title = styled.div`
   font-size: 2rem;
   font-weight: 600;
+  padding-bottom: 20px;
 `;
 
 export const ScrollBox = styled.div`

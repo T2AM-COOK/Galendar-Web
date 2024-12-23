@@ -1,11 +1,11 @@
 import Topbar from "../../components/common/bars/topBar";
 import MediumContestBox from "../../components/common/contentsBox/medium";
-import RecommendBoxWidth from "../../components/common/recommend/width";
 import * as S from "./indexStyle";
 import React, { useState } from "react";
 import axios from "axios";
 import { Join, Region } from "../../components/common/createElem/selections";
 import qs from "qs";
+import Banner from "../../components/common/bars/banner/index";
 
 const Search = () => {
   const [contests, setContests] = useState([]);
@@ -95,9 +95,7 @@ const Search = () => {
           })}
         </S.Content>
       </S.Div>
-      <S.RecommendBox>
-        <RecommendBoxWidth />
-      </S.RecommendBox>
+      <Banner />
     </>
   );
 };

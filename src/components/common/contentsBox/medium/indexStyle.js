@@ -19,6 +19,7 @@ export const ContestImg = styled.div`
   border-radius: 10px;
   min-height: 224px;
   cursor: pointer;
+  border: 1px solid #e6e6e6;
 `;
 
 export const Title = styled.div`

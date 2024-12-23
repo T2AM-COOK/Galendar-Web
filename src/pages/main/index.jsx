@@ -5,6 +5,7 @@ import MainCalendar from "../../components/common/calendar";
 import RecommendBox from "../../components/common/main/recommend";
 import MyProfile from "../../components/common/main/myProfile";
 import AdBanner from "../../components/common/main/adBanner";
+import Banner from "../../components/common/bars/banner";
 
 const Main = () => {
   return (
@@ -19,13 +20,7 @@ const Main = () => {
             <RecommendBox />
           </S.SideContainer>
         </S.Contents>
-        <S.Banner>
-          <img src="/images/whitelogo.svg" />
-          <S.Copyright>
-            <div>@Copyright By T2EM-COOK. All rights reserved. </div>
-            <div>Since 2024</div>
-          </S.Copyright>
-        </S.Banner>
+        <Banner />
       </S.Content>
     </S.Container>
   );

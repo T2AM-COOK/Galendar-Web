@@ -11,6 +11,7 @@ export const Content = styled.div`
   align-items: center;
   margin-left: 5vw;
   overflow: hidden;
+  margin-bottom: 50px;
 `;
 
 export const BookMarkText = styled.div`
