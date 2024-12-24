@@ -14,26 +14,32 @@ const BookMark = () => {
 
   useEffect(() => {
     fetchUser();
-  }, [fetchUser]);
-
-  useEffect(() => {
     fetchBookmark();
-  }, [fetchBookmark]);
-
-  useEffect(() => {
     fetchContestList();
-  }, [fetchContestList]);
+  }, []);
+
+  const renderContent = () => {
+    if (user.role === "ROLE_ADMIN") {
+      return contestList.map((detail) => (
+        <BigContentBox key={detail.id} id={detail.id} isAdmin={true} />
+      ));
+    } else {
+      return bookmark.map((detail) => (
+        <BigContentBox
+          key={detail.contestId}
+          id={detail.contestId}
+          isAdmin={false}
+        />
+      ));
+    }
+  };
 
   return (
     <S.Div>
       <Sidebar />
       <S.Content>
         <MenuBar title={user.role === "ROLE_ADMIN" ? "대회 관리" : "북마크"} />
-        <S.BookMarkText>
-          {user.role === "ROLE_ADMIN"
-            ? contestList.map((detail) => <BigContentBox id={detail.id} />)
-            : bookmark.map((detail) => <BigContentBox id={detail.contestId} />)}
-        </S.BookMarkText>
+        <S.BookMarkText>{renderContent()}</S.BookMarkText>
       </S.Content>
     </S.Div>
   );

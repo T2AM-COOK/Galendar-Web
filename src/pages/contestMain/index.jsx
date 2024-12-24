@@ -12,7 +12,6 @@ const ContestInfo = () => {
   const [isSelect, setIsSelect] = useState();
   const { bookmark, fetchBookmark } = useGetBookmark();
   const { contest, fetchContest } = useContest();
-  const [bookmarkId, setBookMarkId] = useState();
 
   // 대회 정보 들고오기 (북마크 값 있음)
   useEffect(() => {
@@ -37,47 +36,34 @@ const ContestInfo = () => {
     }
   });
 
-  const getBookmarkId = () => {
-    bookmark.map((i) => {
-      if (i.contestId == params.id) {
-        console.log(i);
-        setBookMarkId(i.id);
-      }
-    });
-  };
-
   const Count = async () => {
-    getBookmarkId();
-    fetchContest(params.id);
-    fetchBookmark();
     try {
+      // Bookmark ID 가져오기
+      const targetBookmark = bookmark.find((i) => i.contestId == params.id);
+      const currentBookmarkId = targetBookmark ? targetBookmark.id : null;
+
       if (isSelect) {
-        // 선택 된 경우 (삭제해야함)
-        const res = await axios.delete(
-          `http://3.37.189.59/bookmark/${bookmarkId}`,
-          {
-            headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
-          }
-        );
-        if (res) {
-          setIsSelect(false);
+        // 선택된 경우 (북마크 삭제)
+        if (currentBookmarkId) {
+          await axios.delete(
+            `http://3.37.189.59/bookmark/${currentBookmarkId}`,
+            {
+              headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
+            }
+          );
         }
+        setIsSelect(false);
       } else {
-        // 추가 해야함
-        const res = await axios.post(
-          `http://3.37.189.59/bookmark/${contest.id}`,
-          "",
-          {
-            headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
-          }
-        );
-        if (res) {
-          getBookmarkId();
-          setIsSelect(true);
-          fetchBookmark();
-          fetchContest(params.id);
-        }
+        // 선택되지 않은 경우 (북마크 추가)
+        await axios.post(`http://3.37.189.59/bookmark/${contest.id}`, "", {
+          headers: { Authorization: `Bearer ${ACCESS_TOKEN}` },
+        });
+        setIsSelect(true);
       }
+
+      // 북마크 및 대회 정보 새로 고침
+      fetchBookmark();
+      fetchContest(params.id);
     } catch (e) {
       console.error(e);
     }

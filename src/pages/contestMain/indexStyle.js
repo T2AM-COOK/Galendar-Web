@@ -20,7 +20,6 @@ export const ContentDiv = styled.div`
 `;
 
 export const ContentImg = styled.img`
-  font-size: 16px;
   margin-right: 30px;
 `;
 
@@ -35,6 +34,7 @@ export const ContestImg = styled.img`
   width: 400px;
   height: 286px;
   border-radius: 10px;
+  object-fit: contain;
   border: 1px solid #e6e6e6;
 `;
 
@@ -78,16 +78,17 @@ export const Heart = styled.img`
 export const DetailWrapper = styled.div`
   display: flex;
   justify-content: center;
+  width: 100%;
 `;
 
 export const ContestDetail = styled.div`
-  width: 80vw;
   display: flex;
   justify-content: center;
 `;
 
 export const DetailBox = styled.div`
   margin-top: 60px;
+  width: 80vw;
 `;
 
 export const DetailTitle = styled.div`
