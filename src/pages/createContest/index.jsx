@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./indexStyle";
-import Sidebar from "../../components/common/bars/sideBar";
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import {
@@ -13,6 +12,7 @@ import { JoinSet, TimeSet } from "../../components/common/createElem/dates";
 import NotFound from "../notFound";
 import MenuBar from "../../components/common/bars/menuBar";
 import { useGetMe } from "../../store/getMe";
+import Sidebar from "../../components/common/bars/banner/sideBar";
 
 const getFormattedDate = () => format(new Date(), "yyyy-MM-dd");
 
