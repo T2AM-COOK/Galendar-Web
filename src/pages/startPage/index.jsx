@@ -1,22 +1,26 @@
 import React from "react";
 import * as S from "./indexStyle";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const StartPage = () => {
+  const navigate = useNavigate();
   return (
     <S.Main>
       <div style={{ display: "flex", justifyContent: "center" }}>
         <S.NavWrap>
           <S.NavItems>
             <S.Logo src="/images/blacklogo.svg" />
-            <div>ABOUT 갈랜더</div>
+            <div
+              onClick={() => navigate("/about")}
+              style={{ cursor: "pointer" }}
+            >
+              ABOUT 갈랜더
+            </div>
             <div>약관 내용</div>
             <div>나르샤 1등</div>
             <div>FAQ</div>
           </S.NavItems>
-          <Link to="/main" style={{ textDecoration: "none", color: "inherit" }}>
-            <S.Button>갈랜더 시작하기</S.Button>
-          </Link>
+          <S.Button onClick={() => navigate("/main")}>갈랜더 시작하기</S.Button>
         </S.NavWrap>
       </div>
       <S.Body>
@@ -37,13 +41,12 @@ const StartPage = () => {
             대회 정보 서비스입니다
           </S.BodySText>
           <S.ButtonDiv>
-            <Link
-              to="/login"
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              <S.BodyLButton>갈랜더 로그인</S.BodyLButton>
-            </Link>
-            <S.BodyInfoButton>갈랜더 알아보기</S.BodyInfoButton>
+            <S.BodyLButton onClick={() => navigate("/login")}>
+              갈랜더 로그인
+            </S.BodyLButton>
+            <S.BodyInfoButton onClick={() => navigate("/about")}>
+              갈랜더 알아보기
+            </S.BodyInfoButton>
           </S.ButtonDiv>
         </S.BodyText>
       </S.Body>

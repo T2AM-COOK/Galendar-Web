@@ -11,7 +11,7 @@ const About = () => {
         <S.Hr />
       </S.TitleContainer>
       <S.MainContainer>
-        <S.Text >
+        <S.Text>
           <div>학교 홈페이지에 올라오는 대회 안내,</div>{" "}
           <div>학교 곳곳에 붙어있는 대회 포스터,</div>{" "}
           <div>단체 카카오워크 방에 올라오는 대회 안내</div>
@@ -20,7 +20,7 @@ const About = () => {
         <S.Text style={{ fontWeight: "600", fontSize: "24px" }}>
           <div>이제 ‘갈랜더’로 대회 준비를</div>{" "}
           <div>더욱 쉽고 간편하게 하세요!</div>{" "}
-          <div> 갈랜더로 대회 일정을 찾고 대회 관리를 해 보세요!</div>
+          <div> 갈랜더로 대회 일정을 찾고 대회 관리를 해 보세요!</div>
         </S.Text>
         <S.Bottom>
           <div>
@@ -30,6 +30,7 @@ const About = () => {
             </S.Text>
           </div>
           <img
+            style={{ cursor: "pointer" }}
             src="/images/blacklogo.svg"
             width={107}
             onClick={() => navigate("/main")}

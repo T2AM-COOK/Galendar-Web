@@ -7,10 +7,6 @@ const Topbar = () => {
   const { user, fetchUser } = useGetMe();
   const navigate = useNavigate();
 
-  const main = () => {
-    navigate(`/main`);
-  };
-
   useEffect(() => {
     fetchUser();
   }, [fetchUser]);
@@ -21,9 +17,9 @@ const Topbar = () => {
         <img
           src="/images/logo.svg"
           style={{ cursor: "pointer" }}
-          onClick={main}
+          onClick={() => navigate("/main")}
         />
-        <S.Text onClick={main}>홈</S.Text>
+        <S.Text onClick={() => navigate("/main")}>홈</S.Text>
         <S.Text onClick={() => navigate("/bookmark")}>
           {user.role === "ROLE_ADMIN" ? "대회 관리" : "북마크"}
         </S.Text>
