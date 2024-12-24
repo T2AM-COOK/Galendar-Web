@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./indexStyle";
 import { useNavigate } from "react-router-dom";
-import { useGetBookmark } from "../../../store/getBookMark";
+import { useGetBookmark } from "../../../../store/getBookMark";
 
 const MainCalendar = () => {
   const date = new Date();

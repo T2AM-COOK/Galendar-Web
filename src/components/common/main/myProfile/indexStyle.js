@@ -8,8 +8,8 @@ export const Box = styled.div`
 
 export const Container = styled.div`
   flex-direction: column;
-  width: 100%;
-  height: 25%;
+  width: 25%;
+  height: 100%;
   background-color: white;
   border-radius: 10px;
   border: 1px solid #e6e6e6;

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Box } from "../main/myProfile/indexStyle";
+import { Box } from "../myProfile/indexStyle";
 
 export const MainBox = styled.div`
   width: 70%;

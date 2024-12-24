@@ -5,6 +5,16 @@ export const Container = styled.div`
   height: 140vh;
 `;
 
+export const TopContent = styled.div`
+  margin-top: 112px;
+  height: 200px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 2%;
+`;
+
 export const Contents = styled.div`
   display: flex;
   align-items: center;

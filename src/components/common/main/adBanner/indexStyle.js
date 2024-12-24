@@ -1,22 +1,21 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 100vw;
-  height: 400px;
-  margin-top: 112px;
-  margin-bottom: 30px;
+  width: 70vw;
+  height: 100%;
   overflow: hidden;
   display: flex;
   position: relative;
   border: 1px solid #e6e6e6;
+  border-radius: 10px;
 `;
 
 export const ContestWrapper = styled.div`
   display: flex;
   transition: transform 1s ease-in-out;
   height: 100%;
-  width: ${(props) => `${props.slideCount * 100}vw`};
-  transform: translateX(${(props) => `-${props.currentIndex * 100}vw`});
+  width: ${(props) => `${props.slideCount * 70}vw`};
+  transform: translateX(${(props) => `-${props.currentIndex * 70}vw`});
 `;
 
 export const Contest = styled.div`
