@@ -59,7 +59,7 @@ export const NavItems = styled.div`
 `;
 export const HandImg = styled.img`
   position: absolute;
-  right: 0;
+  right: 5vw;
   width: 600px;
   height: 600px;
   animation-duration: 1s;
@@ -107,7 +107,7 @@ export const Body = styled.div`
 `;
 
 export const BodyText = styled.div`
-  padding-left: 9vw;
+  padding-left: 15vw;
   padding-top: 11vh;
   height: 25vw;
   display: flex;

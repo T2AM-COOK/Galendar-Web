@@ -17,7 +17,7 @@ const About = () => {
           <div>단체 카카오워크 방에 올라오는 대회 안내</div>
           <br /> <div>이렇게 대회 공지가 올라오는 게 불편했다고요?</div>
         </S.Text>
-        <S.Text style={{ fontWeight: "600", fontSize: "24px" }}>
+        <S.Text style={{ fontWeight: "500", fontSize: "24px" }}>
           <div>이제 ‘갈랜더’로 대회 준비를</div>{" "}
           <div>더욱 쉽고 간편하게 하세요!</div>{" "}
           <div> 갈랜더로 대회 일정을 찾고 대회 관리를 해 보세요!</div>
@@ -26,7 +26,7 @@ const About = () => {
           <div>
             <S.Text style={{ fontWeight: "800" }}>T2AM COOK</S.Text>
             <S.Text style={{ fontWeight: "400" }}>
-              김성한, 김시원, 박민규 서진교, 이유진
+              김성한, 김시원, 박민규, 서진교, 이유진
             </S.Text>
           </div>
           <img

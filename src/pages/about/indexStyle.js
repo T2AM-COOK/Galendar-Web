@@ -24,8 +24,9 @@ export const TitleContainer = styled.div`
 `;
 
 export const Title = styled.div`
+  @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
   font-size: 40px;
-  font-weight: 400;
+  font-weight: 600;
   animation-duration: 4s;
   animation-name: Nav;
   @keyframes Nav {
@@ -79,10 +80,12 @@ export const MainContainer = styled.div`
 `;
 
 export const Text = styled.div`
+  @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
+  font-family: "Pretendard", sans-serif !important;
   width: 100%;
   text-align: center;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: -0.5px;
   animation-duration: 5s;
   animation-name: Text;
