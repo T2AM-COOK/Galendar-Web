@@ -32,7 +32,7 @@ const MyProfile = () => {
           onClick={() => navigate("/bookmark")}
           style={{ borderBottomLeftRadius: "9px" }}
         >
-          북마크
+          {user.role === "ROLE_ADMIN" ? "대회 관리" : "북마크"}
         </S.BottomOption>
         <S.BottomOption
           onClick={() => logout()}
