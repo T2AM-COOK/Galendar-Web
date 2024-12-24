@@ -8,6 +8,7 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   width: 100%;
+  margin-top: 2%;
   justify-content: center;
   display: flex;
   flex-direction: column;

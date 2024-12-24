@@ -27,7 +27,13 @@ const Topbar = () => {
         <S.Text onClick={() => navigate("/bookmark")}>
           {user.role === "ROLE_ADMIN" ? "대회 관리" : "북마크"}
         </S.Text>
-        <S.Text onClick={() => navigate("/createcontest")}>
+        <S.Text
+          onClick={
+            user.role === "ROLE_ADMIN"
+              ? () => navigate("/createcontest")
+              : () => navigate("/about")
+          }
+        >
           {user.role === "ROLE_ADMIN" ? "대회 생성" : "ABOUT 갈랜더"}
         </S.Text>
       </S.Nav>

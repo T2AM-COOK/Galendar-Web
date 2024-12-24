@@ -14,7 +14,7 @@ export const Title = styled.div`
 `;
 
 export const Hr = styled.div`
-  height: 1ㅅpx;
+  height: 1px;
   background-color: black;
   width: 60vw;
 `;
