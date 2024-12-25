@@ -7,7 +7,7 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  margin-top: 100px;
+  height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
