@@ -29,7 +29,6 @@ const BookMark = () => {
       if (bookmark.length === 0) {
         return <NotExists />;
       } else {
-        <MenuBar title="대회 관리" />;
         return bookmark.map((detail) => (
           <BigContentBox
             key={detail.contestId}
@@ -45,6 +44,7 @@ const BookMark = () => {
     <S.Container>
       <Topbar />
       <S.Content>
+        <MenuBar title="북마크" />;
         <S.BookMarkText>{renderContent()}</S.BookMarkText>
       </S.Content>
     </S.Container>

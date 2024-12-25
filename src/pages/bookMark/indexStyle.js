@@ -13,6 +13,7 @@ export const Content = styled.div`
   flex-direction: column;
   align-items: center;
   overflow: hidden;
+  margin-top: 90px;
 `;
 
 export const BookMarkText = styled.div`
