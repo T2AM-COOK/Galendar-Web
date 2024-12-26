@@ -44,7 +44,7 @@ const BookMark = () => {
     <S.Container>
       <Topbar />
       <S.Content>
-        <MenuBar title="북마크" />;
+        <MenuBar title={user.role === "ROLE_ADMIN" ? "대회 관리" : "북마크"} />
         <S.BookMarkText>{renderContent()}</S.BookMarkText>
       </S.Content>
     </S.Container>
