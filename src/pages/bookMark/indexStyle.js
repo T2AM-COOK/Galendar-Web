@@ -7,13 +7,13 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow: hidden;
   margin-top: 90px;
+  margin-bottom: 90px;
 `;
 
 export const BookMarkText = styled.div`

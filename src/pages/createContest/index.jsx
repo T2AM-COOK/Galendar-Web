@@ -12,7 +12,7 @@ import { JoinSet, TimeSet } from "../../components/common/createElem/dates";
 import NotFound from "../notFound";
 import MenuBar from "../../components/common/bars/menuBar";
 import { useGetMe } from "../../store/getMe";
-import Sidebar from "../../components/common/bars/banner/sideBar";
+import Sidebar from "../../components/common/bars/sideBar";
 
 const getFormattedDate = () => format(new Date(), "yyyy-MM-dd");
 
